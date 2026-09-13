@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Logic Group home">
+          <span class="brand-mark" aria-hidden="true">∴</span>
+          <span>
+            <strong>Logic Group</strong>
+            <small>Your University</small>
+          </span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a {% if page.nav == 'home' %}class="active" aria-current="page"{% endif %} href="{{ '/' | relative_url }}">Home</a>
+          <a {% if page.nav == 'people' %}class="active" aria-current="page"{% endif %} href="{{ '/people/' | relative_url }}">People</a>
+          <a {% if page.nav == 'research' %}class="active" aria-current="page"{% endif %} href="{{ '/research/' | relative_url }}">Research</a>
+          <a {% if page.nav == 'seminars' %}class="active" aria-current="page"{% endif %} href="{{ '/seminars/' | relative_url }}">Seminars</a>
+          <a {% if page.nav == 'contact' %}class="active" aria-current="page"{% endif %} href="{{ '/contact/' | relative_url }}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>Logic Group</strong>
+          <p>Department or Institute · Your University</p>
+        </div>
+        <div class="footer-links">
+          <a href="{{ '/contact/' | relative_url }}">Contact</a>
+          <a href="https://github.com/YOUR-ORGANIZATION" rel="me">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

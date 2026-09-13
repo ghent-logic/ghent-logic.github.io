@@ -1,3 +1,7 @@
-theme: jekyll-theme-minimal
-title: Ghent logic website 
-description: We post stuff on here
+title: Logic Group
+description: Research in mathematical and philosophical logic
+url: ""
+baseurl: ""
+markdown: kramdown
+permalink: pretty
+
