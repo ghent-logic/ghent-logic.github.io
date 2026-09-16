@@ -184,6 +184,16 @@ img {
   color:var(--gold);
   line-height:1
 }
+/* Sized in em so the mark follows the responsive .brand-symbol font-size. */
+.brand-symbol svg {
+  display:block;
+  width:.86em;
+  height:.86em;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:3.4;
+  stroke-linecap:square
+}
 .brand-title {
   font-family:var(--serif);
   font-size:1.75rem;
