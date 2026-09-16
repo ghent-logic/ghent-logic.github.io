@@ -28,7 +28,7 @@
     document.getElementById('preview-note')?.remove();
   }
   set('site-header', `<div class="masthead"><div class="wrap"><span>${esc(G.university)} <span aria-hidden="true">/</span> Research group</span><span class="masthead-right">${esc(G.city)}</span></div></div>
-    <header class="header"><div class="wrap header-row"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true">∴</span><span class="brand-title">${esc(G.name)}</span></a>
+    <header class="header"><div class="wrap header-row"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M9 5V27M9 16H28"/></svg></span><span class="brand-title">${esc(G.name)}</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu <span aria-hidden="true">☰</span></button>
     <nav class="nav" id="main-navigation" aria-label="Main navigation">${nav.map(([p,t]) => `<a href="${p}.html"${current === p ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div></header>`);
   // The wrapper participates in layout, so the coloured header itself stays sticky.
