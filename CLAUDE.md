@@ -148,10 +148,9 @@ repository's.
   two days before the day they were added. Four sit on other weekdays, three of
   which the emails themselves flag as unusual in time or room. Announcement
   boilerplate and "notice the unusual location" asides are not part of the entry.
-- One talk is **not yet added**: 16 December 2025, "Well-quasi-order on finite
-  trees and transfinite sequences". Its email names no speaker, only "I". Waiting
-  on Milan rather than guessing, though the subject matches Alakh Dhruv Chopra's
-  talk of 30 May 2023.
+- The 16 December 2025 talk, "Well-quasi-order on finite trees and transfinite
+  sequences", had no speaker in its email — only "I". Milan confirmed it was
+  Alakh Dhruv Chopra, and it is now in. The archive holds 58 talks.
 - Probe scripts that manipulate the DOM inside `setTimeout` do not reliably take
   effect under `--screenshot`, though they do under `--dump-dom`. To photograph
   something that sits far down a long page, copy the site to the scratchpad and
