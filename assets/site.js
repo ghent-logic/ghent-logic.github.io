@@ -17,13 +17,48 @@
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)} <span aria-hidden="true">↗</span></a>` : '';
+  const MATH_DELIMITERS = [
+    {left: '\\(', right: '\\)', display: false},
+    {left: '$$', right: '$$', display: true},
+    {left: '\\[', right: '\\]', display: true},
+    {left: '$', right: '$', display: false}
+  ];
+  let mathLoading = null;
+  function loadMath() {
+    if (window.renderMathInElement) return Promise.resolve();
+    if (mathLoading) return mathLoading;
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'assets/katex/katex.min.css';
+    document.head.appendChild(css);
+    const script = src => new Promise((resolve, reject) => {
+      const el = document.createElement('script');
+      el.src = src; el.onload = resolve; el.onerror = reject;
+      document.head.appendChild(el);
+    });
+    mathLoading = script('assets/katex/katex.min.js').then(() => script('assets/katex/auto-render.min.js'));
+    return mathLoading;
+  }
+  // Typeset only when a delimiter is actually present, so text-only pages load no KaTeX
+  // at all; if it fails to load the LaTeX simply stays as written.
+  function typesetMath(root) {
+    if (!root || !/\\\(|\\\[|\$/.test(root.textContent)) return;
+    loadMath()
+      .then(() => window.renderMathInElement(root, {delimiters: MATH_DELIMITERS, throwOnError: false, errorColor: '#8a1c1c'}))
+      .catch(() => {});
+  }
   const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['publications','Publications'],['contact','Contact']];
   const current = document.body.dataset.page;
+  // Pages reachable from within the site rather than from the main navigation.
+  const subPages = {archive: ['Seminar archive', 'seminars']};
+  const navCurrent = subPages[current]?.[1] || current;
+  const RECENT_TALKS = 4;   // kept on the seminars page; the rest live in the archive
+  const PER_PAGE = 10;      // archive entries per page
   // Allows the all-in-one preview to mount another page without retaining listeners.
   window.groupListeners?.abort();
   const listeners = new AbortController();
   window.groupListeners = listeners;
-  document.title = `${current === 'index' ? '' : (nav.find(n => n[0] === current)?.[1] || 'Page not found') + ' · '}${G.name} · ${G.university}`;
+  document.title = `${current === 'index' ? '' : (nav.find(n => n[0] === current)?.[1] || subPages[current]?.[0] || 'Page not found') + ' · '}${G.name} · ${G.university}`;
 
   if (G.preview) {
     set('preview-note', 'Design preview · Bracketed fields and “Sample entry” labels need your details. <a href="START-HERE.html">Finishing checklist</a>');
@@ -33,7 +68,7 @@
   set('site-header', `<div class="masthead"><div class="wrap"><span>${esc(G.university)} <span aria-hidden="true">/</span> Research group</span><span class="masthead-right">${esc(G.city)}</span></div></div>
     <header class="header"><div class="wrap header-row"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M9 5V27M9 16H28"/></svg></span><span class="brand-title">${esc(G.name)}</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu <span aria-hidden="true">☰</span></button>
-    <nav class="nav" id="main-navigation" aria-label="Main navigation">${nav.map(([p,t]) => `<a href="${p}.html"${current === p ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div></header>`);
+    <nav class="nav" id="main-navigation" aria-label="Main navigation">${nav.map(([p,t]) => `<a href="${p}.html"${navCurrent === p ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div></header>`);
   // The wrapper participates in layout, so the coloured header itself stays sticky.
   const wrapper = document.getElementById('site-header');
   if (wrapper) wrapper.replaceWith(...wrapper.childNodes);
@@ -110,9 +145,40 @@
     set('home-seminar', t ? `<div class="seminar-feature"><div class="sample-row"><p class="eyebrow">${validDate(t.date) ? esc(dateLabel(t)) : 'Programme in preparation'}</p>${sample(t)}</div><h3>${esc(t.title)}</h3><p>${esc(t.speaker)}</p><p class="muted">${esc(t.affiliation)}</p><div class="feature-meta">${esc(t.location || G.seminarLocation || 'Location to be announced')}${t.time ? ' · '+esc(t.time) : ''}</div><a class="text-link" href="seminars.html#${slug(t.id)}">Seminar details <span aria-hidden="true">↗</span></a></div>` : '<div class="seminar-feature"><p class="eyebrow">Logic seminar</p><h3>New talks will be announced here.</h3><p class="muted">Explore the archive of previous seminars.</p><div class="actions"><a class="text-link" href="seminars.html">Seminar programme</a></div></div>');
   }
   if (current === 'seminars') {
+    // A link to a talk that has since moved into the archive should still reach it.
+    const wanted = decodeURIComponent(location.hash.slice(1));
+    if (wanted && past.slice(RECENT_TALKS).some(t => slug(t.id) === wanted)) {
+      location.replace(`archive.html#${encodeURIComponent(wanted)}`);
+      return;
+    }
     set('upcoming-talks', upcoming.length ? upcoming.map(talkHtml).join('') : '<div class="empty">No upcoming talks have been announced. Please check back for the next programme.</div>');
-    set('past-talks', past.length ? past.map(talkHtml).join('') : '<p class="muted">Previous talks will appear here.</p>');
+    const recent = past.slice(0, RECENT_TALKS);
+    set('past-talks', recent.length ? recent.map(talkHtml).join('')
+      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All ${past.length} previous talks <span aria-hidden="true">↗</span></a></p>` : '')
+      : '<p class="muted">Previous talks will appear here.</p>');
     set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || 'Locations will be included with each announcement.')}</p></div><div class="info-item"><span class="info-label">Questions & online access</span>${mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a>` : '<a href="contact.html">Contact information</a>'}</div>`);
+  }
+  if (current === 'archive') {
+    const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
+    // A link to one talk opens the page that holds it, wherever it has drifted to.
+    const wanted = decodeURIComponent(location.hash.slice(1));
+    const found = wanted ? past.findIndex(t => slug(t.id) === wanted) : -1;
+    const asked = found >= 0 ? Math.floor(found / PER_PAGE) + 1 : parseInt(new URLSearchParams(location.search).get('page'), 10) || 1;
+    const page = Math.min(Math.max(asked, 1), pages);
+    const slice = past.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+    set('archive-count', past.length
+      ? `${past.length} talk${past.length === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
+      : '');
+    set('archive-talks', slice.length ? slice.map(talkHtml).join('') : '<div class="empty"><h3>Archive</h3><p>Previous talks will appear here.</p></div>');
+    const href = n => n === 1 ? 'archive.html' : `archive.html?page=${n}`;
+    set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
+      ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
+      <span class="pager-pages">${Array.from({length: pages}, (_, i) => i + 1).map(n => n === page
+        ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
+        : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
+      ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
+    </nav>` : '');
+    if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
   }
   if (current === 'publications') {
     const papers = records(G.publications).sort((a,b) => String(b.year||'').localeCompare(String(a.year||'')));
@@ -124,4 +190,5 @@
     set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${external(G.mapUrl, 'Open map')}`);
     set('visit-directions', G.directions ? esc(G.directions) : G.preview ? '[Add directions and information about step-free access in content.js.]' : 'Please contact your host for directions and information about building access.');
   }
+  typesetMath(document.body);
 })();

@@ -12,8 +12,9 @@ to; treat it as his file. Claude's job is design and front-end code.
 
 ## How the site works
 
-No build step, no Jekyll, no Node, no package manager, no external fonts or
-libraries. Open `index.html` in a browser and it runs.
+No build step, no Jekyll, no Node, no package manager, and no requests to any
+third party. Open `index.html` in a browser and it runs. The one bundled library
+is KaTeX, vendored into `assets/katex/`.
 
 - `content.js` — the single content file. Sets `window.GROUP` with the group's
   details plus the `research`, `people`, `seminars`, and `publications` arrays.
@@ -23,7 +24,11 @@ libraries. Open `index.html` in a browser and it runs.
   properties on `:root` (`--navy`, `--teal`, `--gold`, `--line`, `--serif`, …);
   recolour there, not at the use site. Breakpoints: 1550, 1000, 760, 450.
 - `*.html` — one file per page; each is a thin shell of empty containers that
-  `site.js` fills by id.
+  `site.js` fills by id. `archive.html` is a sub-page rather than a nav entry:
+  `subPages` in `site.js` gives it a title and lights up "Seminars" in the nav.
+- `assets/katex/` — KaTeX 0.18.7, MIT, woff2 fonts only, with the woff/ttf
+  sources stripped from its CSS since they are not shipped. Do not hand-edit it;
+  replace the directory wholesale to upgrade.
 - `START-HERE.html`, `README.md` — Milan's own setup and editing instructions.
   Keep them accurate if the editing workflow changes.
 
@@ -55,6 +60,18 @@ section and jump link. File order never matters.
 - Design language: navy/gold/teal, Georgia display type, thin `--line` hairlines
   instead of boxes and shadows, generous whitespace. Keep additions restrained
   and in that register.
+- **Maths is LaTeX, typeset by KaTeX.** Authors write `\(...\)`, `$...$`,
+  `\[...\]` or `$$...$$` in `content.js`. `typesetMath()` in `site.js` only
+  fetches KaTeX when a delimiter is present in the rendered page, so text-only
+  pages load none of it, and a failure to load leaves the LaTeX legible as
+  written. Validate new maths by rendering each span with KaTeX under node
+  before trusting it; `throwOnError` is off in the browser, so a mistake shows
+  up in red rather than as an exception.
+- Two constants at the top of `site.js` tune the seminar split: `RECENT_TALKS`
+  (kept on the seminars page) and `PER_PAGE` (archive entries per page). The
+  archive reads `?page=N`, clamps it, and resolves `#talk-id` to whichever page
+  holds that talk; `seminars.html` forwards a hash for an older talk to the
+  archive so existing links survive.
 
 ## Verifying a change
 
@@ -87,7 +104,11 @@ repository's.
   off `main`.
 - Never push to `main`. The live site is whatever `main` says, so work on a
   branch is invisible to visitors until Milan merges it.
-- Do not open a pull request unless asked.
+- **Open a pull request for every finished change**, without being asked. Milan
+  reviews and merges from the pull request, and expects one to appear whenever a
+  piece of work is done; pushing the branch on its own is not enough. This
+  overrides the usual default of waiting to be asked. He still decides whether
+  to merge.
 - Milan is not a git user and does not want to type git commands. Run them for
   him, and explain in plain language rather than in git vocabulary.
 - Show the result of a design change (a screenshot, or before/after) rather than
@@ -103,16 +124,25 @@ repository's.
 - `.nojekyll` is absent although `README.md` says to include it. Harmless today
   because no path starts with an underscore, but worth adding if one ever does.
 - The seminar archive was transcribed from the source of
-  <https://giovannisolda.github.io/ghent-logic-seminar.html>, which that page
-  renders with MathJax. This site has no maths renderer by choice, so the LaTeX
-  was converted to Unicode (`\mathsf{ACA}_0` → ACA₀). Unicode has no subscript
-  ω or f and no superscript ω, so `Π⁰_ω`, `FBW_f`, and `ω^ω` keep an underscore
-  or caret. Adding MathJax or KaTeX would fix those three at the cost of the
-  site's zero-dependency design; not worth it unless abstracts start carrying
-  displayed equations.
+  <https://giovannisolda.github.io/ghent-logic-seminar.html>. It was first held
+  as Unicode (ACA₀), which Milan found looked wrong — Unicode cannot stack a
+  superscript over a subscript, so `Π¹₁` came out side by side. It is now LaTeX
+  throughout, rendered by the vendored KaTeX, which also recovered the three
+  notations Unicode could not express at all (`\Pi^0_\omega`, `\mathsf{FBW}_f`,
+  `\omega^\omega`). Theory names are uniformly `\mathsf{}` even where the source
+  had them as plain text, and `-CA`/`-Det` use `\text{-}` so the hyphen is not
+  set as a minus sign.
 - Speakers' own wording in abstracts is left as written, typos included. Only
   the maths notation is normalised.
 - `seminars` entries gained `speakerUrl`, `videoUrl`, and `paperUrl`, and
   `abstract` now accepts a list of paragraphs (a string still works). A past
   talk with no recorded room shows no location line rather than "Location to be
   announced".
+- The seminars page shows the next talks plus the four most recent past ones;
+  the rest live on `archive.html`, ten to a page. Milan asked for numbered
+  pages. If the archive ever passes roughly ten pages the number row will need
+  truncating with an ellipsis.
+- Probe scripts that manipulate the DOM inside `setTimeout` do not reliably take
+  effect under `--screenshot`, though they do under `--dump-dom`. To photograph
+  something that sits far down a long page, copy the site to the scratchpad and
+  change a constant there instead of scripting the live page.

@@ -65,13 +65,15 @@ window.GROUP = {
   ],
   // SEMINARS — newest first; the order here does not matter, the page sorts by date.
   // A talk moves from "Upcoming talks" into the archive by itself once its date passes.
+  // Maths is written as LaTeX between \\( and \\), or between single $, and is typeset
+  // in the browser: "the strength of \\(\\mathsf{ACA}_0\\)" or "the strength of $\\mathsf{ACA}_0$".
   //   date: "2026-10-15"          YYYY-MM-DD; leave out for a talk not yet scheduled ("TBA")
   //   time: "11:00"               local Ghent time; omit if it was the usual hour
   //   location: "Leslokaal 2.2"   otherwise falls back to seminarLocation above
   //   speakerUrl:                 turns the speaker's name into a link to their page
   //   onlineUrl / videoUrl / slidesUrl / paperUrl   appear as links beneath the talk
   //   abstract: ["first paragraph", "second paragraph"]   one entry per paragraph
-  //   id:                         the talk's own link (seminars.html#id) — keep it unique
+  //   id:                         the talk's own link (archive.html#id) — keep it unique
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
@@ -81,7 +83,7 @@ window.GROUP = {
       title: "On the reverse mathematics of cut-elimination and determinacy",
       abstract: [
         "In this talk, we will see how soundness and cut-elimination are connected to questions of determinacy.",
-        "Concretely, we look at an infinitary version of propositional fixpoint logic (for binary connectives), which is just enough to interpret PA. For this system, soundness and consistency are equivalent to (Σ⁰₁∧Π⁰₁)-Det over Cantor space or, equivalently, ACA₀. Correctness of syntactic cut-elimination, on the other hand, turns out to be significantly stronger, blowing up to Π¹₁-CA₀ or, equivalently, (Σ⁰₁∧Π⁰₁)-Det over Baire space.",
+        "Concretely, we look at an infinitary version of propositional fixpoint logic (for binary connectives), which is just enough to interpret \\(\\mathsf{PA}\\). For this system, soundness and consistency are equivalent to \\((\\Sigma^0_1\\wedge\\Pi^0_1)\\text{-}\\mathsf{Det}\\) over Cantor space or, equivalently, \\(\\mathsf{ACA}_0\\). Correctness of syntactic cut-elimination, on the other hand, turns out to be significantly stronger, blowing up to \\(\\Pi^1_1\\text{-}\\mathsf{CA}_0\\) or, equivalently, \\((\\Sigma^0_1\\wedge\\Pi^0_1)\\text{-}\\mathsf{Det}\\) over Baire space.",
         "Finally, we investigate how this phenomenon can be tamed by switching to a system for intuitionistic propositional logic with greatest fixpoints."
       ] },
     { id: "2024-12-05-zenger", date: "2024-12-05",
@@ -112,38 +114,38 @@ window.GROUP = {
     { id: "2024-10-31-pakhomov", date: "2024-10-31",
       speaker: "Fedor Pakhomov", speakerUrl: "https://research.ugent.be/web/person/fedor-pakhomov-0/en",
       affiliation: "Ghent University",
-      title: "Π¹₂ proof-theoretic analysis of ACA₀, part II",
+      title: "\\(\\Pi^1_2\\) proof-theoretic analysis of \\(\\mathsf{ACA}_0\\), part II",
       abstract: ["Tantalizingly, there is no abstract."] },
     { id: "2024-10-24-pakhomov", date: "2024-10-24",
       speaker: "Fedor Pakhomov", speakerUrl: "https://research.ugent.be/web/person/fedor-pakhomov-0/en",
       affiliation: "Ghent University",
-      title: "Π¹₂ proof-theoretic analysis of ACA₀, part I",
+      title: "\\(\\Pi^1_2\\) proof-theoretic analysis of \\(\\mathsf{ACA}_0\\), part I",
       abstract: ["Tantalizingly, there is no abstract."] },
     { id: "2024-05-23-lazar", date: "2024-05-23",
       speaker: "Vlad Lazar",
       affiliation: "Ghent University",
       title: "A poly-modal logic for omega model reflections",
-      abstract: ["In this talk I will present an extension of reflection calculus (RC) intended for the analysis of the theory of Bar Induction. RC is a modal logic where formulas are constructed from propositional variables by only utilizing conjunctions and labelled diamond modalities. In its standard arithmetical interpretation, formulas of RC represent theories of first-order arithmetic, and the labelled modalities are interpreted as syntactic reflection principles. Our extension is based on the introduction of a new set of modalities aimed at capturing semantic uniform reflections (also known as omega model reflections). By using ACA₀ as the base theory in the arithmetical interpretation, these additional modalities allow for the representation of the theory of Bar Induction within our framework. The main results I will be presenting are focused on the semantic properties of this system."] },
+      abstract: ["In this talk I will present an extension of reflection calculus (\\(\\mathsf{RC}\\)) intended for the analysis of the theory of Bar Induction. \\(\\mathsf{RC}\\) is a modal logic where formulas are constructed from propositional variables by only utilizing conjunctions and labelled diamond modalities. In its standard arithmetical interpretation, formulas of \\(\\mathsf{RC}\\) represent theories of first-order arithmetic, and the labelled modalities are interpreted as syntactic reflection principles. Our extension is based on the introduction of a new set of modalities aimed at capturing semantic uniform reflections (also known as omega model reflections). By using \\(\\mathsf{ACA}_0\\) as the base theory in the arithmetical interpretation, these additional modalities allow for the representation of the theory of Bar Induction within our framework. The main results I will be presenting are focused on the semantic properties of this system."] },
     { id: "2024-05-16-gjetaj", date: "2024-05-16",
       speaker: "Oriola Gjetaj",
       affiliation: "Ghent University",
-      title: "A Goodstein principle for ID₂",
-      abstract: ["The Goodstein principle is a natural number-theoretic theorem which is unprovable in Peano arithmetic. Since the original process definition there have been different canonical representations using Ackermann function or the Grzegorczyk hierarchy. These representations give a natural Goodstein process independent from different theories of reverse mathematics. In this talk, we consider a normal form for which we get an independent Goodstein theorem from the ordinal of ID₂."] },
+      title: "A Goodstein principle for \\(\\mathsf{ID}_2\\)",
+      abstract: ["The Goodstein principle is a natural number-theoretic theorem which is unprovable in Peano arithmetic. Since the original process definition there have been different canonical representations using Ackermann function or the Grzegorczyk hierarchy. These representations give a natural Goodstein process independent from different theories of reverse mathematics. In this talk, we consider a normal form for which we get an independent Goodstein theorem from the ordinal of \\(\\mathsf{ID}_2\\)."] },
     { id: "2024-05-02-mojtahedi", date: "2024-05-02",
       speaker: "Mojtaba Mojtahedi",
       affiliation: "Ghent University",
       title: "Intuitionistic Polymodal Provability Logic, part II",
       abstract: [
-        "The polymodal provability logic GLP, studies the provability predicates for extensions of Peano Arithmetic PA by all true Πₙ-sentences and their interactions with each other. In this talk, we consider the polymodal provability logic of Heyting Arithmetic HA. With the aid of the characterization of provability logic of HA, we are able to characterize the provability logic of HAⁿ, extension of HA by all true Πₙ-sentences.",
-        "It turns out that HA and HAⁿ share the same provability logic for every n. Moreover we suggest a polymodal provability logic, called iGLPH, and prove its soundness for arithmetical interpretations in HA. Roughly speaking, iGLPH is just the intuitionistic version of GLP together with [n]A → [n]B for some admissible rules A/B of HAⁿ, namely those who are verifiable in HA."
+        "The polymodal provability logic \\(\\mathsf{GLP}\\), studies the provability predicates for extensions of Peano Arithmetic \\(\\mathsf{PA}\\) by all true \\(\\Pi_n\\)-sentences and their interactions with each other. In this talk, we consider the polymodal provability logic of Heyting Arithmetic \\(\\mathsf{HA}\\). With the aid of the characterization of provability logic of \\(\\mathsf{HA}\\), we are able to characterize the provability logic of \\(\\mathsf{HA}^n\\), extension of \\(\\mathsf{HA}\\) by all true \\(\\Pi_n\\)-sentences.",
+        "It turns out that \\(\\mathsf{HA}\\) and \\(\\mathsf{HA}^n\\) share the same provability logic for every \\(n\\). Moreover we suggest a polymodal provability logic, called \\(\\mathsf{iGLPH}\\), and prove its soundness for arithmetical interpretations in \\(\\mathsf{HA}\\). Roughly speaking, \\(\\mathsf{iGLPH}\\) is just the intuitionistic version of \\(\\mathsf{GLP}\\) together with \\([n]A \\to [n]B\\) for some admissible rules \\(A/B\\) of \\(\\mathsf{HA}^n\\), namely those who are verifiable in \\(\\mathsf{HA}\\)."
       ] },
     { id: "2024-04-25-mojtahedi", date: "2024-04-25",
       speaker: "Mojtaba Mojtahedi",
       affiliation: "Ghent University",
       title: "Intuitionistic Polymodal Provability Logic, part I",
       abstract: [
-        "The polymodal provability logic GLP, studies the provability predicates for extensions of Peano Arithmetic PA by all true Πₙ-sentences and their interactions with each other. In this talk, we consider the polymodal provability logic of Heyting Arithmetic HA. With the aid of the characterization of provability logic of HA, we are able to characterize the provability logic of HAⁿ, extension of HA by all true Πₙ-sentences.",
-        "It turns out that HA and HAⁿ share the same provability logic for every n. Moreover we suggest a polymodal provability logic, called iGLPH, and prove its soundness for arithmetical interpretations in HA. Roughly speaking, iGLPH is just the intuitionistic version of GLP together with [n]A → [n]B for some admissible rules A/B of HAⁿ, namely those who are verifiable in HA."
+        "The polymodal provability logic \\(\\mathsf{GLP}\\), studies the provability predicates for extensions of Peano Arithmetic \\(\\mathsf{PA}\\) by all true \\(\\Pi_n\\)-sentences and their interactions with each other. In this talk, we consider the polymodal provability logic of Heyting Arithmetic \\(\\mathsf{HA}\\). With the aid of the characterization of provability logic of \\(\\mathsf{HA}\\), we are able to characterize the provability logic of \\(\\mathsf{HA}^n\\), extension of \\(\\mathsf{HA}\\) by all true \\(\\Pi_n\\)-sentences.",
+        "It turns out that \\(\\mathsf{HA}\\) and \\(\\mathsf{HA}^n\\) share the same provability logic for every \\(n\\). Moreover we suggest a polymodal provability logic, called \\(\\mathsf{iGLPH}\\), and prove its soundness for arithmetical interpretations in \\(\\mathsf{HA}\\). Roughly speaking, \\(\\mathsf{iGLPH}\\) is just the intuitionistic version of \\(\\mathsf{GLP}\\) together with \\([n]A \\to [n]B\\) for some admissible rules \\(A/B\\) of \\(\\mathsf{HA}^n\\), namely those who are verifiable in \\(\\mathsf{HA}\\)."
       ] },
     { id: "2024-02-29-buriola", date: "2024-02-29",
       speaker: "Gabriele Buriola", speakerUrl: "https://www.di.univr.it/?ent=persona&id=65484",
@@ -157,7 +159,7 @@ window.GROUP = {
     { id: "2024-02-22-pakhomov", date: "2024-02-22",
       speaker: "Fedor Pakhomov", speakerUrl: "https://research.ugent.be/web/person/fedor-pakhomov-0/en",
       affiliation: "Ghent University",
-      title: "\"3 is bqo\" implies ATR₀",
+      title: "\"3 is bqo\" implies \\(\\mathsf{ATR}_0\\)",
       abstract: ["The abstract of the talk coincides with the title."] },
     { id: "2024-02-07-rossegger", date: "2024-02-07",
       speaker: "Dino Rossegger", speakerUrl: "https://drossegger.github.io/",
@@ -167,7 +169,7 @@ window.GROUP = {
       abstract: [
         "The Borel hierarchy gives a robust way to stratify the complexity of sets of countable structures and is intimately tied with definability in infinitary logic via the Lopez-Escobar theorem. However, what happens with sets axiomatizable in finitary first-order logic, such as the set of structures satisfying a given finitary first-order theory T? Is the complexity of the set of T's models in any way related to the quantifier complexity of the sentences axiomatizing it? In particular, if a theory T is not axiomatizable by a set of sentences of bounded quantifier complexity, can the set of models of T still be at a finite level of the Borel hierarchy?",
         "In this talk, we will present results concerning these questions:",
-        "In joint work with Andrews, Gonzalez, Lempp, and Zhu we show that the set of models of a theory T is Π⁰_ω-complete if and only if T does not have an axiomatization by sentences of bounded quantifier complexity, answering the last question in the negative. We also characterize the Borel complexity of the set of models of complete theories in terms of their finitary axiomatizations. Our results suggest that infinitary logic does not provide any efficacy when defining first-order properties, a phenomenon already observed by Wadge and Keisler and, recently, rediscovered by Harrison-Trainor and Kretschmer using different techniques.",
+        "In joint work with Andrews, Gonzalez, Lempp, and Zhu we show that the set of models of a theory T is \\(\\Pi^0_\\omega\\)-complete if and only if T does not have an axiomatization by sentences of bounded quantifier complexity, answering the last question in the negative. We also characterize the Borel complexity of the set of models of complete theories in terms of their finitary axiomatizations. Our results suggest that infinitary logic does not provide any efficacy when defining first-order properties, a phenomenon already observed by Wadge and Keisler and, recently, rediscovered by Harrison-Trainor and Kretschmer using different techniques.",
         "Combining our results with recent results by Enayat and Visser, we obtain that a large class of theories studied in the foundations of mathematics, sequential theories, have a maximal complicated set of models."
       ] },
     { id: "2023-12-14-weiermann", date: "2023-12-14",
@@ -184,7 +186,7 @@ window.GROUP = {
       location: "Leslokaal 2.2",
       videoUrl: "https://youtu.be/Pwz4nsrM-xU",
       abstract: [
-        "Continuous Weihrauch degrees have been known and studied for more than thirty years, yet very little is known on their structure. In this talk, we will focus on some recent observations concerning the degrees that are closest to the degree of the identity (but different from it), and we will show that, perhaps unsurprisingly, their configuration depends strongly on set-theoretic assumptions: in particular, the existence of a minimal such degree requires some form of determinacy. We will then move to a smaller class of \"tamely discontinuous\" multifunctions, still very close to the identity, and show in ZFC that they admit a minimum.",
+        "Continuous Weihrauch degrees have been known and studied for more than thirty years, yet very little is known on their structure. In this talk, we will focus on some recent observations concerning the degrees that are closest to the degree of the identity (but different from it), and we will show that, perhaps unsurprisingly, their configuration depends strongly on set-theoretic assumptions: in particular, the existence of a minimal such degree requires some form of determinacy. We will then move to a smaller class of \"tamely discontinuous\" multifunctions, still very close to the identity, and show in \\(\\mathsf{ZFC}\\) that they admit a minimum.",
         "Joint work with Arno Pauly."
       ] },
     { id: "2023-11-30-murwanashyaka", date: "2023-11-30",
@@ -194,10 +196,10 @@ window.GROUP = {
       location: "Leslokaal 2.2",
       videoUrl: "https://www.youtube.com/watch?v=jI1Fgcm6Qzc",
       abstract: [
-        "The analogue of Hilbert’s 10th Problem for a first-order structure A with signature L asks whether there exists an algorithm with input and output as follows:",
-        "input: an L-sentence of the form ∃x [ s = t ]",
-        "output: YES if ∃x [ s = t ] is true in A, and NO otherwise.",
-        "In this talk, we consider the term algebra of finite full binary trees extended with a substitution operator. We show that the analogue of Hilbert’s 10th problem is undecidable by existentially interpreting (N, 0, 1, +, ×). If there is time, we sketch how to existentially interpret (N, 0, 1, +, ×, exp) without relying on the solution to the original Hilbert’s 10th Problem. The talk is based on the CiE 2022 paper [1] and an extended journal version under review.",
+        "The analogue of Hilbert’s 10th Problem for a first-order structure A with signature \\(L\\) asks whether there exists an algorithm with input and output as follows:",
+        "input: an \\(L\\)-sentence of the form \\(\\exists x [ s = t ]\\)",
+        "output: YES if \\(\\exists x [ s = t ]\\) is true in A, and NO otherwise.",
+        "In this talk, we consider the term algebra of finite full binary trees extended with a substitution operator. We show that the analogue of Hilbert’s 10th problem is undecidable by existentially interpreting \\((N,0, 1, +, \\times)\\). If there is time, we sketch how to existentially interpret \\((N, 0, 1, +, \\times, \\text{exp})\\) without relying on the solution to the original Hilbert’s 10th Problem. The talk is based on the CiE 2022 paper [1] and an extended journal version under review.",
         "[1] Murwanashyaka, J.: Hilbert’s Tenth Problem for Term Algebras with a Substitution Operator."
       ] },
     { id: "2023-11-23-vega", date: "2023-11-23",
@@ -213,7 +215,7 @@ window.GROUP = {
       title: "The universal tangle for spatial reasoning",
       location: "Leslokaal 2.2",
       abstract: [
-        "The topological μ-calculus has gathered attention in recent years as a powerful framework for representation of spatial knowledge. In particular, spatial relations can be represented over finite structures in the guise of weakly transitive (wK4) frames. Together with David Fernández-Duque we have shown that the μ-calculus is equivalent to a simple fragment based on a variant of the \"tangle\" operator. Similar results were proven for transitive frames by Dawar and Otto, using modal characterisation theorems for the corresponding classes of frames. However these theorems are not available in our setting and so we ended up with a different approach by studying the Σ-final part of the corresponding Kripke models for finite sets of formulae Σ.",
+        "The topological \\(\\mu\\)-calculus has gathered attention in recent years as a powerful framework for representation of spatial knowledge. In particular, spatial relations can be represented over finite structures in the guise of weakly transitive (wK4) frames. Together with David Fernández-Duque we have shown that the \\(\\mu\\)-calculus is equivalent to a simple fragment based on a variant of the \"tangle\" operator. Similar results were proven for transitive frames by Dawar and Otto, using modal characterisation theorems for the corresponding classes of frames. However these theorems are not available in our setting and so we ended up with a different approach by studying the \\(\\Sigma\\)-final part of the corresponding Kripke models for finite sets of formulae \\(\\Sigma\\).",
         "I will be giving a blackboard presentation starting with an overview of the motivation and the results then, if time allows, we will look into the proof of one of the main theorems of our paper."
       ] },
     { id: "2023-10-26-kouptchinsky", date: "2023-10-26",
@@ -225,9 +227,9 @@ window.GROUP = {
       abstract: [
         "This talk is about the foundations of mathematics, studying determinacy axioms derived from game theory, with a reverse mathematics point of view.",
         "It exposes their relationship with second-order and third-order arithmetic, examining a significant paper in the field by Montalbán and Shore.",
-        "The proof of Martin of Borel determinacy showed that the existence of the nth iterated power set of ω is necessary to prove the determinacy of Π⁰ₙ₊₃ Gale-Stewart games (for n ≥ 1). However, it is not known what is the optimal proof for this kind of determinacy nowadays.",
-        "Most of the work in the area has been led into second-order arithmetic when one only uses natural numbers and sets of natural numbers. The limit of this analysis is the striking result of Montalbàn and Shore. They showed that when taking finite differences of Π⁰₃ sets, the determinacy axioms grow exponentially in proof-theoretic strength until the limit of provability in Z₂.",
-        "We present a generalisation of the results of Montalbán and Shore in some natural interpretation of third-order arithmetic about differences of Π⁰₄ sets. Our work reveals the situation to be slightly different in the uncountable case while generating a plethora of reverse mathematical results about (Π⁰ₙ₊₃)ₘ determinacy axioms (n, m ≥ 1)."
+        "The proof of Martin of Borel determinacy showed that the existence of the nth iterated power set of \\(\\omega\\) is necessary to prove the determinacy of \\(\\Pi^0_{n+3}\\) Gale-Stewart games (for \\(n \\geq 1\\)). However, it is not known what is the optimal proof for this kind of determinacy nowadays.",
+        "Most of the work in the area has been led into second-order arithmetic when one only uses natural numbers and sets of natural numbers. The limit of this analysis is the striking result of Montalbàn and Shore. They showed that when taking finite differences of \\(\\Pi^0_3\\) sets, the determinacy axioms grow exponentially in proof-theoretic strength until the limit of provability in \\(Z_2\\).",
+        "We present a generalisation of the results of Montalbán and Shore in some natural interpretation of third-order arithmetic about differences of \\(\\Pi^0_4\\) sets. Our work reveals the situation to be slightly different in the uncountable case while generating a plethora of reverse mathematical results about \\((\\Pi^0_{n+3})_m\\) determinacy axioms \\((n, m \\geq 1)\\)."
       ] },
     { id: "2023-10-19-beklemishev", date: "2023-10-19",
       speaker: "Lev Beklemishev", speakerUrl: "https://homepage.mi-ras.ru/~bekl/",
@@ -235,14 +237,14 @@ window.GROUP = {
       title: "Some recent results in provability logic",
       location: "Leslokaal 3.2",
       videoUrl: "https://www.youtube.com/watch?v=9ruySAUUKCs",
-      abstract: ["This will be an semi-formal blackboard and chalk talk where I present a survey of the work I and my students are currently doing around provability logic. Time permitting this will include the work of Wang on periodic topological models of GLP, Lukashov on the unification problem for GLP, Dvorkin on the provability logic of Niebergall's arithmetic, Kovalev on open induction, Svyatlovsky on well-quasi orders in strictly positive logics."] },
+      abstract: ["This will be an semi-formal blackboard and chalk talk where I present a survey of the work I and my students are currently doing around provability logic. Time permitting this will include the work of Wang on periodic topological models of \\(\\mathsf{GLP}\\), Lukashov on the unification problem for \\(\\mathsf{GLP}\\), Dvorkin on the provability logic of Niebergall's arithmetic, Kovalev on open induction, Svyatlovsky on well-quasi orders in strictly positive logics."] },
     { id: "2023-10-12-mojtahedi", date: "2023-10-12",
       speaker: "Mojtaba Mojtahedi",
       affiliation: "Ghent University",
       title: "Solving Logical Equations",
       location: "Leslokaal 3.2",
       videoUrl: "https://www.youtube.com/watch?v=iU7UO5Hkv0c&t=1664s",
-      abstract: ["Consider an equation ax+by+c=0 in reals, i.e. assume that a, b and c are given parameters seeking for all r and s that if we replace them for variables x and y, the equality holds. What if we consider equations in logical setting? More precisely, an equation like p → x = ⊥, seeking for all formulas A that if we replace them for the variable x, the equality p → A ≡ ⊥ holds. In this talk we consider this question with a propositional logic in the background: Classical logic, Intuitionistic Logic and Classical Modal Logics."] },
+      abstract: ["Consider an equation \\(ax+by+c=0\\) in reals, i.e. assume that \\(a\\), \\(b\\) and \\(c\\) are given parameters seeking for all \\(r\\) and \\(s\\) that if we replace them for variables \\(x\\) and \\(y\\), the equality holds. What if we consider equations in logical setting? More precisely, an equation like \\(p \\to x = \\bot\\), seeking for all formulas \\(A\\) that if we replace them for the variable \\(x\\), the equality \\(p\\to A \\equiv \\bot\\) holds. In this talk we consider this question with a propositional logic in the background: Classical logic, Intuitionistic Logic and Classical Modal Logics."] },
     { id: "2023-10-05-lazar", date: "2023-10-05",
       speaker: "Vlad Lazar",
       affiliation: "Ghent University",
@@ -263,13 +265,13 @@ window.GROUP = {
       speaker: "Juan Pablo Aguilera", speakerUrl: "https://juan.ag/",
       affiliation: "Ghent University and TU Wien",
       title: "Monotone versus non-monotone projective operators",
-      abstract: ["For Γ = Σ¹ₙ or Π¹ₙ, the closure ordinal of monotone Γ operators is smaller than the closure ordinal of Γ operators, assuming V=L or PD. Half the inequalities are due to Aanderaa (1974) and the rest are new and joint with Philip Welch."] },
+      abstract: ["For \\(\\Gamma = \\Sigma^1_n\\) or \\(\\Pi^1_n\\), the closure ordinal of monotone \\(\\Gamma\\) operators is smaller than the closure ordinal of \\(\\Gamma\\) operators, assuming \\(V=L\\) or \\(\\mathsf{PD}\\). Half the inequalities are due to Aanderaa (1974) and the rest are new and joint with Philip Welch."] },
     { id: "2023-05-30-nivasch", date: "2023-05-30",
       speaker: "Gabriel Nivasch", speakerUrl: "https://www.gabrielnivasch.org/",
       affiliation: "Ariel University",
       title: "On the termination of some recursive algorithms",
       abstract: [
-        "Erickson, Nivasch, and Xu (2021), while studying so-called \"fusible numbers\", considered the following recursive algorithm M(x): if x<0 return −x, else return M(x−M(x−1))/2. They showed that M terminates on real inputs, and that PA cannot prove that M terminates on all natural inputs. In this talk we investigate conditions under which similar recursive algorithms terminate on all real inputs.",
+        "Erickson, Nivasch, and Xu (2021), while studying so-called \"fusible numbers\", considered the following recursive algorithm \\(M(x)\\): if \\(x<0\\) return \\(-x\\), else return \\(M(x-M(x-1))/2\\). They showed that \\(M\\) terminates on real inputs, and that \\(\\mathsf{PA}\\) cannot prove that \\(M\\) terminates on all natural inputs. In this talk we investigate conditions under which similar recursive algorithms terminate on all real inputs.",
         "Joint work with Lior Shiboli."
       ] },
     { id: "2023-05-30-chopra", date: "2023-05-30",
@@ -277,20 +279,20 @@ window.GROUP = {
       affiliation: "Ghent University",
       title: "Finite leaf-labeled trees ordered by non-inf-preserving embeddings",
       abstract: [
-        "As indicated in the title, the subject of the talk will be a certain well-quasi-order of leaf-labeled trees with an ordering which is weaker than the usual Kruskal embedding. The primary goal is the calculation of maximal order types — an oft-discussed topic during a recent visit by Harry Altman — as a function of the labeling wqo. Using their correspondence to finitary indecomposable transfinite sequences, we'll also get a nice result for all finitary sequences of length less than ω^ω.",
+        "As indicated in the title, the subject of the talk will be a certain well-quasi-order of leaf-labeled trees with an ordering which is weaker than the usual Kruskal embedding. The primary goal is the calculation of maximal order types — an oft-discussed topic during a recent visit by Harry Altman — as a function of the labeling wqo. Using their correspondence to finitary indecomposable transfinite sequences, we'll also get a nice result for all finitary sequences of length less than \\(\\omega^\\omega\\).",
         "This is joint work with Fedor Pakhomov, and overlapping with a recent paper by Andreas Weiermann and Harvey Friedman."
       ] },
     { id: "2023-05-11-vivi", date: "2023-05-11",
       speaker: "Andrea Vivi",
       affiliation: "Università di Roma La Sapienza",
       title: "Relations between the Ramsey theorem and other important theorems",
-      abstract: ["The Ramsey theorem is an important result that will be treated from a reverse mathematics perspective. Considering the Hindman theorem and the Increasing Polarized Theorem, we will restrict each other to the version on couples and two colours, and then compare these theorems with other conditions and stronger versions to find some interesting equivalences, and see if over RCA₀ it is possible to prove that these three theorems are equivalent to each other."] },
+      abstract: ["The Ramsey theorem is an important result that will be treated from a reverse mathematics perspective. Considering the Hindman theorem and the Increasing Polarized Theorem, we will restrict each other to the version on couples and two colours, and then compare these theorems with other conditions and stronger versions to find some interesting equivalences, and see if over \\(\\mathsf{RCA}_0\\) it is possible to prove that these three theorems are equivalent to each other."] },
     { id: "2023-05-04-walsh", date: "2023-05-04",
       speaker: "James Walsh", speakerUrl: "https://www.jameswalsh.org/",
       affiliation: "NYU",
       title: "New results on incompleteness and ordinal analysis",
       abstract: [
-        "We present an analogue of Gödel’s second incompleteness theorem. Whereas Gödel showed that sufficiently strong theories that are Π⁰₁-sound and Σ⁰₁-definable do not prove their own Π⁰₁-soundness, we prove that sufficiently strong theories that are Π¹₁-sound and Σ¹₁-definable do not prove their own Π¹₁-soundness. Our proof does not involve the construction of a self-referential sentence but rather relies on ordinal analysis.",
+        "We present an analogue of Gödel’s second incompleteness theorem. Whereas Gödel showed that sufficiently strong theories that are \\(\\Pi^0_1\\)-sound and \\(\\Sigma^0_1\\)-definable do not prove their own \\(\\Pi^0_1\\)-soundness, we prove that sufficiently strong theories that are \\(\\Pi^1_1\\)-sound and \\(\\Sigma^1_1\\)-definable do not prove their own \\(\\Pi^1_1\\)-soundness. Our proof does not involve the construction of a self-referential sentence but rather relies on ordinal analysis.",
         "If time permits, we will then turn to characterizations of ordinal analysis itself. One of the main goals of ordinal analysis is measuring the “strength” of theories by calculating their proof-theoretic ordinals. But in what sense do proof-theoretic ordinals measure the strength of theories? What is the attendant notion of strength? We provide some abstract answers to this question."
       ] },
     { id: "2023-04-27-mclean", date: "2023-04-27",
@@ -307,19 +309,19 @@ window.GROUP = {
       affiliation: "Ghent University",
       title: "Provable bqo's",
       abstract: [
-        "It is a known result that any theory T extending RCA₀ which proves that 3 is bqo also proves that any finite poset is bqo. Interestingly, as Freund recently showed, 3 being bqo is not a trivial statement, as it entails ACA₀⁺ over RCA₀ (an implication not known to be strict). Hence, a natural question to be asked is: what can we say about the finite posets P that a \"weak\" theory (i.e., a theory not proving that 3 is bqo) proves to be bqo? In this talk, we will provide a characterization of these posets, and then extend this result to study the posets that ACA₀ proves to be bqo. Finally, we will show how these considerations can be exploited to show the weakness of some versions of the minimal bar array lemma.",
+        "It is a known result that any theory T extending \\(\\mathsf{RCA}_0\\) which proves that 3 is bqo also proves that any finite poset is bqo. Interestingly, as Freund recently showed, 3 being bqo is not a trivial statement, as it entails \\(\\mathsf{ACA}_0^+\\) over \\(\\mathsf{RCA}_0\\) (an implication not known to be strict). Hence, a natural question to be asked is: what can we say about the finite posets P that a \"weak\" theory (i.e., a theory not proving that 3 is bqo) proves to be bqo? In this talk, we will provide a characterization of these posets, and then extend this result to study the posets that \\(\\mathsf{ACA}_0\\) proves to be bqo. Finally, we will show how these considerations can be exploited to show the weakness of some versions of the minimal bar array lemma.",
         "This is joint work with Anton Freund, Alberto Marcone and Fedor Pakhomov."
       ] },
     { id: "2023-03-30-weiermann", date: "2023-03-30",
       speaker: "Andreas Weiermann", speakerUrl: "http://cage.ugent.be/~weierman/",
       affiliation: "Ghent University",
       title: "The phase transition for Friedman's Bolzano Weierstrass Theorem",
-      abstract: ["We cover our recent findings regardings the parameterized Friedman's Bolzano Weierstrass theorem FBW_f where f is a positive primitive recursive function. Our aim is to indicate the precise threshold region for f for which FBW_f becomes unprovable in the fragment of PA with one quantifier induction only."] },
+      abstract: ["We cover our recent findings regardings the parameterized Friedman's Bolzano Weierstrass theorem \\(\\mathsf{FBW}_f\\) where f is a positive primitive recursive function. Our aim is to indicate the precise threshold region for f for which \\(\\mathsf{FBW}_f\\) becomes unprovable in the fragment of \\(\\mathsf{PA}\\) with one quantifier induction only."] },
     { id: "2023-03-23-altman", date: "2023-03-23",
       speaker: "Harry Altman", speakerUrl: "https://hjaltman.github.io/",
       title: "An Introduction to Integer Complexity",
       abstract: [
-        "The *integer complexity* of a number n, denoted ||n||, is the smallest number of 1's needed to write n using any combination of addition and multiplication. Despite this simple definition many problems about it remain open; for instance, it is unknown whether ||2ᵏ||=2k for all k≥1.",
+        "The *integer complexity* of a number \\(n\\), denoted \\(\\|n\\|\\), is the smallest number of 1's needed to write \\(n\\) using any combination of addition and multiplication. Despite this simple definition many problems about it remain open; for instance, it is unknown whether \\(\\|2^k\\|=2k\\) for all \\(k \\geq 1\\).",
         "In this talk we'll provide an overview of integer complexity, discussing its approximate magnitude, how fast it may be computed, and some infinite families of numbers we *can* determine the complexity of, but focusing primarily on a well-ordering phenomenon that occurs when one transforms the complexity values into real-valued \"defects\". We'll also discuss variants of the problem."
       ] },
     { id: "2023-03-09-altman", date: "2023-03-09",
@@ -339,7 +341,7 @@ window.GROUP = {
       affiliation: "Ghent University",
       title: "The Logical Strength of Minimal Bad Array",
       abstract: [
-        "The notion of better quasi order, due to Nash-Williams, has led to a rich body of results, which includes Laver’s famous proof of Fraïssé’s conjecture. A central tool is the minimal bad array principle. In the present paper, we show that this principle is exceptionally strong from the viewpoint of reverse mathematics, a framework from mathematical logic. Specifically, it is equivalent to Π¹₂-comprehension over the base theory ATR₀.",
+        "The notion of better quasi order, due to Nash-Williams, has led to a rich body of results, which includes Laver’s famous proof of Fraïssé’s conjecture. A central tool is the minimal bad array principle. In the present paper, we show that this principle is exceptionally strong from the viewpoint of reverse mathematics, a framework from mathematical logic. Specifically, it is equivalent to \\(\\Pi^1_2\\)-comprehension over the base theory \\(\\mathsf{ATR}_0\\).",
         "Joint work with Anton Freund and Giovanni Soldà"
       ] },
     { id: "2023-02-16-visser", date: "2023-02-16",
@@ -371,7 +373,7 @@ window.GROUP = {
       speaker: "Mojtaba Mojtahedi",
       affiliation: "Ghent University",
       title: "Intuitionistic provability logic: an overview",
-      abstract: ["Since 1980 where Albert Visser considered the question for the provability logic of Heyting Arithmetic HA, several related results obtained by e.g. Dick de Jongh, Albert Visser, Rosalie Iemhoff, Mohammad Ardeshir and me. It turns out that intuitionistic provability, is deeply connected with admissibility, preservability, interpretability, projectivity and unification."] }
+      abstract: ["Since 1980 where Albert Visser considered the question for the provability logic of Heyting Arithmetic \\(\\mathsf{HA}\\), several related results obtained by e.g. Dick de Jongh, Albert Visser, Rosalie Iemhoff, Mohammad Ardeshir and me. It turns out that intuitionistic provability, is deeply connected with admissibility, preservability, interpretability, projectivity and unification."] }
   ],
   publications: [
     { title: "[Title of a research article]", authors: "[Author names]", year: "",

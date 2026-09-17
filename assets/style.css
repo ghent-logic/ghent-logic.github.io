@@ -615,6 +615,74 @@ img {
   margin-top:17px
 }
 
+/* Seminar archive: the count under the heading, the link out of the recent list,
+   and the page numbers at the foot of the archive. */
+.archive-count {
+  margin-top:20px;
+  color:var(--muted);
+  font-size:.92rem
+}
+.archive-more {
+  margin-top:34px
+}
+.pager {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:52px;
+  padding-top:26px;
+  border-top:1px solid var(--line)
+}
+.pager-pages {
+  display:flex;
+  gap:6px;
+  order:2;
+  flex:1 1 auto;
+  justify-content:center
+}
+.pager-page {
+  min-width:38px;
+  padding:7px 0;
+  text-align:center;
+  text-decoration:none;
+  font-variant-numeric:tabular-nums;
+  border:1px solid var(--line);
+  color:var(--teal)
+}
+.pager-page:hover {
+  border-color:var(--teal);
+  background:var(--soft)
+}
+.pager-page.is-current {
+  background:var(--navy);
+  border-color:var(--navy);
+  color:white
+}
+.pager-step {
+  font-size:.86rem;
+  font-weight:600;
+  text-decoration:none;
+  letter-spacing:.02em
+}
+.pager-step:first-child {
+  order:1
+}
+.pager-step:last-child {
+  order:3
+}
+.pager-step.is-off {
+  color:var(--muted);
+  opacity:.5
+}
+/* KaTeX sits on the text baseline; keep it from stretching the line height. */
+.talk h3 .katex,.publication h3 .katex {
+  font-size:1em
+}
+.katex {
+  font-size:1.06em
+}
 .research-row {
   display:grid;
   grid-template-columns:75px 1.2fr 1fr;
@@ -1073,6 +1141,22 @@ address {
 }
 .topics-grid {
   grid-template-columns:1fr
+}
+.pager {
+  gap:14px
+}
+.pager-pages {
+  order:1;
+  flex-basis:100%;
+  justify-content:flex-start;
+  flex-wrap:wrap
+}
+.pager-step:first-child {
+  order:2
+}
+.pager-step:last-child {
+  order:3;
+  margin-left:auto
 }
 .topic,.topic:first-child,.topic:last-child {
   padding:24px 0;
