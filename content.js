@@ -524,15 +524,42 @@ window.GROUP = {
       title: "Intuitionistic provability logic: an overview",
       abstract: ["Since 1980 where Albert Visser considered the question for the provability logic of Heyting Arithmetic \\(\\mathsf{HA}\\), several related results obtained by e.g. Dick de Jongh, Albert Visser, Rosalie Iemhoff, Mohammad Ardeshir and me. It turns out that intuitionistic provability, is deeply connected with admissibility, preservability, interpretability, projectivity and unification."] }
   ],
-  publications: [
-    { title: "[Title of a research article]", authors: "[Author names]", year: "",
-      venue: "[Journal, volume, and pages]", type: "Journal article", url: "", preprintUrl: "",
-      abstract: "Optional: add a short abstract or summary of this publication.", sample: true },
-    { title: "[Title of a preprint]", authors: "[Author names]", year: "",
-      venue: "[Preprint repository or series]", type: "Preprint", url: "", preprintUrl: "",
-      abstract: "Optional: explain the main question and result in a few sentences.", sample: true },
-    { title: "[Title of a book or chapter]", authors: "[Author names]", year: "",
-      venue: "[Publisher or edited volume]", type: "Book / chapter", url: "", preprintUrl: "",
-      abstract: "", sample: true }
+  // ACTIVITIES — what the group does besides the research seminar.
+  // Each entry names its "kind"; every distinct kind becomes a section on the
+  // page, in the order the kinds first appear here, with a jump link at the top.
+  // Invent a new kind simply by typing one — nothing else has to change.
+  //   title:       what this particular reading group, course or event is
+  //   when:        "Weekly, Tuesdays at 16:00" or "9-11 June 2027"
+  //   where:       a room or venue
+  //   description: one paragraph, or a list of paragraphs
+  //   url / linkLabel:  an optional link, and what to call it
+  //   contact:     an email address; shown as "Email the organisers"
+  //   id:          optional, for linking straight to this entry
+  activities: [
+    { kind: "Reading groups",
+      title: "[Book or paper the group is reading]",
+      when: "[Weekly, day and time]", where: "[Room]",
+      description: "Say what is being read, how much background it assumes, and whether newcomers can join part way through.",
+      contact: "", url: "", sample: true },
+    { kind: "Reading groups",
+      title: "[A second reading group, if there is one]",
+      when: "[Fortnightly, day and time]", where: "[Room]",
+      description: "Copy an entry to add another. Delete this one if a single reading group is all there is.",
+      contact: "", url: "", sample: true },
+    { kind: "Learning seminar",
+      title: "[Topic of the current course]",
+      when: "[Day and time during term]", where: "[Room]",
+      description: "Doctoral students take turns lecturing to each other on the foundations of a subject, so that everyone in the group ends up with a working knowledge of it. Name the topic, say who is lecturing, and say what is assumed of the audience.",
+      contact: "", url: "", sample: true },
+    { kind: "Workshops & conferences",
+      title: "[Name of a meeting the group organises]",
+      when: "[Dates]", where: "[Venue]",
+      description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
+      url: "", linkLabel: "Workshop website", contact: "", sample: true },
+    { kind: "Masterclasses",
+      title: "[Title of a short intensive course]",
+      when: "[Dates]", where: "[Room]",
+      description: "A guest gives a handful of lectures on their subject over a few days. Name the lecturer and the topic, and say how to register if that is needed.",
+      contact: "", url: "", sample: true }
   ]
 };

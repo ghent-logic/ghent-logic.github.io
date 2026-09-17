@@ -677,7 +677,7 @@ img {
   opacity:.5
 }
 /* KaTeX sits on the text baseline; keep it from stretching the line height. */
-.talk h3 .katex,.publication h3 .katex {
+.talk h3 .katex,.activity h3 .katex {
   font-size:1em
 }
 .katex {
@@ -847,32 +847,35 @@ details[open] summary {
 .archive .talk {
   opacity:1
 }
-.publication {
+.activity {
   border-top:1px solid var(--line);
   padding:27px 0
 }
-.publication h3 {
+.activity h3 {
   font-size:1.65rem;
   margin:11px 0 13px;
   max-width:750px
 }
-.publication .authors {
-  margin-bottom:5px
-}
-.publication .venue {
-  font-size:.9rem;
+.activity p {
+  max-width:750px;
   color:var(--muted)
 }
-.publication details {
+.activity p+p {
   margin-top:14px
 }
-.publication-meta {
+.activity-group+.activity-group {
+  margin-top:54px
+}
+.activity-meta {
   display:flex;
   align-items:center;
   gap:15px;
   flex-wrap:wrap;
   color:var(--teal);
   font-size:.78rem
+}
+.activity .talk-links {
+  margin-top:16px
 }
 .empty {
   padding:30px;
@@ -1317,7 +1320,7 @@ address {
 .page-content,.section {
   padding:20px 0
 }
-.member,.talk,.publication {
+.member,.talk,.activity {
   break-inside:avoid
 }
 details p {

@@ -16,7 +16,7 @@
     .map(t => String(t).trim()).filter(Boolean).map(t => `<p>${esc(t)}</p>`).join('');
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
-  const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)} <span aria-hidden="true">↗</span></a>` : '';
+  const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)}</a>` : '';
   const MATH_DELIMITERS = [
     {left: '\\(', right: '\\)', display: false},
     {left: '$$', right: '$$', display: true},
@@ -47,7 +47,7 @@
       .then(() => window.renderMathInElement(root, {delimiters: MATH_DELIMITERS, throwOnError: false, errorColor: '#8a1c1c'}))
       .catch(() => {});
   }
-  const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['publications','Publications'],['contact','Contact']];
+  const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['activities','Activities'],['contact','Contact']];
   const current = document.body.dataset.page;
   // Pages reachable from within the site rather than from the main navigation.
   const subPages = {archive: ['Seminar archive', 'seminars']};
@@ -96,7 +96,7 @@
     set('hero-title', `${esc(G.home.title)}<em>${esc(G.home.emphasis)}</em>`);
     set('hero-introduction', esc(G.home.introduction));
     set('group-introduction', esc(G.home.about));
-    set('home-topics', areas.map(a => `<article class="topic"><div class="topic-number">${esc(a.number)}</div><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p><a class="text-link" href="research.html#${slug(a.id)}">Explore this area <span aria-hidden="true">↗</span></a></article>`).join(''));
+    set('home-topics', areas.map(a => `<article class="topic"><div class="topic-number">${esc(a.number)}</div><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p><a class="text-link" href="research.html#${slug(a.id)}">Explore this area</a></article>`).join(''));
   }
   if (current === 'research') {
     set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
@@ -142,7 +142,7 @@
   }
   if (current === 'index') {
     const t = upcoming[0];
-    set('home-seminar', t ? `<div class="seminar-feature"><div class="sample-row"><p class="eyebrow">${validDate(t.date) ? esc(dateLabel(t)) : 'Programme in preparation'}</p>${sample(t)}</div><h3>${esc(t.title)}</h3><p>${esc(t.speaker)}</p><p class="muted">${esc(t.affiliation)}</p><div class="feature-meta">${esc(t.location || G.seminarLocation || 'Location to be announced')}${t.time ? ' · '+esc(t.time) : ''}</div><a class="text-link" href="seminars.html#${slug(t.id)}">Seminar details <span aria-hidden="true">↗</span></a></div>` : '<div class="seminar-feature"><p class="eyebrow">Logic seminar</p><h3>New talks will be announced here.</h3><p class="muted">Explore the archive of previous seminars.</p><div class="actions"><a class="text-link" href="seminars.html">Seminar programme</a></div></div>');
+    set('home-seminar', t ? `<div class="seminar-feature"><div class="sample-row"><p class="eyebrow">${validDate(t.date) ? esc(dateLabel(t)) : 'Programme in preparation'}</p>${sample(t)}</div><h3>${esc(t.title)}</h3><p>${esc(t.speaker)}</p><p class="muted">${esc(t.affiliation)}</p><div class="feature-meta">${esc(t.location || G.seminarLocation || 'Location to be announced')}${t.time ? ' · '+esc(t.time) : ''}</div><a class="text-link" href="seminars.html#${slug(t.id)}">Seminar details</a></div>` : '<div class="seminar-feature"><p class="eyebrow">Logic seminar</p><h3>New talks will be announced here.</h3><p class="muted">Explore the archive of previous seminars.</p><div class="actions"><a class="text-link" href="seminars.html">Seminar programme</a></div></div>');
   }
   if (current === 'seminars') {
     // A link to a talk that has since moved into the archive should still reach it.
@@ -154,7 +154,7 @@
     set('upcoming-talks', upcoming.length ? upcoming.map(talkHtml).join('') : '<div class="empty">No upcoming talks have been announced. Please check back for the next programme.</div>');
     const recent = past.slice(0, RECENT_TALKS);
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
-      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All ${past.length} previous talks <span aria-hidden="true">↗</span></a></p>` : '')
+      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All ${past.length} previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
     set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || 'Locations will be included with each announcement.')}</p></div><div class="info-item"><span class="info-label">Questions & online access</span>${mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a>` : '<a href="contact.html">Contact information</a>'}</div>`);
   }
@@ -180,9 +180,15 @@
     </nav>` : '');
     if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
   }
-  if (current === 'publications') {
-    const papers = records(G.publications).sort((a,b) => String(b.year||'').localeCompare(String(a.year||'')));
-    set('publication-list', papers.length ? papers.map(p => `<article class="publication"><div class="publication-meta"><span>${esc(p.type)}</span>${p.year ? `<span>${esc(p.year)}</span>` : ''}${sample(p)}</div><h3>${esc(p.title)}</h3><p class="authors">${esc(p.authors)}</p><p class="venue">${esc(p.venue)}</p>${p.url || p.preprintUrl ? `<div class="talk-links">${external(p.url,'Publisher / DOI')}${external(p.preprintUrl,'Read preprint')}</div>` : ''}${p.abstract ? `<details><summary>Abstract</summary>${paras(p.abstract)}</details>` : ''}</article>`).join('') : '<div class="empty"><h3>Publications</h3><p>The publication list is being prepared.</p></div>');
+  if (current === 'activities') {
+    const doings = records(G.activities);
+    // Sections come from the distinct kinds, in the order they first appear in content.js.
+    const kinds = [...new Set(doings.map(a => a.kind))];
+    set('activities-index', kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join(''));
+    set('activities-list', kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${doings.filter(a => a.kind === k).map(a => {
+      const links = external(a.url, a.linkLabel || 'More information') + (mail(a.contact) ? `<a href="${mail(a.contact)}">Email the organisers</a>` : '');
+      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${a.when ? `<span>${esc(a.when)}</span>` : ''}${a.where ? `<span>${esc(a.where)}</span>` : ''}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
+    }).join('')}</section>`).join('') : '<div class="empty"><h3>Activities</h3><p>The group\u2019s activities will be listed here.</p></div>');
   }
   if (current === 'contact') {
     set('general-contact', mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : `<p class="draft-field">${G.preview ? '[Add the group’s contact email in content.js]' : 'A group contact address will be added here.'}</p>`);

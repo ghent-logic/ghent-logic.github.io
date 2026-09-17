@@ -6,7 +6,7 @@ ChatGPT; it is now being reworked for design quality.
 
 ## Division of labour
 
-**Milan writes the content himself** — members, seminars, publications, and the
+**Milan writes the content himself** — members, seminars, activities, and the
 group's own text, all in `content.js`. Do not edit `content.js` unless asked
 to; treat it as his file. Claude's job is design and front-end code.
 
@@ -17,7 +17,7 @@ third party. Open `index.html` in a browser and it runs. The one bundled library
 is KaTeX, vendored into `assets/katex/`.
 
 - `content.js` — the single content file. Sets `window.GROUP` with the group's
-  details plus the `research`, `people`, `seminars`, and `publications` arrays.
+  details plus the `research`, `people`, `seminars`, and `activities` arrays.
 - `assets/site.js` — builds the shared header and footer and renders every list
   from those arrays, per page, keyed on `document.body.dataset.page`.
 - `assets/style.css` — the whole theme. Palette and fonts are CSS custom
@@ -35,11 +35,13 @@ is KaTeX, vendored into `assets/katex/`.
 ## Content rendering is already fully dynamic
 
 Every list maps over its array, so any number of entries renders. Verified with
-10 seminars, 17 people, 7 publications, 5 research areas. Also automatic:
+58 seminars, 17 people, 5 research areas, 5 activities. Also automatic:
 seminars sort by date and split themselves into upcoming vs. archive, undated
-talks show as "TBA", publications sort newest year first, the homepage picks the
-soonest upcoming talk, and a new `group` string in `people` creates its own
-section and jump link. File order never matters.
+talks show as "TBA", the homepage picks the soonest upcoming talk, and a new
+`group` string in `people` or `kind` string in `activities` creates its own
+section and jump link. Seminars sort themselves, so their file order never
+matters; sections on the People and Activities pages appear in the order their
+`group` or `kind` first occurs, which is how Milan controls that order.
 
 ## Conventions and traps
 
@@ -104,11 +106,16 @@ repository's.
   off `main`.
 - Never push to `main`. The live site is whatever `main` says, so work on a
   branch is invisible to visitors until Milan merges it.
-- **Open a pull request for every finished change**, without being asked. Milan
-  reviews and merges from the pull request, and expects one to appear whenever a
-  piece of work is done; pushing the branch on its own is not enough. This
-  overrides the usual default of waiting to be asked. He still decides whether
-  to merge.
+- **Open a pull request for every finished change**, without being asked, and
+  then stop. Milan reviews and merges it himself; that is what he means when he
+  asks to "pass" something. Pushing the branch on its own is not enough, and
+  merging it yourself is too far — even when he says he wants the change merged,
+  what he wants is the request to merge it. Never merge, and never approve.
+- **A merged pull request cannot take new commits.** Check whether the branch's
+  pull request has already been merged before pushing follow-up work; if it has,
+  bring the branch up to date with `main` and open a *new* pull request for the
+  follow-up. Commits pushed onto a branch whose pull request is already merged
+  are tracked by nothing, and comments left on that merged request go unread.
 - Milan is not a git user and does not want to type git commands. Run them for
   him, and explain in plain language rather than in git vocabulary.
 - Show the result of a design change (a screenshot, or before/after) rather than
@@ -138,6 +145,18 @@ repository's.
   `abstract` now accepts a list of paragraphs (a string still works). A past
   talk with no recorded room shows no location line rather than "Location to be
   announced".
+- **Publications is gone; Activities replaced it** at Milan's request. The page
+  lists reading groups, the learning seminar, workshops and masterclasses, all
+  grouped by `kind`. "Learning seminar" is the name chosen for the courses the
+  doctoral students give one another — the conventional term for it, and it does
+  not collide with "reading groups" the way "study group" would. The publications
+  page, its array and its renderer are removed; the old sample records are in the
+  git history if they are ever wanted back.
+- **No diagonal arrows in links.** The `↗` that `external()` and several links
+  used to append is gone; do not reintroduce it. Only that glyph was unwanted:
+  the archive pager keeps its `←` and `→`, which point the way through the
+  pages, and the `→` inside the modus ponens figure on the homepage belongs to
+  a formula rather than a link.
 - The seminars page shows the next talks plus the four most recent past ones;
   the rest live on `archive.html`, ten to a page. Milan asked for numbered
   pages. If the archive ever passes roughly ten pages the number row will need
