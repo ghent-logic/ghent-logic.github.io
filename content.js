@@ -5,7 +5,8 @@
 */
 window.GROUP = {
   preview: true, // Set to false AFTER replacing the sample records and reviewing the copy.
-  name: "Logic Group",
+  name: "Ghent Mathematical Logic",
+  tagline: "Intercontinental research group at Ghent University", // the line above the blue bar
   university: "Ghent University",
   universityUrl: "https://www.ugent.be/",
   department: "", // e.g. your actual department or research centre
@@ -18,29 +19,28 @@ window.GROUP = {
   seminarLocation: "", // e.g. a verified building and room
   seminarSchedule: "", // e.g. Fridays at 14:00; leave blank if irregular
   home: {
-    eyebrow: "LOGIC · FOUNDATIONS · COMPUTATION",
-    title: "The structure of",
-    emphasis: "reasoning.",
-    introduction: "Exploring proof, truth, and computation at the intersection of mathematics, philosophy, and computer science.",
+    title: "Mathematical logic at Ghent University",
+    // Milan is rewriting this paragraph; it is the first thing a visitor reads.
+    introduction: "We work on proof theory and the foundations of mathematics, non-classical logic, and the limits of computation. The group meets weekly for its seminar, alongside reading groups and mini-courses we give one another.",
     about: "Logic studies what follows from what—and why. It brings precise methods to foundational questions about mathematics, language, and computation. This site brings together our research, the people behind it, and opportunities for discussion."
   },
   research: [
     {
-      id: "proof-theory", number: "01", title: "Proof theory & foundations",
+      id: "proof-theory", title: "Proof theory & foundations",
       short: "The structure of mathematical proofs and the strength of formal theories.",
       description: "Proof theory treats proofs as mathematical objects. It asks which principles a theorem requires, how formal systems compare in strength, and where their limits lie. Connections with computability and the foundations of mathematics are central to this perspective.",
       topics: ["Ordinal analysis", "Reverse mathematics", "Reflection principles"],
       question: "What is needed to prove a theorem?"
     },
     {
-      id: "non-classical-logic", number: "02", title: "Non-classical logic",
+      id: "non-classical-logic", title: "Non-classical logic",
       short: "Logical systems for different notions of truth, possibility, and consequence.",
       description: "Non-classical logics investigate alternatives and extensions to classical reasoning. Their proof systems and semantics illuminate the roles of constructive evidence, modality, and the treatment of incomplete or inconsistent information.",
       topics: ["Modal logic", "Intuitionistic logic", "Logical semantics"],
       question: "How does the notion of consequence change?"
     },
     {
-      id: "logic-computation", number: "03", title: "Logic & computation",
+      id: "logic-computation", title: "Logic & computation",
       short: "The possibilities and limits of algorithms, and the relationship between proofs and programs.",
       description: "Logic supplies languages and methods for understanding computation. Computability and complexity describe what algorithms can achieve, while formal reasoning offers ways to specify and verify the behaviour of programs.",
       topics: ["Computability", "Complexity", "Formal verification"],
@@ -546,20 +546,20 @@ window.GROUP = {
       when: "[Fortnightly, day and time]", where: "[Room]",
       description: "Copy an entry to add another. Delete this one if a single reading group is all there is.",
       contact: "", url: "", sample: true },
-    { kind: "Learning seminar",
-      title: "[Topic of the current course]",
-      when: "[Day and time during term]", where: "[Room]",
-      description: "Doctoral students take turns lecturing to each other on the foundations of a subject, so that everyone in the group ends up with a working knowledge of it. Name the topic, say who is lecturing, and say what is assumed of the audience.",
+    { kind: "Mini-courses",
+      title: "[Topic of the course]",
+      when: "[Three sessions, day and time]", where: "[Room]",
+      description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Name the topic, say who is lecturing, and say how many sessions it runs for.",
       contact: "", url: "", sample: true },
     { kind: "Workshops & conferences",
       title: "[Name of a meeting the group organises]",
       when: "[Dates]", where: "[Venue]",
       description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
       url: "", linkLabel: "Workshop website", contact: "", sample: true },
-    { kind: "Masterclasses",
-      title: "[Title of a short intensive course]",
-      when: "[Dates]", where: "[Room]",
-      description: "A guest gives a handful of lectures on their subject over a few days. Name the lecturer and the topic, and say how to register if that is needed.",
-      contact: "", url: "", sample: true }
+    { kind: "Workshops & conferences",
+      title: "[A second meeting, if there is one]",
+      when: "[Dates]", where: "[Venue]",
+      description: "Copy an entry to add another. Delete this one if there is only the single meeting.",
+      url: "", contact: "", sample: true }
   ]
 };
