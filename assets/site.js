@@ -172,11 +172,11 @@
     set('archive-talks', slice.length ? slice.map(talkHtml).join('') : '<div class="empty"><h3>Archive</h3><p>Previous talks will appear here.</p></div>');
     const href = n => n === 1 ? 'archive.html' : `archive.html?page=${n}`;
     set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
-      ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev">Newer</a>` : '<span class="pager-step is-off">Newer</span>'}
+      ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
       <span class="pager-pages">${Array.from({length: pages}, (_, i) => i + 1).map(n => n === page
         ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
         : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
-      ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older</a>` : '<span class="pager-step is-off">Older</span>'}
+      ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
     </nav>` : '');
     if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
   }

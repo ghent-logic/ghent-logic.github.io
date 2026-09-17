@@ -152,10 +152,11 @@ repository's.
   not collide with "reading groups" the way "study group" would. The publications
   page, its array and its renderer are removed; the old sample records are in the
   git history if they are ever wanted back.
-- **No arrows in links.** The `↗` that `external()` and several links used to
-  append is gone, as are the `←`/`→` in the archive pager, which now reads
-  "Newer" and "Older". Do not reintroduce them. The `→` inside the modus ponens
-  figure on the homepage is a formula, not a link, and stays.
+- **No diagonal arrows in links.** The `↗` that `external()` and several links
+  used to append is gone; do not reintroduce it. Only that glyph was unwanted:
+  the archive pager keeps its `←` and `→`, which point the way through the
+  pages, and the `→` inside the modus ponens figure on the homepage belongs to
+  a formula rather than a link.
 - The seminars page shows the next talks plus the four most recent past ones;
   the rest live on `archive.html`, ten to a page. Milan asked for numbered
   pages. If the archive ever passes roughly ten pages the number row will need
