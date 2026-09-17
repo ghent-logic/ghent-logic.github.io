@@ -461,32 +461,6 @@ img {
   flex-wrap:wrap;
   margin-bottom:12px
 }
-.invitation {
-  padding:47px 0;
-  background:var(--navy);
-  color:white
-}
-.invitation .wrap {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:30px
-}
-.invitation h2 {
-  font-size:2.1rem;
-  margin-bottom:10px
-}
-.invitation p {
-  color:#d0dce6;
-  max-width:650px
-}
-.invitation .button {
-  background:var(--gold);
-  color:var(--navy-deep);
-  border:0;
-  white-space:nowrap
-}
-
 .page-head {
   padding:53px 0 47px;
   border-bottom:1px solid var(--line);
@@ -1173,10 +1147,6 @@ address {
 .two-column {
   grid-template-columns:1fr;
   gap:30px
-}
-.invitation .wrap {
-  flex-direction:column;
-  align-items:start
 }
 .page-head {
   padding:36px 0

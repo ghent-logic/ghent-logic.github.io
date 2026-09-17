@@ -184,6 +184,11 @@ repository's.
   columns that reserved space for it at all three breakpoints. Portrait tints no
   longer alternate. The modus ponens figure is kept but demoted, and its label
   removed. `assets/favicon.svg` is now the turnstile, matching the header.
+- **The homepage's closing "Contact the group" band is gone**, at Milan's
+  request, along with its styles. It was the last marketing-shaped element on the
+  page. Contact is still reachable from the navigation and from the footer's
+  Connect column, so nothing became unreachable. Removing it also took away the
+  site's only gold-filled button.
 - **The hero headline spans both grid columns**, so it ends over the modus
   ponens figure, and the figure sits beside the paragraph rather than beside the
   headline. Milan asked for exactly that. Its sizes at each breakpoint were cut
