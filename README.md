@@ -16,6 +16,13 @@ Any records still marked sample will then be hidden.
 The homepage takes its next seminar and research topics from the same content
 file as the other pages, so those details do not have to be edited twice.
 
+A seminar entry needs only a date, a speaker, and a title. Everything else is
+optional and is left out of the page when absent: time, location, speakerUrl to
+link the speaker's name, onlineUrl, videoUrl, slidesUrl, and paperUrl for the
+links beneath the talk, and abstract, which takes a list with one entry per
+paragraph. Talks sort themselves by date and move into the archive once their
+date has passed, so the order in the file does not matter.
+
 The CSS theme is in assets/style.css. The shared header/footer and data display
 are in assets/site.js. The site uses native HTML links and expandable abstracts.
 JavaScript is required for its shared navigation and lists; the noscript notice

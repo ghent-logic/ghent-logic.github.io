@@ -69,7 +69,11 @@ $CH --headless --no-sandbox --disable-gpu --hide-scrollbars \
     --screenshot=/tmp/page.png http://127.0.0.1:8765/index.html
 ```
 
-Then read the PNG. Use `--window-size=420,900` for the mobile layout. To check
+Then read the PNG. Use `--window-size=500,900` for the mobile layout — headless
+Chrome enforces a window minimum around 500px, so a narrower `--window-size`
+crops the capture and fakes an overflow that is not really there. Confirm a
+suspected overflow by comparing `documentElement.scrollWidth` with
+`clientWidth` rather than by eye. To check
 geometry exactly instead of by eye, append a script to a throwaway copy of a
 page that writes `getComputedStyle` values into the DOM, and read them with
 `--dump-dom`. To test a change against more content than the templates hold,
@@ -98,3 +102,17 @@ repository's.
   header. Left deliberately; offer to update it when touching branding again.
 - `.nojekyll` is absent although `README.md` says to include it. Harmless today
   because no path starts with an underscore, but worth adding if one ever does.
+- The seminar archive was transcribed from the source of
+  <https://giovannisolda.github.io/ghent-logic-seminar.html>, which that page
+  renders with MathJax. This site has no maths renderer by choice, so the LaTeX
+  was converted to Unicode (`\mathsf{ACA}_0` → ACA₀). Unicode has no subscript
+  ω or f and no superscript ω, so `Π⁰_ω`, `FBW_f`, and `ω^ω` keep an underscore
+  or caret. Adding MathJax or KaTeX would fix those three at the cost of the
+  site's zero-dependency design; not worth it unless abstracts start carrying
+  displayed equations.
+- Speakers' own wording in abstracts is left as written, typos included. Only
+  the maths notation is normalised.
+- `seminars` entries gained `speakerUrl`, `videoUrl`, and `paperUrl`, and
+  `abstract` now accepts a list of paragraphs (a string still works). A past
+  talk with no recorded room shows no location line rather than "Location to be
+  announced".
