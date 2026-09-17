@@ -6,7 +6,7 @@ ChatGPT; it is now being reworked for design quality.
 
 ## Division of labour
 
-**Milan writes the content himself** — members, seminars, publications, and the
+**Milan writes the content himself** — members, seminars, activities, and the
 group's own text, all in `content.js`. Do not edit `content.js` unless asked
 to; treat it as his file. Claude's job is design and front-end code.
 
@@ -17,7 +17,7 @@ third party. Open `index.html` in a browser and it runs. The one bundled library
 is KaTeX, vendored into `assets/katex/`.
 
 - `content.js` — the single content file. Sets `window.GROUP` with the group's
-  details plus the `research`, `people`, `seminars`, and `publications` arrays.
+  details plus the `research`, `people`, `seminars`, and `activities` arrays.
 - `assets/site.js` — builds the shared header and footer and renders every list
   from those arrays, per page, keyed on `document.body.dataset.page`.
 - `assets/style.css` — the whole theme. Palette and fonts are CSS custom
@@ -35,11 +35,13 @@ is KaTeX, vendored into `assets/katex/`.
 ## Content rendering is already fully dynamic
 
 Every list maps over its array, so any number of entries renders. Verified with
-10 seminars, 17 people, 7 publications, 5 research areas. Also automatic:
+58 seminars, 17 people, 5 research areas, 5 activities. Also automatic:
 seminars sort by date and split themselves into upcoming vs. archive, undated
-talks show as "TBA", publications sort newest year first, the homepage picks the
-soonest upcoming talk, and a new `group` string in `people` creates its own
-section and jump link. File order never matters.
+talks show as "TBA", the homepage picks the soonest upcoming talk, and a new
+`group` string in `people` or `kind` string in `activities` creates its own
+section and jump link. Seminars sort themselves, so their file order never
+matters; sections on the People and Activities pages appear in the order their
+`group` or `kind` first occurs, which is how Milan controls that order.
 
 ## Conventions and traps
 
@@ -143,6 +145,17 @@ repository's.
   `abstract` now accepts a list of paragraphs (a string still works). A past
   talk with no recorded room shows no location line rather than "Location to be
   announced".
+- **Publications is gone; Activities replaced it** at Milan's request. The page
+  lists reading groups, the learning seminar, workshops and masterclasses, all
+  grouped by `kind`. "Learning seminar" is the name chosen for the courses the
+  doctoral students give one another — the conventional term for it, and it does
+  not collide with "reading groups" the way "study group" would. The publications
+  page, its array and its renderer are removed; the old sample records are in the
+  git history if they are ever wanted back.
+- **No arrows in links.** The `↗` that `external()` and several links used to
+  append is gone, as are the `←`/`→` in the archive pager, which now reads
+  "Newer" and "Older". Do not reintroduce them. The `→` inside the modus ponens
+  figure on the homepage is a formula, not a link, and stays.
 - The seminars page shows the next talks plus the four most recent past ones;
   the rest live on `archive.html`, ten to a page. Milan asked for numbered
   pages. If the archive ever passes roughly ten pages the number row will need

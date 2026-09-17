@@ -9,7 +9,7 @@ works locally after extracting the entire folder, and on GitHub Pages.
 ## Routine changes
 
 Edit content.js for the group name, institution, email, address, research areas,
-members, seminars, and publications. Replace the sample records and set each
+members, seminars, and activities. Replace the sample records and set each
 record's sample field to false. When the copy is approved, set preview to false.
 Any records still marked sample will then be hidden.
 
