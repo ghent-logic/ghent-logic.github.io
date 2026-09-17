@@ -104,11 +104,16 @@ repository's.
   off `main`.
 - Never push to `main`. The live site is whatever `main` says, so work on a
   branch is invisible to visitors until Milan merges it.
-- **Open a pull request for every finished change**, without being asked. Milan
-  reviews and merges from the pull request, and expects one to appear whenever a
-  piece of work is done; pushing the branch on its own is not enough. This
-  overrides the usual default of waiting to be asked. He still decides whether
-  to merge.
+- **Open a pull request for every finished change**, without being asked, and
+  then stop. Milan reviews and merges it himself; that is what he means when he
+  asks to "pass" something. Pushing the branch on its own is not enough, and
+  merging it yourself is too far — even when he says he wants the change merged,
+  what he wants is the request to merge it. Never merge, and never approve.
+- **A merged pull request cannot take new commits.** Check whether the branch's
+  pull request has already been merged before pushing follow-up work; if it has,
+  bring the branch up to date with `main` and open a *new* pull request for the
+  follow-up. Commits pushed onto a branch whose pull request is already merged
+  are tracked by nothing, and comments left on that merged request go unread.
 - Milan is not a git user and does not want to type git commands. Run them for
   him, and explain in plain language rather than in git vocabulary.
 - Show the result of a design change (a screenshot, or before/after) rather than
