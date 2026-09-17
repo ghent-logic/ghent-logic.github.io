@@ -142,6 +142,15 @@ repository's.
   the rest live on `archive.html`, ten to a page. Milan asked for numbered
   pages. If the archive ever passes roughly ten pages the number row will need
   truncating with an ellipsis.
+- A second batch of 18 talks came from Milan's announcement emails, which give no
+  year. Inferred as Oct-Dec 2025 then Jan-Sep 2026: 9 October is a Thursday only
+  in 2025, 15 of the 19 fall on the seminar's usual Thursday, and the last lands
+  two days before the day they were added. Four sit on other weekdays, three of
+  which the emails themselves flag as unusual in time or room. Announcement
+  boilerplate and "notice the unusual location" asides are not part of the entry.
+- The 16 December 2025 talk, "Well-quasi-order on finite trees and transfinite
+  sequences", had no speaker in its email — only "I". Milan confirmed it was
+  Alakh Dhruv Chopra, and it is now in. The archive holds 58 talks.
 - Probe scripts that manipulate the DOM inside `setTimeout` do not reliably take
   effect under `--screenshot`, though they do under `--dump-dom`. To photograph
   something that sits far down a long page, copy the site to the scratchpad and
