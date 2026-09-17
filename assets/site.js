@@ -58,14 +58,14 @@
   window.groupListeners?.abort();
   const listeners = new AbortController();
   window.groupListeners = listeners;
-  document.title = `${current === 'index' ? '' : (nav.find(n => n[0] === current)?.[1] || subPages[current]?.[0] || 'Page not found') + ' · '}${G.name} · ${G.university}`;
+  document.title = `${current === 'index' ? '' : (nav.find(n => n[0] === current)?.[1] || subPages[current]?.[0] || 'Page not found') + ' · '}${G.name}`;
 
   if (G.preview) {
     set('preview-note', 'Design preview · Bracketed fields and “Sample entry” labels need your details. <a href="START-HERE.html">Finishing checklist</a>');
   } else {
     document.getElementById('preview-note')?.remove();
   }
-  set('site-header', `<div class="masthead"><div class="wrap"><span>${esc(G.university)} <span aria-hidden="true">/</span> Research group</span><span class="masthead-right">${esc(G.city)}</span></div></div>
+  set('site-header', `<div class="masthead"><div class="wrap"><span>${esc(G.tagline || G.university)}</span></div></div>
     <header class="header"><div class="wrap header-row"><a class="brand" href="index.html"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M9 5V27M9 16H28"/></svg></span><span class="brand-title">${esc(G.name)}</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu <span aria-hidden="true">☰</span></button>
     <nav class="nav" id="main-navigation" aria-label="Main navigation">${nav.map(([p,t]) => `<a href="${p}.html"${navCurrent === p ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div></header>`);
@@ -92,15 +92,14 @@
 
   const areas = G.research || [];
   if (current === 'index') {
-    set('hero-eyebrow', esc(G.home.eyebrow));
-    set('hero-title', `${esc(G.home.title)}<em>${esc(G.home.emphasis)}</em>`);
+    set('hero-title', esc(G.home.title));
     set('hero-introduction', esc(G.home.introduction));
     set('group-introduction', esc(G.home.about));
-    set('home-topics', areas.map(a => `<article class="topic"><div class="topic-number">${esc(a.number)}</div><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p><a class="text-link" href="research.html#${slug(a.id)}">Explore this area</a></article>`).join(''));
+    set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p><a class="text-link" href="research.html#${slug(a.id)}">Explore this area</a></article>`).join(''));
   }
   if (current === 'research') {
     set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
-    set('research-areas', areas.map(a => `<section class="research-row" id="${slug(a.id)}"><div class="research-number">${esc(a.number)}</div><div><h2>${esc(a.title)}</h2><p class="research-question">${esc(a.question)}</p></div><div class="research-detail"><p>${esc(a.description)}</p><div class="tags">${(a.topics||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></section>`).join(''));
+    set('research-areas', areas.map(a => `<section class="research-row" id="${slug(a.id)}"><div><h2>${esc(a.title)}</h2><p class="research-question">${esc(a.question)}</p></div><div class="research-detail"><p>${esc(a.description)}</p><div class="tags">${(a.topics||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></section>`).join(''));
   }
   if (current === 'people') {
     const people = records(G.people);
@@ -142,7 +141,7 @@
   }
   if (current === 'index') {
     const t = upcoming[0];
-    set('home-seminar', t ? `<div class="seminar-feature"><div class="sample-row"><p class="eyebrow">${validDate(t.date) ? esc(dateLabel(t)) : 'Programme in preparation'}</p>${sample(t)}</div><h3>${esc(t.title)}</h3><p>${esc(t.speaker)}</p><p class="muted">${esc(t.affiliation)}</p><div class="feature-meta">${esc(t.location || G.seminarLocation || 'Location to be announced')}${t.time ? ' · '+esc(t.time) : ''}</div><a class="text-link" href="seminars.html#${slug(t.id)}">Seminar details</a></div>` : '<div class="seminar-feature"><p class="eyebrow">Logic seminar</p><h3>New talks will be announced here.</h3><p class="muted">Explore the archive of previous seminars.</p><div class="actions"><a class="text-link" href="seminars.html">Seminar programme</a></div></div>');
+    set('home-seminar', t ? `<div class="seminar-feature"><div class="sample-row"><p class="eyebrow">${validDate(t.date) ? esc(dateLabel(t)) : 'Programme in preparation'}</p>${sample(t)}</div><h3>${esc(t.title)}</h3><p>${esc(t.speaker)}</p><p class="muted">${esc(t.affiliation)}</p><div class="feature-meta">${esc(t.location || G.seminarLocation || 'Location to be announced')}${t.time ? ' · '+esc(t.time) : ''}</div><a class="text-link" href="seminars.html#${slug(t.id)}">Seminar details</a></div>` : '<div class="seminar-feature"><h3>New talks will be announced here.</h3><p class="muted">Previous talks are kept in the archive.</p><div class="actions"><a class="text-link" href="archive.html">Seminar archive</a></div></div>');
   }
   if (current === 'seminars') {
     // A link to a talk that has since moved into the archive should still reach it.
