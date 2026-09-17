@@ -248,16 +248,21 @@ img {
 .hero-grid {
   display:grid;
   grid-template-columns:1.6fr .92fr;
-  align-items:center;
-  gap:70px;
+  align-items:start;
+  column-gap:70px;
+  row-gap:40px;
   padding-top:84px;
   padding-bottom:78px
 }
-.hero h1 {
-  font-size:clamp(2.3rem,4.3vw,3.5rem);
-  max-width:760px;
-  line-height:1.1;
-  margin:0 0 24px
+/* The headline runs the full width, so it ends over the figure below it. */
+.hero-grid h1 {
+  grid-column:1 / -1;
+  font-size:clamp(2.3rem,4.1vw,3.4rem);
+  line-height:1.12;
+  margin:0
+}
+.hero-body {
+  align-self:center
 }
 .hero-description {
   max-width:590px;
@@ -1014,7 +1019,8 @@ address {
   gap:17px
 }
 .hero-grid {
-  gap:35px;
+  column-gap:35px;
+  row-gap:32px;
   grid-template-columns:1.35fr 1fr
 }
 .proof-panel {
@@ -1098,9 +1104,8 @@ address {
   padding-bottom:54px;
   gap:40px
 }
-.hero h1 {
-  font-size:clamp(3.1rem,10vw,4.8rem);
-  max-width:600px
+.hero-grid h1 {
+  font-size:clamp(1.95rem,7vw,2.7rem)
 }
 .hero-description {
   font-size:1.05rem
@@ -1233,8 +1238,8 @@ address {
 .portrait {
   height:215px
 }
-.hero h1 {
-  font-size:3.25rem
+.hero-grid h1 {
+  font-size:1.8rem
 }
 .proof-premises {
   padding-inline:0
