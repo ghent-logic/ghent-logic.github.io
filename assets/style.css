@@ -383,12 +383,22 @@ img {
   padding:4px 30px 8px;
   border-right:1px solid var(--line)
 }
-.topic:first-child {
+/* Keyed to each row of three, so a fourth or later area wraps cleanly. */
+.topic:nth-child(3n+1) {
   padding-left:0
 }
-.topic:last-child {
-  border:0;
+.topic:nth-child(3n) {
+  border-right:0;
   padding-right:0
+}
+/* A trailing area mid-row would otherwise leave a divider beside empty space. */
+.topic:last-child {
+  border-right:0
+}
+.topic:nth-child(n+4) {
+  margin-top:40px;
+  padding-top:40px;
+  border-top:1px solid var(--line)
 }
 .topic-number {
   font:italic 1.5rem var(--serif);
@@ -1068,6 +1078,11 @@ address {
   padding:24px 0;
   border-right:0;
   border-bottom:1px solid var(--line)
+}
+.topic:nth-child(n+4) {
+  margin-top:0;
+  padding-top:24px;
+  border-top:0
 }
 .topic:first-child {
   padding-top:0

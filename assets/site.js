@@ -11,6 +11,9 @@
   const link = v => /^(https?:\/\/|mailto:)/i.test(v || '') ? esc(v) : '';
   const mail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || '') ? 'mailto:' + esc(v) : '';
   const sample = x => x.sample ? '<span class="sample">Sample entry</span>' : '';
+  // An abstract may be one string or a list of paragraphs; blank lines also split a string.
+  const paras = v => (Array.isArray(v) ? v : String(v ?? '').split(/\n\s*\n/))
+    .map(t => String(t).trim()).filter(Boolean).map(t => `<p>${esc(t)}</p>`).join('');
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)} <span aria-hidden="true">↗</span></a>` : '';
@@ -95,7 +98,12 @@
     return `<time class="date-box" datetime="${esc(t.date)}"><strong>${d.getDate()}</strong>${d.toLocaleDateString('en-GB',{month:'short'})}<small>${d.getFullYear()}</small></time>`;
   }
   function talkHtml(t) {
-    return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${esc(t.speaker)}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p><p class="location">${t.time ? esc(t.time) + ' (Ghent local time) · ' : ''}${esc(t.location || G.seminarLocation || 'Location to be announced')}</p>${t.abstract ? `<details><summary>Read abstract</summary><p>${esc(t.abstract)}</p></details>` : ''}${t.onlineUrl || t.slidesUrl ? `<div class="talk-links">${external(t.onlineUrl,'Join online')}${external(t.slidesUrl,'Slides')}</div>` : ''}</div></article>`;
+    const who = link(t.speakerUrl) ? `<a href="${link(t.speakerUrl)}">${esc(t.speaker)}</a>` : esc(t.speaker);
+    // A past talk keeps the room it was held in, but must not promise a location still to come.
+    const place = t.location || (isPast(t) ? '' : G.seminarLocation || 'Location to be announced');
+    const meta = [t.time ? esc(t.time) + ' (Ghent local time)' : '', esc(place)].filter(Boolean).join(' · ');
+    const links = external(t.onlineUrl,'Join online') + external(t.videoUrl,'Recording') + external(t.slidesUrl,'Slides') + external(t.paperUrl,'Paper');
+    return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${who}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p>${meta ? `<p class="location">${meta}</p>` : ''}${t.abstract ? `<details><summary>Read abstract</summary>${paras(t.abstract)}</details>` : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</div></article>`;
   }
   if (current === 'index') {
     const t = upcoming[0];
@@ -108,7 +116,7 @@
   }
   if (current === 'publications') {
     const papers = records(G.publications).sort((a,b) => String(b.year||'').localeCompare(String(a.year||'')));
-    set('publication-list', papers.length ? papers.map(p => `<article class="publication"><div class="publication-meta"><span>${esc(p.type)}</span>${p.year ? `<span>${esc(p.year)}</span>` : ''}${sample(p)}</div><h3>${esc(p.title)}</h3><p class="authors">${esc(p.authors)}</p><p class="venue">${esc(p.venue)}</p>${p.url || p.preprintUrl ? `<div class="talk-links">${external(p.url,'Publisher / DOI')}${external(p.preprintUrl,'Read preprint')}</div>` : ''}${p.abstract ? `<details><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>` : ''}</article>`).join('') : '<div class="empty"><h3>Publications</h3><p>The publication list is being prepared.</p></div>');
+    set('publication-list', papers.length ? papers.map(p => `<article class="publication"><div class="publication-meta"><span>${esc(p.type)}</span>${p.year ? `<span>${esc(p.year)}</span>` : ''}${sample(p)}</div><h3>${esc(p.title)}</h3><p class="authors">${esc(p.authors)}</p><p class="venue">${esc(p.venue)}</p>${p.url || p.preprintUrl ? `<div class="talk-links">${external(p.url,'Publisher / DOI')}${external(p.preprintUrl,'Read preprint')}</div>` : ''}${p.abstract ? `<details><summary>Abstract</summary>${paras(p.abstract)}</details>` : ''}</article>`).join('') : '<div class="empty"><h3>Publications</h3><p>The publication list is being prepared.</p></div>');
   }
   if (current === 'contact') {
     set('general-contact', mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : `<p class="draft-field">${G.preview ? '[Add the group’s contact email in content.js]' : 'A group contact address will be added here.'}</p>`);
