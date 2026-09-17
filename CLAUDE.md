@@ -202,10 +202,17 @@ repository's.
   offered to drop it. It does real work — it is the favicon and tab identity,
   and it reads as "logic" to a logician at a glance — so the recommendation was
   to keep it. Revisit only if he asks again.
-- **A photograph of Ghent is wanted in the background** and is not done: this
-  environment has no outbound web access, and a picture taken off the internet
-  would be someone else's copyright on a university group's public page. Waiting
-  for Milan to supply one, ideally his own or from Wikimedia Commons or Unsplash.
+- **The background photograph is wired up but the picture itself is missing.**
+  `.hero` and `.page-head` layer `--photo` under `--photo-wash`, so a photograph
+  at `assets/images/ghent.jpg` appears edge to edge behind the heading of every
+  page with no further change; while the file is absent the wash alone paints and
+  the pages look exactly as before. `--photo-wash` and `--photo-position` at the
+  top of `style.css` tune how much shows through and which part is framed, and
+  `photoCredit` in `content.js` puts a credit line in the footer for a Creative
+  Commons picture. The file cannot be supplied from here: every image host is
+  unreachable (`curl` returns 000 for wikimedia, unsplash and ugent.be alike),
+  and a picture taken off the internet would be someone else's copyright on a
+  university group's public page. Milan supplies it.
 - **The group is "Ghent Mathematical Logic"**, with `tagline` in `content.js`
   supplying "Intercontinental research group at Ghent University" for the strip
   above the header. The city no longer appears there; it is still in the footer

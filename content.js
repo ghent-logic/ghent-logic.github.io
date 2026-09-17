@@ -14,6 +14,9 @@ window.GROUP = {
   email: "", // e.g. your real institutional contact email
   address: [], // e.g. ["Building name", "Street and number", "9000 Ghent, Belgium"]
   mapUrl: "", // optional link to your building on a map
+  // If the background photograph needs crediting, name it here and the line
+  // appears in the footer, e.g. "Photograph: Jan Jansen, CC BY-SA 4.0".
+  photoCredit: "",
   directions: "", // public transport, entrance, and accessibility information
   seminarEmail: "", // optional; falls back to the general email
   seminarLocation: "", // e.g. a verified building and room
