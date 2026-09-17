@@ -184,6 +184,23 @@ repository's.
   columns that reserved space for it at all three breakpoints. Portrait tints no
   longer alternate. The modus ponens figure is kept but demoted, and its label
   removed. `assets/favicon.svg` is now the turnstile, matching the header.
+- **The hero headline spans both grid columns**, so it ends over the modus
+  ponens figure, and the figure sits beside the paragraph rather than beside the
+  headline. Milan asked for exactly that. Its sizes at each breakpoint were cut
+  again to suit a sentence rather than the three-word slogan they were set for.
+- **`seminarVenue` in `content.js`** holds "Campus Sterre, building S8" and is
+  put in front of any room name, so the 29 entries that name a room by number
+  alone do not repeat the campus. The Practical information panel falls back to
+  it as well. **Unconfirmed: whether S8 is the right building.** Milan was asked
+  to check; one field fixes all 58 entries if not.
+- **The turnstile stays.** Milan asked whether a logo is needed at all and
+  offered to drop it. It does real work — it is the favicon and tab identity,
+  and it reads as "logic" to a logician at a glance — so the recommendation was
+  to keep it. Revisit only if he asks again.
+- **A photograph of Ghent is wanted in the background** and is not done: this
+  environment has no outbound web access, and a picture taken off the internet
+  would be someone else's copyright on a university group's public page. Waiting
+  for Milan to supply one, ideally his own or from Wikimedia Commons or Unsplash.
 - **The group is "Ghent Mathematical Logic"**, with `tagline` in `content.js`
   supplying "Intercontinental research group at Ghent University" for the strip
   above the header. The city no longer appears there; it is still in the footer

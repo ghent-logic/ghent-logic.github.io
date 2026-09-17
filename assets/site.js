@@ -134,7 +134,10 @@
   function talkHtml(t) {
     const who = link(t.speakerUrl) ? `<a href="${link(t.speakerUrl)}">${esc(t.speaker)}</a>` : esc(t.speaker);
     // A past talk keeps the room it was held in, but must not promise a location still to come.
-    const place = t.location || (isPast(t) ? '' : G.seminarLocation || 'Location to be announced');
+    // The announcements name rooms by number alone, so the campus and building come
+    // from G.seminarVenue rather than being repeated in every entry.
+    const room = t.location || (isPast(t) ? '' : G.seminarLocation || 'Location to be announced');
+    const place = room && G.seminarVenue && !room.includes(G.seminarVenue) ? `${G.seminarVenue}, ${room}` : room;
     const meta = [t.time ? esc(t.time) + ' (Ghent local time)' : '', esc(place)].filter(Boolean).join(' · ');
     const links = external(t.onlineUrl,'Join online') + external(t.videoUrl,'Recording') + external(t.slidesUrl,'Slides') + external(t.paperUrl,'Paper');
     return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${who}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p>${meta ? `<p class="location">${meta}</p>` : ''}${t.abstract ? `<details><summary>Read abstract</summary>${paras(t.abstract)}</details>` : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</div></article>`;
@@ -153,9 +156,9 @@
     set('upcoming-talks', upcoming.length ? upcoming.map(talkHtml).join('') : '<div class="empty">No upcoming talks have been announced. Please check back for the next programme.</div>');
     const recent = past.slice(0, RECENT_TALKS);
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
-      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All ${past.length} previous talks</a></p>` : '')
+      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
-    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || 'Locations will be included with each announcement.')}</p></div><div class="info-item"><span class="info-label">Questions & online access</span>${mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a>` : '<a href="contact.html">Contact information</a>'}</div>`);
+    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div><div class="info-item"><span class="info-label">Questions & online access</span>${mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a>` : '<a href="contact.html">Contact information</a>'}</div>`);
   }
   if (current === 'archive') {
     const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));

@@ -17,6 +17,7 @@ window.GROUP = {
   directions: "", // public transport, entrance, and accessibility information
   seminarEmail: "", // optional; falls back to the general email
   seminarLocation: "", // e.g. a verified building and room
+  seminarVenue: "Campus Sterre, building S8", // put before a room name such as "Vergaderzaal 3.2"
   seminarSchedule: "", // e.g. Fridays at 14:00; leave blank if irregular
   home: {
     title: "Mathematical logic at Ghent University",
