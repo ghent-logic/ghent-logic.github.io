@@ -16,6 +16,17 @@ Any records still marked sample will then be hidden.
 The homepage takes its next seminar and research topics from the same content
 file as the other pages, so those details do not have to be edited twice.
 
+Mathematics in titles and abstracts is written as LaTeX, between \( and \) or
+between single dollar signs, and is typeset in the browser: write
+"the strength of \(\mathsf{ACA}_0\)" and the page shows it properly set. This uses
+KaTeX, which is included in assets/katex so the site still makes no requests to
+anyone else. Pages with no mathematics do not load it at all.
+
+Previous talks are split in two: the seminars page keeps the next talks and the
+four most recent past ones, and archive.html holds the whole archive, ten to a
+page, with numbered pages at the foot. A link to a single talk, archive.html
+followed by # and the talk's id, always opens the page that talk is on.
+
 A seminar entry needs only a date, a speaker, and a title. Everything else is
 optional and is left out of the page when absent: time, location, speakerUrl to
 link the speaker's name, onlineUrl, videoUrl, slidesUrl, and paperUrl for the
@@ -31,7 +42,8 @@ explains this to visitors who have disabled it.
 ## Publish
 
 Upload the contents of this folder, including the assets folder and .nojekyll,
-to the root of a public GitHub Pages repository. Settings > Pages > Deploy from
+to the root of a public GitHub Pages repository, including the assets/katex
+folder. Settings > Pages > Deploy from
 a branch > main > / (root). See START-HERE.html for full instructions and domain
 links. Do not mix these files with the previous Jekyll package. Keep a backup of
 the old site and preserve an existing CNAME file when using the same domain.
