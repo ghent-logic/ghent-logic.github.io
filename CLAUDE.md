@@ -104,7 +104,11 @@ repository's.
   off `main`.
 - Never push to `main`. The live site is whatever `main` says, so work on a
   branch is invisible to visitors until Milan merges it.
-- Do not open a pull request unless asked.
+- **Open a pull request for every finished change**, without being asked. Milan
+  reviews and merges from the pull request, and expects one to appear whenever a
+  piece of work is done; pushing the branch on its own is not enough. This
+  overrides the usual default of waiting to be asked. He still decides whether
+  to merge.
 - Milan is not a git user and does not want to type git commands. Run them for
   him, and explain in plain language rather than in git vocabulary.
 - Show the result of a design change (a screenshot, or before/after) rather than
