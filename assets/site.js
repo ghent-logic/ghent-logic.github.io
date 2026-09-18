@@ -23,6 +23,20 @@
     {left: '\\[', right: '\\]', display: true},
     {left: '$', right: '$', display: false}
   ];
+  // Up to SHOW_ALL_PAGES numbers are listed in full; beyond that the run is
+  // elided around the current page, so the row never outgrows its line.
+  const GAP = '…', SHOW_ALL_PAGES = 7;
+  function pagerNumbers(page, pages) {
+    if (pages <= SHOW_ALL_PAGES) return Array.from({length: pages}, (_, i) => i + 1);
+    const keep = [...new Set([1, page - 1, page, page + 1, pages])]
+      .filter(n => n >= 1 && n <= pages).sort((a, b) => a - b);
+    const out = [];
+    keep.forEach((n, i) => {
+      if (i && n - keep[i - 1] > 1) out.push(GAP);
+      out.push(n);
+    });
+    return out;
+  }
   let mathLoading = null;
   function loadMath() {
     if (window.renderMathInElement) return Promise.resolve();
@@ -187,9 +201,11 @@
     const href = n => n === 1 ? 'archive.html' : `archive.html?page=${n}`;
     set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
       ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
-      <span class="pager-pages">${Array.from({length: pages}, (_, i) => i + 1).map(n => n === page
-        ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
-        : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
+      <span class="pager-pages">${pagerNumbers(page, pages).map(n => n === GAP
+        ? '<span class="pager-gap" aria-hidden="true">…</span>'
+        : n === page
+          ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
+          : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
       ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
     </nav>` : '');
     if (found >= 0) document.getElementById(wanted)?.scrollIntoView();

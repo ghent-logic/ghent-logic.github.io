@@ -146,12 +146,11 @@ repository's.
   talk with no recorded room shows no location line rather than "Location to be
   announced".
 - **Publications is gone; Activities replaced it** at Milan's request. The page
-  lists reading groups, mini-courses and workshops, all grouped by `kind`.
-  **Mini-courses** is the name for the courses the doctoral students give one
-  another: it has "courses" in it, as Milan wanted, and *mini-course* is the
-  standard term in mathematics for a series of a few lectures, so it says by
-  itself that these are not semester-long. An earlier attempt, "Learning
-  seminar", was dropped as too close to the research seminar. The publications
+  runs Workshops & conferences, Reading groups, then **Courses**, in that order,
+  which is set by the order the kinds first appear in `content.js`. The courses
+  the doctoral students give one another went through "Learning seminar" and
+  then "Mini-courses" before Milan settled on plain "Courses"; the description
+  carries the fact that they are a handful of lectures rather than a semester. The publications
   page, its array and its renderer are removed; the old sample records are in
   the git history if they are ever wanted back.
 - **No diagonal arrows in links.** The `↗` that `external()` and several links
@@ -160,9 +159,11 @@ repository's.
   pages, and the `→` inside the modus ponens figure on the homepage belongs to
   a formula rather than a link.
 - The seminars page shows the next talks plus the four most recent past ones;
-  the rest live on `archive.html`, ten to a page. Milan asked for numbered
-  pages. If the archive ever passes roughly ten pages the number row will need
-  truncating with an ellipsis.
+  the rest live on `archive.html`, ten to a page, with numbered pages at the
+  foot. Up to `SHOW_ALL_PAGES` (7) numbers are listed in full; past that
+  `pagerNumbers()` keeps the first, the last and the current page with its
+  neighbours and elides the rest with `…`, so the row cannot outgrow its line
+  however long the archive becomes.
 - A second batch of 18 talks came from Milan's announcement emails, which give no
   year. Inferred as Oct-Dec 2025 then Jan-Sep 2026: 9 October is a Thursday only
   in 2025, 15 of the 19 fall on the seminar's usual Thursday, and the last lands

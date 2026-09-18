@@ -89,7 +89,9 @@ window.GROUP = {
   //   time: "11:00"               local Ghent time; omit if it was the usual hour
   //   location: "Leslokaal 2.2"   otherwise falls back to seminarLocation above
   //   speakerUrl:                 turns the speaker's name into a link to their page
-  //   onlineUrl / videoUrl / slidesUrl / paperUrl   appear as links beneath the talk
+  //   videoUrl:    a YouTube link, or any other link to a recording; shown as
+  //                "Recording" beneath the talk. onlineUrl (a live meeting
+  //                link), slidesUrl and paperUrl work the same way.
   //   abstract: ["first paragraph", "second paragraph"]   one entry per paragraph
   //   id:                         the talk's own link (archive.html#id) — keep it unique
   // Any field except date, speaker and title may simply be left out.
@@ -243,6 +245,63 @@ window.GROUP = {
         "This work investigates the unification problem for weak classical modal logics, in particular the logic \\(\\mathsf{CL}_\\square^+\\) obtained by extending classical propositional logic with a modal operator \\(\\square\\) and a weak necessitation rule. We develop a systematic correspondence between substitutions in the modal language and substitutions in its classical fragment, allowing us to transfer results on classical unification to the modal setting.",
         "First, we introduce restricted and well-founded substitutions in classical logic, proving that their unification type is finitary—that is, every formula has a finite complete set of well-founded unifiers. Using this foundation, we then define injective unifiers for \\(\\mathsf{CL}_\\square^+\\), showing that the injective unification type of the logic is also finitary.",
         "Finally, by combining these constructions inductively on modal depth, we establish that the overall unification type of \\(\\mathsf{CL}_\\square^+\\) is finitary. This result clarifies the structural behavior of unification in weak modal systems and extends the classical framework of exact formulas to a modal context."
+      ] },
+    { id: "2025-05-26-pawlowski", date: "2025-05-26",
+      speaker: "Pawel Pawlowski",
+      title: "Philosophical applications of non-deterministic semantics",
+      time: "16:00", location: "Leslokaal 3.2",
+      abstract: [
+        "In this talk, we will present an approach to modality and modal logic based on non-deterministic semantics. More specifically, we will explore two closely related frameworks: non-deterministic semantics and restricted non-deterministic semantics. Both approaches are grounded in the use of non-deterministic matrices and share a many-valued character, where truth-values are typically represented by tuples of 0s and 1s, where each component corresponding to dimensions such as truth/falsity, possibility/non-possibility, or necessity/non-necessity.",
+        "A key feature of non-deterministic semantics is that it allows formulas to take on more than one designated value. That is, the semantic interpretation of a formula is not always uniquely determined, but rather ranges over a set of admissible values, depending on the context. This indeterminacy is not a defect but a deliberate feature that enables a more flexible and uniform treatment of various modal notions."
+      ] },
+    { id: "2025-05-19-mclean", date: "2025-05-19",
+      speaker: "Brett McLean",
+      title: "Difference–restriction algebras with operators",
+      time: "16:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "This work is about developing a framework for categorical dualities for algebras of partial functions, in the style of Jónsson and Tarski's Boolean algebras with operators.",
+        "Specifically, we are studying a category of algebras we call difference–restriction algebras, which are the algebras we obtain from collections of partial functions closed under set-theoretic differences and domain restrictions.",
+        "I will discuss: an adjunction between this category and a certain topological category; the restriction of the adjunction to an already known duality; the related completions/reflective subcategories; additional operators on the algebras.",
+        "This is joint work with Célia Borlido and Ganna Kudryavtseva."
+      ] },
+    { id: "2025-03-31-yokoyama", date: "2025-03-31",
+      speaker: "Keita Yokoyama",
+      affiliation: "Tohoku University",
+      title: "Seeking for the first-order strength of Ramsey's theorem for pairs",
+      time: "16:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "In the study of reverse mathematics, numerous conservation theorems are established using low basis theorems and their variations. Specifically, the proof-theoretic/first-order strength of Ramsey's theorem for pairs and its variations are calibrated in this way.",
+        "In this talk, we introduce a method for converting model-theoretic \\(\\Pi^1_1\\)-conservation theorems by means of low-like basis theorems into proof interpretations. We will then overview the study of the first-order strength of Ramsey's theorem for pairs and reproving several conservation theorems together with polynomial-size proof transformations."
+      ] },
+    { id: "2025-03-24-weiermann", date: "2025-03-24",
+      speaker: "Andreas Weiermann", speakerUrl: "http://cage.ugent.be/~weierman/",
+      title: "Phase transitions for Ackermannian functions",
+      time: "16:00", location: "Leslokaal 3.2",
+      abstract: ["We will classify the thresholds for the iteration speed for Grzegorczyk style hierarchies which describe the transition from being primitive recursive to non primitive recursive. The talk will be addressed at a general audience."] },
+    { id: "2025-03-17-beklemishev", date: "2025-03-17",
+      speaker: "Lev Beklemishev", speakerUrl: "https://homepage.mi-ras.ru/~bekl/",
+      title: "Fragments of arithmetic and cyclic proofs",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "We present an alternative cyclic proof system for Peano arithmetic that could be simpler than the existing ones and well-adapted both for proof analysis and for automatizing inductive proof search. In addition, we show how various traditional subsystems of Peano arithmetic defined by restricted forms of induction can be represented as fragments of the proposed system.",
+        "This is a joint work with Daniyar Shamkanov and Ivan Smirnov."
+      ] },
+    { id: "2025-03-10-mojtahedi", date: "2025-03-10",
+      speaker: "Mojtaba Mojtahedi",
+      title: "On Propositional-Provability Interpretations of modal logics",
+      time: "10:30", location: "Vergaderzaal 3.2",
+      abstract: [
+        "In this talk, we explore T-provability interpretations for the modal operator \\(\\Box\\), where T is a propositional theory. As a straightforward result, we establish soundness and completeness for Gödel-Löb logic under these interpretations.",
+        "We then extend this approach to the Interpretability Logic \\(\\mathsf{ILM}\\), presenting analogous propositional interpretations and proving the corresponding soundness and completeness results. The origin of such propositional-provability interpretations traces back to my earlier work on the provability logic of Heyting Arithmetic (\\(\\mathsf{HA}\\)), where I employed a similar framework—referred to as mixed semantics—to analyze the provability logic of \\(\\mathsf{HA}\\).",
+        "This is a joint work with Borja Sierra Miranda."
+      ] },
+    { id: "2025-02-20-sold", date: "2025-02-20",
+      speaker: "Giovanni Soldà", speakerUrl: "https://giovannisolda.github.io/",
+      title: "On statistical learning of graphs",
+      time: "11:15", location: "Vergaderzaal 3.2",
+      abstract: [
+        "In the first part of this talk, I aim to give an introduction to two frameworks that describe when a family of functions can be considered to be learnable, namely PAC and online learnability, and discuss the relationship between them. In the second part, we will apply these frameworks to study the graphs such that the family of their isomorphic copies (with some constraints to be made precise) are learnable.",
+        "This is joint work with Vittorio Cipriani, Valentino Delle Rose, and Luca San Mauro."
       ] },
     { id: "2024-12-12-provenzano", date: "2024-12-12",
       speaker: "Philipp Provenzano",
@@ -554,6 +613,16 @@ window.GROUP = {
   //   contact:     an email address; shown as "Email the organisers"
   //   id:          optional, for linking straight to this entry
   activities: [
+    { kind: "Workshops & conferences",
+      title: "[Name of a meeting the group organises]",
+      when: "[Dates]", where: "[Venue]",
+      description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
+      url: "", linkLabel: "Workshop website", contact: "", sample: true },
+    { kind: "Workshops & conferences",
+      title: "[A second meeting, if there is one]",
+      when: "[Dates]", where: "[Venue]",
+      description: "Copy an entry to add another. Delete this one if there is only the single meeting.",
+      url: "", contact: "", sample: true },
     { kind: "Reading groups",
       title: "[Book or paper the group is reading]",
       when: "[Weekly, day and time]", where: "[Room]",
@@ -564,20 +633,10 @@ window.GROUP = {
       when: "[Fortnightly, day and time]", where: "[Room]",
       description: "Copy an entry to add another. Delete this one if a single reading group is all there is.",
       contact: "", url: "", sample: true },
-    { kind: "Mini-courses",
+    { kind: "Courses",
       title: "[Topic of the course]",
       when: "[Three sessions, day and time]", where: "[Room]",
       description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Name the topic, say who is lecturing, and say how many sessions it runs for.",
-      contact: "", url: "", sample: true },
-    { kind: "Workshops & conferences",
-      title: "[Name of a meeting the group organises]",
-      when: "[Dates]", where: "[Venue]",
-      description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
-      url: "", linkLabel: "Workshop website", contact: "", sample: true },
-    { kind: "Workshops & conferences",
-      title: "[A second meeting, if there is one]",
-      when: "[Dates]", where: "[Venue]",
-      description: "Copy an entry to add another. Delete this one if there is only the single meeting.",
-      url: "", contact: "", sample: true }
+      contact: "", url: "", sample: true }
   ]
 };
