@@ -16,6 +16,16 @@
   --line:#d7e1e5;
   --width:1160px;
   --serif:Georgia,'Times New Roman',serif;
+  /* A photograph of Ghent, edge to edge, behind the heading of every page.
+     Until assets/images/ghent.jpg exists the wash alone paints and the pages
+     look exactly as they did. Raise --photo-wash towards 1 if the picture
+     fights the headline, lower it towards .7 to let more of it through. */
+  --photo:url('images/ghent.jpg');
+  --photo-wash:rgba(250,252,251,.8);
+  --photo-position:center 42%;
+  /* A second veil, heavier on the left, so the headline and the paragraph keep
+     their contrast while the right of the picture stays clear. */
+  --photo-veil:linear-gradient(100deg,rgba(250,252,251,.62) 0%,rgba(250,252,251,.34) 46%,rgba(250,252,251,0) 74%);
   --sans:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif
 }
 
@@ -243,7 +253,7 @@ img {
 .hero {
   position:relative;
   border-bottom:1px solid var(--line);
-  background:#fafcfb
+  background:var(--photo-veil),linear-gradient(var(--photo-wash),var(--photo-wash)),var(--photo) var(--photo-position)/cover no-repeat,#fafcfb
 }
 .hero-grid {
   display:grid;
@@ -296,7 +306,7 @@ img {
   color:white
 }
 .button.secondary {
-  background:transparent;
+  background:rgba(255,255,255,.92);
   color:var(--navy);
   border-color:#a8bac7
 }
@@ -464,7 +474,7 @@ img {
 .page-head {
   padding:53px 0 47px;
   border-bottom:1px solid var(--line);
-  background:#fafcfb
+  background:var(--photo-veil),linear-gradient(var(--photo-wash),var(--photo-wash)),var(--photo) var(--photo-position)/cover no-repeat,#fafcfb
 }
 .breadcrumb {
   font-size:.78rem;
@@ -513,6 +523,37 @@ img {
   gap:18px;
   font:1.5rem var(--serif);
   margin-bottom:26px
+}
+/* Former members: a compact list rather than cards, since there is no
+   portrait or biography to show. */
+.former-link {
+  margin-top:44px
+}
+.former-list {
+  list-style:none;
+  margin:0;
+  padding:0
+}
+.former-list li {
+  display:flex;
+  align-items:baseline;
+  gap:8px 18px;
+  flex-wrap:wrap;
+  padding:15px 0;
+  border-top:1px solid var(--line)
+}
+.former-list li:first-child {
+  border-top:0
+}
+.former-name {
+  font:1.2rem var(--serif)
+}
+.former-meta {
+  font-size:.88rem;
+  color:var(--muted)
+}
+.former-group+.former-group {
+  margin-top:50px
 }
 .group-title:after {
   content:'';
@@ -950,6 +991,9 @@ address {
 .footer a:hover {
   color:white;
   text-decoration:underline
+}
+.footer-credit {
+  color:#8fa5b6
 }
 .footer-bottom {
   padding-top:18px;

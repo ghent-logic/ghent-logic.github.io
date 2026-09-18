@@ -1,4 +1,4 @@
-# Ghent Mathematical Logic — complete editable website
+# Ghent Logic Group — complete editable website
 
 Start by opening START-HERE.html in a browser. Then open index.html to see the site.
 
