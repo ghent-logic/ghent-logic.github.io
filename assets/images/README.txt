@@ -5,8 +5,9 @@ Leaving photo empty displays initials instead. Do not use photos without permiss
 
 BACKGROUND PHOTOGRAPH
 ---------------------
-Put a photograph of Ghent here as ghent.jpg and it appears behind the heading
-of every page, edge to edge, under a pale wash. No other change is needed.
+ghent.jpg is the photograph behind the heading of every page, edge to edge,
+under a pale wash. Replace the file to change the picture; nothing else needs
+editing. Delete it and the pages simply lose the picture.
 
   - About 2000 pixels wide is plenty; keep the file under roughly 400 KB, or
     every page will be slow to load. Save as JPEG at around 70% quality.

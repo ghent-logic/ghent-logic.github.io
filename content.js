@@ -5,8 +5,8 @@
 */
 window.GROUP = {
   preview: true, // Set to false AFTER replacing the sample records and reviewing the copy.
-  name: "Ghent Mathematical Logic",
-  tagline: "Intercontinental research group at Ghent University", // the line above the blue bar
+  name: "Ghent Logic Group",
+  tagline: "International research group at Ghent University", // the line above the blue bar
   university: "Ghent University",
   universityUrl: "https://www.ugent.be/",
   department: "", // e.g. your actual department or research centre
@@ -53,17 +53,21 @@ window.GROUP = {
   ],
   // Duplicate a complete member object to add a person. Remove sample: true or
   // set it to false once you have supplied real information with their consent.
+  // The section heading already says whether someone is a professor, a postdoc
+  // or a PhD student, so leave role empty unless it adds something the heading
+  // does not — "Assistant professor", "FWO postdoctoral fellow", "Visiting
+  // professor". An empty role, area or bio is left off the card entirely.
   people: [
-    { name: "[Member name]", initials: "A", group: "Academic staff", role: "Professor",
+    { name: "[Member name]", initials: "A", group: "Professors", role: "",
       area: "Proof theory & foundations", bio: "Add a short biography describing this member’s research interests and current work.",
       photo: "", profile: "", email: "", sample: true },
-    { name: "[Member name]", initials: "B", group: "Academic staff", role: "Researcher",
+    { name: "[Member name]", initials: "B", group: "Professors", role: "Assistant professor",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "", sample: true },
-    { name: "[Member name]", initials: "C", group: "Postdoctoral researchers", role: "Postdoctoral researcher",
+    { name: "[Member name]", initials: "C", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
       photo: "", profile: "", email: "", sample: true },
-    { name: "[Member name]", initials: "D", group: "Doctoral researchers", role: "Doctoral researcher",
+    { name: "[Member name]", initials: "D", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
       photo: "", profile: "", email: "", sample: true }
   ],
