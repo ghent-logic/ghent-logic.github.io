@@ -81,7 +81,10 @@ window.GROUP = {
     { name: "Giovanni Solda", initials: "GS", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
       photo: "", profile: "", email: "giovanni.solda@ugent.be", sample: false },
-     
+
+    { name: "Alakh Dhruv Chopra", initials: "ADC", group: "PhD students", role: "",
+      area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
+      photo: "", profile: "", email: "alakhdhruv.chopra@ugent.be", sample: false },
     { name: "Julien Daoud", initials: "JD", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
       photo: "", profile: "", email: "julien.daoud@ugent.be", sample: false },
@@ -103,9 +106,6 @@ window.GROUP = {
     { name: "Philipp Provenzano", initials: "PP", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
       photo: "", profile: "", email: "philipp.provenzano@ugent.be", sample: false },
-    { name: "Alakh Dhruv Chopra", initials: "ADC", group: "PhD students", role: "",
-      area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
-      photo: "", profile: "", email: "alakhdhruv.chopra@ugent.be", sample: false },
 
 
      
