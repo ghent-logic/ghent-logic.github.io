@@ -202,8 +202,11 @@ repository's.
   offered to drop it. It does real work — it is the favicon and tab identity,
   and it reads as "logic" to a logician at a glance — so the recommendation was
   to keep it. Revisit only if he asks again.
-- **The background photograph is in**: Graslei at sunset, supplied by Milan,
-  behind the heading of every page. `.hero` and `.page-head` layer, from the top
+- **The background plumbing is in; the photograph is not.** Milan's first
+  picture came from a commercial tour operator's CDN and so could not be used;
+  he set it aside for later. `assets/images/ghent.jpg` is absent again and the
+  washes alone paint. Do not put a picture there without knowing its licence.
+  What follows describes the plumbing, which stayed: `.hero` and `.page-head` layer, from the top
   down, `--photo-veil` (a left-weighted gradient, so the headline and paragraph
   keep their contrast while the right of the picture stays clear), `--photo-wash`
   (a flat wash at .8), then `--photo` itself at `--photo-position`. Remove the
@@ -225,6 +228,14 @@ repository's.
   surface or is identity, every teal use is on a light one, and teal has too
   little contrast on navy to swap in. The rule is now written at the top of
   `style.css`; the palette is still four `:root` variables if it must change.
+- **Former members live on `former.html`**, a sub-page of People like the
+  archive is of Seminars. Setting `former: true` on a `people` entry moves that
+  person off the People page and onto it, keeping their `group`; the entry then
+  uses `years`, `now` and `profile` rather than a photograph and a biography,
+  and is shown as a line in a list rather than a card. Both pages take their
+  section order from the whole `people` array, so each runs Professors,
+  Postdocs, PhD students wherever the former entries happen to sit. The link
+  appears under the People list only when somebody is marked former.
 - **The People sections are "Professors", "Postdocs" and "PhD students"**, in
   Milan's words rather than the starter's "Academic staff / Postdoctoral
   researchers / Doctoral researchers". Since the section heading already gives

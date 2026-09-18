@@ -50,7 +50,7 @@
   const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['activities','Activities'],['contact','Contact']];
   const current = document.body.dataset.page;
   // Pages reachable from within the site rather than from the main navigation.
-  const subPages = {archive: ['Seminar archive', 'seminars']};
+  const subPages = {archive: ['Seminar archive', 'seminars'], former: ['Former members', 'people']};
   const navCurrent = subPages[current]?.[1] || current;
   const RECENT_TALKS = 4;   // kept on the seminars page; the rest live in the archive
   const PER_PAGE = 10;      // archive entries per page
@@ -101,15 +101,27 @@
     set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
     set('research-areas', areas.map(a => `<section class="research-row" id="${slug(a.id)}"><div><h2>${esc(a.title)}</h2><p class="research-question">${esc(a.question)}</p></div><div class="research-detail"><p>${esc(a.description)}</p><div class="tags">${(a.topics||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></section>`).join(''));
   }
+  const everyone = records(G.people);
+  const peopleGroups = [...new Set(everyone.map(p => p.group))];
+  const former = everyone.filter(p => p.former);
   if (current === 'people') {
-    const people = records(G.people);
-    const groups = [...new Set(people.map(p => p.group))];
+    const people = everyone.filter(p => !p.former);
+    const groups = peopleGroups.filter(g => people.some(p => p.group === g));
     set('people-index', groups.map(g => `<a href="#${slug(g)}">${esc(g)}</a>`).join(''));
     set('people-list', groups.length ? groups.map(g => `<section class="member-group" id="${slug(g)}"><h2 class="group-title">${esc(g)}</h2><div class="members">${people.filter(p => p.group===g).map(p => {
       const photo = /^(assets\/|https:\/\/)/.test(p.photo || '') && !p.photo.includes('..') ? p.photo : '';
       return `<article class="member"><div class="portrait">${photo ? `<img src="${esc(photo)}" alt="${esc(p.name)}" loading="lazy" width="400" height="300"><span hidden aria-hidden="true">${esc(p.initials)}</span>` : `<span aria-hidden="true">${esc(p.initials)}</span>`}</div><div class="member-body">${sample(p)}<h3>${esc(p.name)}</h3>${p.role ? `<p class="member-role">${esc(p.role)}</p>` : ''}${p.area ? `<p class="member-area">${esc(p.area)}</p>` : ''}${p.bio ? `<p class="member-bio">${esc(p.bio)}</p>` : ''}${p.profile || mail(p.email) ? `<div class="member-links">${external(p.profile,'Academic profile')}${mail(p.email) ? `<a href="${mail(p.email)}">Email</a>` : ''}</div>` : ''}${p.sample ? '<p class="edit-hint">Profile and email links appear when added.</p>' : ''}</div></article>`;
     }).join('')}</div></section>`).join('') : '<div class="empty"><h3>Members</h3><p>Member profiles will be added here.</p></div>');
+    set('people-former', former.length ? '<p class="former-link"><a class="text-link" href="former.html">Former members</a></p>' : '');
     document.querySelectorAll('.portrait img').forEach(img => img.addEventListener('error', () => {img.hidden=true; img.nextElementSibling.hidden=false;}));
+  }
+  if (current === 'former') {
+    const groups = peopleGroups.filter(g => former.some(p => p.group === g));
+    set('former-list', groups.length ? groups.map(g => `<section class="former-group" id="${slug(g)}"><h2 class="group-title">${esc(g)}</h2><ul class="former-list">${former.filter(p => p.group===g).map(p => {
+      const who = link(p.profile) ? `<a href="${link(p.profile)}">${esc(p.name)}</a>` : esc(p.name);
+      const meta = [p.role, p.years, p.now].filter(Boolean).map(esc).join(' · ');
+      return `<li>${sample(p)}<span class="former-name">${who}</span>${meta ? `<span class="former-meta">${meta}</span>` : ''}</li>`;
+    }).join('')}</ul></section>`).join('') : '<div class="empty"><h3>Former members</h3><p>People who have moved on will be listed here.</p></div>');
   }
   // Compare calendar dates in Ghent's timezone, without UTC shifting a talk's day.
   const today = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Brussels',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());

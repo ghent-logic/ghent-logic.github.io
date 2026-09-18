@@ -53,6 +53,10 @@ window.GROUP = {
   ],
   // Duplicate a complete member object to add a person. Remove sample: true or
   // set it to false once you have supplied real information with their consent.
+  // Add former: true when someone leaves and they move from the People page to
+  // former.html, keeping their group. Former entries use name, group and
+  // optionally role, years ("2019-2024"), now (where they went) and profile;
+  // no photograph or biography is shown there.
   // The section heading already says whether someone is a professor, a postdoc
   // or a PhD student, so leave role empty unless it adds something the heading
   // does not — "Assistant professor", "FWO postdoctoral fellow", "Visiting
@@ -69,7 +73,13 @@ window.GROUP = {
       photo: "", profile: "", email: "", sample: true },
     { name: "[Member name]", initials: "D", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
-      photo: "", profile: "", email: "", sample: true }
+      photo: "", profile: "", email: "", sample: true },
+    { name: "[Former professor]", group: "Professors", former: true,
+      years: "[2005-2023]", now: "[now emeritus, or where they went]", profile: "", sample: true },
+    { name: "[Former postdoc]", group: "Postdocs", former: true,
+      years: "[2021-2024]", now: "[now at another university]", profile: "", sample: true },
+    { name: "[Former PhD student]", group: "PhD students", former: true,
+      years: "[2019-2023]", now: "[where they went next]", profile: "", sample: true }
   ],
   // SEMINARS — newest first; the order here does not matter, the page sorts by date.
   // A talk moves from "Upcoming talks" into the archive by itself once its date passes.

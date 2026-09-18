@@ -524,6 +524,37 @@ img {
   font:1.5rem var(--serif);
   margin-bottom:26px
 }
+/* Former members: a compact list rather than cards, since there is no
+   portrait or biography to show. */
+.former-link {
+  margin-top:44px
+}
+.former-list {
+  list-style:none;
+  margin:0;
+  padding:0
+}
+.former-list li {
+  display:flex;
+  align-items:baseline;
+  gap:8px 18px;
+  flex-wrap:wrap;
+  padding:15px 0;
+  border-top:1px solid var(--line)
+}
+.former-list li:first-child {
+  border-top:0
+}
+.former-name {
+  font:1.2rem var(--serif)
+}
+.former-meta {
+  font-size:.88rem;
+  color:var(--muted)
+}
+.former-group+.former-group {
+  margin-top:50px
+}
 .group-title:after {
   content:'';
   height:1px;
