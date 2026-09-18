@@ -663,6 +663,12 @@ img {
   border-color:var(--teal);
   background:var(--soft)
 }
+.pager-gap {
+  min-width:22px;
+  padding:7px 0;
+  text-align:center;
+  color:var(--muted)
+}
 .pager-page.is-current {
   background:var(--navy);
   border-color:var(--navy);
