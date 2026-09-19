@@ -12,7 +12,8 @@ window.GROUP = {
   department: "", // e.g. your actual department or research centre
   city: "Ghent, Belgium",
   email: "", // e.g. your real institutional contact email
-  address: [], // e.g. ["Building name", "Street and number", "9000 Ghent, Belgium"]
+  // One line per line of the address, most specific first, as on an envelope.
+  address: ["Building S8, third floor", "Krijgslaan 281", "9000 Ghent, Belgium"],
   mapUrl: "", // optional link to your building on a map
   // If the background photograph needs crediting, name it here and the line
   // appears in the footer, e.g. "Photograph: Jan Jansen, CC BY-SA 4.0".
