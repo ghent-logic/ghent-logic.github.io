@@ -132,6 +132,14 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-09-24-dvorkin", date: "2026-09-24",
+      speaker: "Lev Dvorkin",
+      title: "Monotonicity vs Positivity in Modal Logics",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "We investigate when every semantically monotone formula (i.e., one preserved under increasing valuations) is equivalent to a positive formula, built from variables using only positive connectives, with no negation or implication. We call this the Lyndon Positivity Property (LPP), after R. Lyndon, who first established it for classical predicate calculus.",
+         "It turns out that LPP is closely tied to the well-known Lyndon Interpolation Property (LIP). Indeed, Lyndon's proof adapts to normal modal logics to show that LIP implies LPP in this case. The converse, however, fails: there are very simple examples of normal modal logics that enjoy LPP but not LIP. To establish these results, we use a semantic approach to both properties based on a generalized notion of bisimulations."
+      ] },
     { id: "2026-09-15-gagarin", date: "2026-09-15",
       speaker: "Aleksandr Gagarin",
       title: "Topological modal logics of path-reachability",
