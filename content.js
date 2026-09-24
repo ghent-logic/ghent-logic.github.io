@@ -133,6 +133,13 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-10-01-pawlowski", date: "2026-10-01",
+      speaker: "Pawel Pawlowski",
+      title: "Medvedev logic is undecidable: AI-assisted approach and some remarks on the future of logic.",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "In this talk, I will present my AI-assisted proof that Medvedev logic is undecidable and compare it with the independent proof of Rodrigo Nicolau Almeida and Søren Brinck Knudstorp. The two proofs share the same general strategy but differ in technical detail. I will also mention ongoing work on generalized Medvedev logic and Cheq logic, as well as plans for a broader overview article, before concluding with some remarks on the future of research in logic in the age of generative AI."
+      ] },
     { id: "2026-09-24-dvorkin", date: "2026-09-24",
       speaker: "Lev Dvorkin",
       title: "Monotonicity vs Positivity in Modal Logics",
