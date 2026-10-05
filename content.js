@@ -133,6 +133,15 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-23-01-sierramiranda", date: "2026-23-01",
+      speaker: "Borja Sierra Miranda",
+      title: "GLP via proofs",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "Japaridze's logic GLP arises naturally in the study of multimodal provability logics. It is one of the central logics in the study of provability as it has strong connections with ordinal analysis. Unlike its unimodal counterpart, GL, GLP is Kripke incomplete and has therefore usually been studied using alternative semantics, such as topological semantics",
+         "On the other hand, GLP is known to admit a cut-free nested sequent calculus (see [3]). This hints that a syntactic approach could be suited to the study of this logic. With this goal in mind, we propose the first pure (in the sense of non-nested) sequent calculus for GLP. While not being completely cut-free, it will be analytic (the proof of analyticity will be entirely syntactic, using ideas from [2]). Analyticity shows that the sequent calculus is well-behaved in practice. As an application, we will use it to provide a new proof of the arithmetical completeness of GLP, using ideas from [1].",
+         "The work presented in this talk is joint work with Thomas Studer."
+      ] },
     { id: "2026-10-01-pawlowski", date: "2026-10-01",
       speaker: "Pawel Pawlowski",
       title: "Medvedev logic is undecidable: AI-assisted approach and some remarks on the future of logic.",
