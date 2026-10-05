@@ -133,7 +133,7 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
-    { id: "2026-23-01-sierramiranda", date: "2026-23-01",
+    { id: "2026-10-23-sierramiranda", date: "2026-10-23",
       speaker: "Borja Sierra Miranda",
       title: "GLP via proofs",
       time: "11:00", location: "Vergaderzaal 3.2",
