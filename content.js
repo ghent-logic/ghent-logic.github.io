@@ -140,7 +140,11 @@ window.GROUP = {
       abstract: [
         "Japaridze's logic GLP arises naturally in the study of multimodal provability logics. It is one of the central logics in the study of provability as it has strong connections with ordinal analysis. Unlike its unimodal counterpart, GL, GLP is Kripke incomplete and has therefore usually been studied using alternative semantics, such as topological semantics",
          "On the other hand, GLP is known to admit a cut-free nested sequent calculus (see [3]). This hints that a syntactic approach could be suited to the study of this logic. With this goal in mind, we propose the first pure (in the sense of non-nested) sequent calculus for GLP. While not being completely cut-free, it will be analytic (the proof of analyticity will be entirely syntactic, using ideas from [2]). Analyticity shows that the sequent calculus is well-behaved in practice. As an application, we will use it to provide a new proof of the arithmetical completeness of GLP, using ideas from [1].",
-         "The work presented in this talk is joint work with Thomas Studer."
+         "The work presented in this talk is joint work with Thomas Studer.",
+        "References:",
+        "[1] Lev Beklemishev, A simplified proof of arithmetical completeness theorem for provability logic GLP. Proc. Steklov Inst. Math. 274, 25–33 (2011). https://doi.org/10.1134/S0081543811060046",
+        "[2] Agata Ciabattoni, Timo Lang, and Revantha Ramanayake. 2025. Analytic Proofs for Tense Logic. In Automated Reasoning with Analytic Tableaux and Related Methods: 34th International Conference, TABLEAUX 2025, Reykjavik, Iceland, September 27–29, 2025, Proceedings. Springer-Verlag, Berlin, Heidelberg, 220–237. https://doi.org/10.1007/978-3-032-06085-3_12",
+        "[3] Daniyar Shamkanov, Nested sequents for provability logic GLP, Logic Journal of the IGPL, Volume 23, Issue 5, October 2015, Pages 789–815, https://doi.org/10.1093/jigpal/jzv029"
       ] },
     { id: "2026-10-01-pawlowski", date: "2026-10-01",
       speaker: "Pawel Pawlowski",

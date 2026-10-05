@@ -12,8 +12,17 @@
   const mail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || '') ? 'mailto:' + esc(v) : '';
   const sample = x => x.sample ? '<span class="sample">Sample entry</span>' : '';
   // An abstract may be one string or a list of paragraphs; blank lines also split a string.
+  // A bare http(s) address in an abstract becomes a link. The text is escaped
+  // first, so whatever this matches can hold no quote and no angle bracket and
+  // is safe in an href; a trailing full stop or comma is left outside the link.
+  const linkify = t => t.replace(/https?:\/\/[^\s<>"']+/g, u => {
+    const url = u.replace(/[.,;:]+$/, '');
+    return `<a href="${url}">${url}</a>${u.slice(url.length)}`;
+  });
+  // A paragraph opening with [1] is a reference, and is set to hang.
   const paras = v => (Array.isArray(v) ? v : String(v ?? '').split(/\n\s*\n/))
-    .map(t => String(t).trim()).filter(Boolean).map(t => `<p>${esc(t)}</p>`).join('');
+    .map(t => String(t).trim()).filter(Boolean)
+    .map(t => `<p${/^\[\d+\]/.test(t) ? ' class="reference"' : ''}>${linkify(esc(t))}</p>`).join('');
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)}</a>` : '';

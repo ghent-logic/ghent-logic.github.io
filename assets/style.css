@@ -841,6 +841,17 @@ details p {
   padding-top:11px;
   white-space:pre-line
 }
+/* A reference inside an abstract hangs its "[1]" in the margin, so the wrapped
+   lines line up under the text rather than under the number. */
+details p.reference {
+  padding-top:7px;
+  padding-left:2.1em;
+  text-indent:-2.1em
+}
+/* A DOI is long enough to push a narrow page sideways if it cannot break. */
+details p a {
+  overflow-wrap:anywhere
+}
 details[open] summary {
   margin-bottom:2px
 }
