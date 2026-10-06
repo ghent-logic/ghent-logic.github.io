@@ -133,6 +133,13 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-10-08-beklemishev", date: "2026-10-08",
+      speaker: "Lev Beklemishev",
+      title: "Current projects and open questions",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "I will rather informally discuss my current projects (with students and other colleagues) and some of the open questions remaining there. Particular emphasis will be given to problems that could be accessible for students."
+      ] },
     { id: "2026-10-23-sierramiranda", date: "2026-10-23",
       speaker: "Borja Sierra Miranda",
       title: "GLP via proofs",
