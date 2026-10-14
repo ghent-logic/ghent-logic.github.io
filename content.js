@@ -172,6 +172,7 @@ window.GROUP = {
       ] },
     { id: "2026-09-24-dvorkin", date: "2026-09-24",
       speaker: "Lev Dvorkin",
+      affiliation: "Moscow State University",
       title: "Monotonicity vs Positivity in Modal Logics",
       time: "11:00", location: "Vergaderzaal 3.2",
       abstract: [
