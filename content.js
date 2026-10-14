@@ -133,6 +133,13 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-10-15-lazar", date: "2026-10-15",
+      speaker: "Vlad Lazar",
+      title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "We are going to give a detailed presentation of our recent work on the logic RCBI. Informally, it is an extension of the standard reflection calculus (RC) designed to capture theories above ACA0 obtained by iterations of syntactic and semantic reflection principles. The upper limit of the construction is the theory of Bar Induction. A preprint containing all results discussed in the talk will be available on arXiv shortly."
+      ] },
     { id: "2026-10-08-beklemishev", date: "2026-10-08",
       speaker: "Lev Beklemishev",
       title: "Current projects and open questions",
