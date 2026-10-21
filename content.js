@@ -133,10 +133,18 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-10-22-lazar", date: "2026-10-22",
+      speaker: "Vlad Lazar",
+      affiliation: "Ghent University",
+      title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering, part II",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "We are going to give a detailed presentation of our recent work on the logic \\(\\mathsf{RC_{BI}}\\). Informally, it is an extension of the standard reflection calculus (\\(\\mathsf{RC}\\)) designed to capture theories above \\(\\mathsf{ACA_0}\\) obtained by iterations of syntactic and semantic reflection principles. The upper limit of the construction is the theory of Bar Induction. A preprint containing all results discussed in the talk will be available on arXiv shortly."
+      ] },
     { id: "2026-10-15-lazar", date: "2026-10-15",
       speaker: "Vlad Lazar",
       affiliation: "Ghent University",
-      title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering",
+      title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering, part I",
       time: "11:00", location: "Vergaderzaal 3.2",
       abstract: [
         "We are going to give a detailed presentation of our recent work on the logic \\(\\mathsf{RC_{BI}}\\). Informally, it is an extension of the standard reflection calculus (\\(\\mathsf{RC}\\)) designed to capture theories above \\(\\mathsf{ACA_0}\\) obtained by iterations of syntactic and semantic reflection principles. The upper limit of the construction is the theory of Bar Induction. A preprint containing all results discussed in the talk will be available on arXiv shortly."
@@ -153,7 +161,7 @@ window.GROUP = {
       speaker: "Borja Sierra Miranda",
       affiliation: "University of Bern",
       title: "GLP via proofs",
-      time: "11:00", location: "Vergaderzaal 3.2",
+      time: "11:00", location: "Leslokaal 2.3",
       abstract: [
         "Japaridze's logic GLP arises naturally in the study of multimodal provability logics. It is one of the central logics in the study of provability as it has strong connections with ordinal analysis. Unlike its unimodal counterpart, GL, GLP is Kripke incomplete and has therefore usually been studied using alternative semantics, such as topological semantics",
          "On the other hand, GLP is known to admit a cut-free nested sequent calculus (see [3]). This hints that a syntactic approach could be suited to the study of this logic. With this goal in mind, we propose the first pure (in the sense of non-nested) sequent calculus for GLP. While not being completely cut-free, it will be analytic (the proof of analyticity will be entirely syntactic, using ideas from [2]). Analyticity shows that the sequent calculus is well-behaved in practice. As an application, we will use it to provide a new proof of the arithmetical completeness of GLP, using ideas from [1].",
