@@ -722,11 +722,27 @@ window.GROUP = {
       title: "[A second reading group, if there is one]",
       when: "[Fortnightly, day and time]", where: "[Room]",
       description: "Copy an entry to add another. Delete this one if a single reading group is all there is.",
-      contact: "", url: "", sample: true },
-    { kind: "Courses",
-      title: "[Topic of the course]",
-      when: "[Three sessions, day and time]", where: "[Room]",
-      description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Name the topic, say who is lecturing, and say how many sessions it runs for.",
+      contact: "", url: "", sample: true }
+  ],
+  // COURSES — the Courses page. Sections come from `kind`, in the order each
+  // kind first appears here, exactly as on the Activities page.
+  //   lecturer, programme, when, where   shown above the title; leave any out
+  //   url, linkLabel                     e.g. the course's page in the UGent study guide
+  courses: [
+    { kind: "University courses",
+      title: "[Name of a course a group member teaches]",
+      lecturer: "[Lecturer]", programme: "[e.g. Master of Science in Mathematics]", when: "[First semester]",
+      description: "Two or three sentences on what the course covers and what it assumes. The study guide holds the official details, so link to it rather than repeating them.",
+      url: "", linkLabel: "Study guide", sample: true },
+    { kind: "University courses",
+      title: "[A second course]",
+      lecturer: "[Lecturer]", programme: "[Programme]", when: "[Second semester]",
+      description: "Copy an entry to add another.",
+      url: "", linkLabel: "Study guide", sample: true },
+    { kind: "Mini-courses",
+      title: "[Topic of the mini-course]",
+      lecturer: "[Who is lecturing]", when: "[Three sessions, day and time]", where: "[Room]",
+      description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Say how many sessions it runs for and what it assumes.",
       contact: "", url: "", sample: true }
   ]
 };
