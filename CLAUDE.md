@@ -17,7 +17,8 @@ third party. Open `index.html` in a browser and it runs. The one bundled library
 is KaTeX, vendored into `assets/katex/`.
 
 - `content.js` — the single content file. Sets `window.GROUP` with the group's
-  details plus the `research`, `people`, `seminars`, and `activities` arrays.
+  details plus the `research`, `people`, `seminars`, `activities`, and `courses`
+  arrays.
 - `assets/site.js` — builds the shared header and footer and renders every list
   from those arrays, per page, keyed on `document.body.dataset.page`.
 - `assets/style.css` — the whole theme. Palette and fonts are CSS custom
@@ -82,7 +83,7 @@ sessions and needs no install:
 
 ```sh
 python3 -m http.server 8765 &
-CH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
+CH=/opt/pw-browsers/chromium   # a symlink; the versioned directory changes between containers
 $CH --headless --no-sandbox --disable-gpu --hide-scrollbars \
     --window-size=1280,2000 --virtual-time-budget=3000 \
     --screenshot=/tmp/page.png http://127.0.0.1:8765/index.html
@@ -146,11 +147,13 @@ repository's.
   talk with no recorded room shows no location line rather than "Location to be
   announced".
 - **Publications is gone; Activities replaced it** at Milan's request. The page
-  runs Workshops & conferences, Reading groups, then **Courses**, in that order,
-  which is set by the order the kinds first appear in `content.js`. The courses
-  the doctoral students give one another went through "Learning seminar" and
-  then "Mini-courses" before Milan settled on plain "Courses"; the description
-  carries the fact that they are a handful of lectures rather than a semester. The publications
+  runs Workshops & conferences, then Reading groups, in the order the kinds first
+  appear in `content.js`. The courses the doctoral students give one another
+  were a third section there until Milan asked for a **Courses page** of its own;
+  they now sit on it as **"Mini-courses"**, below "University courses" (the
+  courses group members teach in the degree programmes). Both pages render
+  through one `sectionedList()` in `site.js`; a course entry may also carry
+  `lecturer` and `programme`, shown with `when` and `where` above the title. The publications
   page, its array and its renderer are removed; the old sample records are in
   the git history if they are ever wanted back.
 - **No diagonal arrows in links.** The `↗` that `external()` and several links
@@ -187,8 +190,7 @@ repository's.
   removed. `assets/favicon.svg` is now the turnstile, matching the header.
 - **The homepage's closing "Contact the group" band is gone**, at Milan's
   request, along with its styles. It was the last marketing-shaped element on the
-  page. Contact is still reachable from the navigation and from the footer's
-  Connect column, so nothing became unreachable. Removing it also took away the
+  page. Contact is still reachable from the navigation. Removing it also took away the
   site's only gold-filled button.
 - **The hero headline spans both grid columns**, so it ends over the modus
   ponens figure, and the figure sits beside the paragraph rather than beside the
@@ -247,3 +249,18 @@ repository's.
   effect under `--screenshot`, though they do under `--dump-dom`. To photograph
   something that sits far down a long page, copy the site to the scratchpad and
   change a constant there instead of scripting the live page.
+- **Links that only repeat the navigation are gone**, at Milan's request ("people
+  can see the pages on the headbar"): the hero's two buttons, "Full programme &
+  archive", "Research areas" and each "Explore this area" on the homepage, the
+  Research page's closing "Seminars and activities" panel, the Activities lead's
+  link to Seminars, "Find a group member" on Contact, the seminar aside's
+  "Contact information" when there is no seminar email, and the "Home / Page"
+  breadcrumb on top-level pages. The footer's Explore column, an exact copy of the
+  menu, became an Address column. What remains are the routes to the two pages the
+  menu does not carry (`archive.html`, `former.html`), jump links within a page,
+  and the homepage's link to the next talk's abstract. Do not add new ones back.
+- **Seven menu entries** (Courses added) only fit beside the name down to 761px
+  because the 1000px block tightens the bar: the gap shrinks with the window
+  (`clamp(10px,3.5vw - 17px,17px)`), links drop to .86rem and the name to 1.55rem.
+  At 762px the menu ends exactly on the content edge, so an eighth entry, or a
+  longer label, needs the menu button to take over at a wider breakpoint.

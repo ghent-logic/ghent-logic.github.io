@@ -70,7 +70,7 @@
       .then(() => window.renderMathInElement(root, {delimiters: MATH_DELIMITERS, throwOnError: false, errorColor: '#8a1c1c'}))
       .catch(() => {});
   }
-  const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['activities','Activities'],['contact','Contact']];
+  const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['activities','Activities'],['courses','Courses'],['contact','Contact']];
   const current = document.body.dataset.page;
   // Pages reachable from within the site rather than from the main navigation.
   const subPages = {archive: ['Seminar archive', 'seminars'], former: ['Former members', 'people']};
@@ -108,7 +108,7 @@
   const wide = window.matchMedia('(min-width: 761px)');
   wide.addEventListener('change', () => closeMenu(), {signal: listeners.signal});
 
-  set('site-footer', `<footer class="footer"><div class="wrap"><div class="footer-main"><div><h2>${esc(G.name)}</h2><p>${esc(G.department || G.university)}<br>${esc(G.city)}</p></div><div><div class="footer-label">Explore</div><div class="footer-links">${nav.slice(1,5).map(([p,t]) => `<a href="${p}.html">${t}</a>`).join('')}</div></div><div><div class="footer-label">Connect</div><div class="footer-links"><a href="contact.html">Contact the group</a>${external(G.universityUrl, G.university)}${mail(G.email) ? `<a href="${mail(G.email)}">${esc(G.email)}</a>` : ''}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} ${esc(G.name)}</span>${G.photoCredit ? `<span class="footer-credit">${esc(G.photoCredit)}</span>` : ''}<span>${G.preview ? 'Preview copy · Replace sample content before launch' : esc(G.university)}</span></div></div></footer>`);
+  set('site-footer', `<footer class="footer"><div class="wrap"><div class="footer-main"><div><h2>${esc(G.name)}</h2><p>${esc(G.department || G.university)}<br>${esc(G.city)}</p></div><div>${G.address?.length ? `<div class="footer-label">Address</div><address class="footer-address">${G.address.map(esc).join('<br>')}</address>` : ''}</div><div><div class="footer-label">Connect</div><div class="footer-links">${external(G.universityUrl, G.university)}${mail(G.email) ? `<a href="${mail(G.email)}">${esc(G.email)}</a>` : ''}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} ${esc(G.name)}</span>${G.photoCredit ? `<span class="footer-credit">${esc(G.photoCredit)}</span>` : ''}<span>${G.preview ? 'Preview copy · Replace sample content before launch' : esc(G.university)}</span></div></div></footer>`);
   document.querySelectorAll('[data-group-name]').forEach(el => el.textContent = G.name);
   document.querySelectorAll('[data-university]').forEach(el => el.textContent = G.university);
   document.querySelectorAll('[data-city]').forEach(el => el.textContent = G.city);
@@ -118,7 +118,7 @@
     set('hero-title', esc(G.home.title));
     set('hero-introduction', esc(G.home.introduction));
     set('group-introduction', esc(G.home.about));
-    set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p><a class="text-link" href="research.html#${slug(a.id)}">Explore this area</a></article>`).join(''));
+    set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p></article>`).join(''));
   }
   if (current === 'research') {
     set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
@@ -193,7 +193,7 @@
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
       + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
-    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div><div class="info-item"><span class="info-label">Questions & online access</span>${mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a>` : '<a href="contact.html">Contact information</a>'}</div>`);
+    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
   }
   if (current === 'archive') {
     const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
@@ -219,16 +219,20 @@
     </nav>` : '');
     if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
   }
-  if (current === 'activities') {
-    const doings = records(G.activities);
-    // Sections come from the distinct kinds, in the order they first appear in content.js.
-    const kinds = [...new Set(doings.map(a => a.kind))];
-    set('activities-index', kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join(''));
-    set('activities-list', kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${doings.filter(a => a.kind === k).map(a => {
+  // Activities and courses are both lists of entries grouped into sections by
+  // `kind`, the sections in the order each kind first appears in content.js.
+  function sectionedList(items, indexId, listId, emptyTitle, emptyText) {
+    const entries = records(items);
+    const kinds = [...new Set(entries.map(a => a.kind))];
+    set(indexId, kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join(''));
+    set(listId, kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${entries.filter(a => a.kind === k).map(a => {
       const links = external(a.url, a.linkLabel || 'More information') + (mail(a.contact) ? `<a href="${mail(a.contact)}">Email the organisers</a>` : '');
-      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${a.when ? `<span>${esc(a.when)}</span>` : ''}${a.where ? `<span>${esc(a.where)}</span>` : ''}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
-    }).join('')}</section>`).join('') : '<div class="empty"><h3>Activities</h3><p>The group\u2019s activities will be listed here.</p></div>');
+      const meta = [a.lecturer, a.programme, a.when, a.where].filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('');
+      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${meta}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
+    }).join('')}</section>`).join('') : `<div class="empty"><h3>${emptyTitle}</h3><p>${emptyText}</p></div>`);
   }
+  if (current === 'activities') sectionedList(G.activities, 'activities-index', 'activities-list', 'Activities', 'The group’s activities will be listed here.');
+  if (current === 'courses') sectionedList(G.courses, 'courses-index', 'courses-list', 'Courses', 'The courses the group teaches will be listed here.');
   if (current === 'contact') {
     set('general-contact', mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : `<p class="draft-field">${G.preview ? '[Add the group’s contact email in content.js]' : 'A group contact address will be added here.'}</p>`);
     set('seminar-contact', mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the seminar organizers</a>` : '<p class="muted">Organizer details will be included in the seminar announcements.</p>');
