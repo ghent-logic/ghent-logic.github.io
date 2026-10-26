@@ -117,7 +117,7 @@
   if (current === 'index') {
     set('hero-title', esc(G.home.title));
     set('hero-introduction', esc(G.home.introduction));
-    set('group-introduction', esc(G.home.about));
+    set('home-youtube', external(G.youtubeUrl, 'Recorded talks on YouTube', 'text-link'));
     set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p></article>`).join(''));
   }
   if (current === 'research') {
@@ -193,7 +193,7 @@
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
       + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
-    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
+    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${link(G.youtubeUrl) ? `<div class="info-item"><span class="info-label">Recordings</span>${external(G.youtubeUrl, 'YouTube channel')}</div>` : ''}${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
   }
   if (current === 'archive') {
     const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
@@ -224,9 +224,10 @@
   function sectionedList(items, indexId, listId, emptyTitle, emptyText) {
     const entries = records(items);
     const kinds = [...new Set(entries.map(a => a.kind))];
-    set(indexId, kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join(''));
+    // A single section needs no jump links to itself.
+    set(indexId, kinds.length > 1 ? kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join('') : '');
     set(listId, kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${entries.filter(a => a.kind === k).map(a => {
-      const links = external(a.url, a.linkLabel || 'More information') + (mail(a.contact) ? `<a href="${mail(a.contact)}">Email the organisers</a>` : '');
+      const links = external(a.url, a.linkLabel || 'More information') + external(a.videoUrl, 'Recordings') + (mail(a.contact) ? `<a href="${mail(a.contact)}">Email the organisers</a>` : '');
       const meta = [a.lecturer, a.programme, a.when, a.where].filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('');
       return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${meta}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
     }).join('')}</section>`).join('') : `<div class="empty"><h3>${emptyTitle}</h3><p>${emptyText}</p></div>`);

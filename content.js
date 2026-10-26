@@ -23,11 +23,13 @@ window.GROUP = {
   seminarLocation: "", // e.g. a verified building and room
   seminarVenue: "Campus Sterre, building S8", // put before a room name such as "Vergaderzaal 3.2"
   seminarSchedule: "", // e.g. Fridays at 14:00; leave blank if irregular
+  // The group's YouTube channel, linked from the homepage and the Seminars page.
+  // Leave it "" and both links disappear.
+  youtubeUrl: "https://www.youtube.com/channel/UCPpTSX10Qd1o4GpAFETtrVw",
   home: {
     title: "Mathematical logic at Ghent University",
-    // Milan is rewriting this paragraph; it is the first thing a visitor reads.
-    introduction: "We work on proof theory and the foundations of mathematics, non-classical logic, and the limits of computation. The group meets weekly for its seminar, alongside reading groups and mini-courses we give one another.",
-    about: "Logic studies what follows from what—and why. It brings precise methods to foundational questions about mathematics, language, and computation. This site brings together our research, the people behind it, and opportunities for discussion."
+    // The first thing a visitor reads: who the group is, what it works on, when it meets.
+    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We meet every Thursday at 11:00 for a seminar in building S8, open to anyone interested."
   },
   research: [
     {
@@ -699,7 +701,9 @@ window.GROUP = {
   //   when:        "Weekly, Tuesdays at 16:00" or "9-11 June 2027"
   //   where:       a room or venue
   //   description: one paragraph, or a list of paragraphs
+  //   lecturer:    who is teaching, for a mini-course
   //   url / linkLabel:  an optional link, and what to call it
+  //   videoUrl:    a link to the recordings (a YouTube video or playlist); shown as "Recordings"
   //   contact:     an email address; shown as "Email the organisers"
   //   id:          optional, for linking straight to this entry
   activities: [
@@ -713,21 +717,22 @@ window.GROUP = {
       when: "[Dates]", where: "[Venue]",
       description: "Copy an entry to add another. Delete this one if there is only the single meeting.",
       url: "", contact: "", sample: true },
-    { kind: "Reading groups",
+    { kind: "Reading groups & mini-courses",
       title: "[Book or paper the group is reading]",
       when: "[Weekly, day and time]", where: "[Room]",
       description: "Say what is being read, how much background it assumes, and whether newcomers can join part way through.",
       contact: "", url: "", sample: true },
-    { kind: "Reading groups",
-      title: "[A second reading group, if there is one]",
-      when: "[Fortnightly, day and time]", where: "[Room]",
-      description: "Copy an entry to add another. Delete this one if a single reading group is all there is.",
-      contact: "", url: "", sample: true }
+    { kind: "Reading groups & mini-courses",
+      title: "[Topic of a mini-course]",
+      lecturer: "[Who is lecturing]", when: "[Three sessions, day and time]", where: "[Room]",
+      description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Say how many sessions it runs for and what it assumes.",
+      videoUrl: "", contact: "", url: "", sample: true }
   ],
   // COURSES — the Courses page. Sections come from `kind`, in the order each
   // kind first appears here, exactly as on the Activities page.
   //   lecturer, programme, when, where   shown above the title; leave any out
   //   url, linkLabel                     e.g. the course's page in the UGent study guide
+  //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
     { kind: "University courses",
       title: "[Name of a course a group member teaches]",
@@ -738,11 +743,6 @@ window.GROUP = {
       title: "[A second course]",
       lecturer: "[Lecturer]", programme: "[Programme]", when: "[Second semester]",
       description: "Copy an entry to add another.",
-      url: "", linkLabel: "Study guide", sample: true },
-    { kind: "Mini-courses",
-      title: "[Topic of the mini-course]",
-      lecturer: "[Who is lecturing]", when: "[Three sessions, day and time]", where: "[Room]",
-      description: "A handful of lectures rather than a semester: the doctoral students take turns teaching one another the basics of a subject, so that everyone in the group ends up with a working knowledge of it. Say how many sessions it runs for and what it assumes.",
-      contact: "", url: "", sample: true }
+      url: "", linkLabel: "Study guide", videoUrl: "", sample: true }
   ]
 };
