@@ -905,6 +905,43 @@ details[open] summary {
 .contact-block p {
   color:var(--muted)
 }
+.contact-block p+p,.contact-block p+.contact-people,.contact-people+p,.contact-block .email-link+p {
+  margin-top:12px
+}
+/* One line per person: the name in the display face, the address beside it. */
+.contact-people {
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--line)
+}
+.contact-people li {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:2px 20px;
+  padding:11px 0;
+  border-bottom:1px solid var(--line)
+}
+.contact-name {
+  font-family:var(--serif);
+  font-size:1.15rem;
+  color:var(--navy)
+}
+.contact-people a {
+  overflow-wrap:anywhere
+}
+.contact-note {
+  margin-top:16px;
+  font-size:.92rem
+}
+.map-links {
+  display:flex;
+  flex-direction:column;
+  align-items:start;
+  gap:8px
+}
 .email-link {
   font-size:clamp(1.1rem,2vw,1.45rem);
   overflow-wrap:anywhere

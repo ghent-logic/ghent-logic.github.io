@@ -240,10 +240,17 @@
   if (current === 'activities') sectionedList(G.activities, 'activities-index', 'activities-list', 'Activities', 'The group’s activities will be listed here.');
   if (current === 'courses') sectionedList(G.courses, 'courses-index', 'courses-list', 'Courses', 'The courses the group teaches will be listed here.');
   if (current === 'contact') {
-    set('general-contact', mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : `<p class="draft-field">${G.preview ? '[Add the group’s contact email in content.js]' : 'A group contact address will be added here.'}</p>`);
-    set('seminar-contact', mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the seminar organizers</a>` : '<p class="muted">Organizer details will be included in the seminar announcements.</p>');
-    set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${external(G.mapUrl, 'Open map')}`);
-    set('visit-directions', G.directions ? esc(G.directions) : G.preview ? '[Add directions and information about step-free access in content.js.]' : 'Please contact your host for directions and information about building access.');
+    const people = (G.contacts || []).filter(c => mail(c.email));
+    const group = mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : '';
+    set('general-contact', people.length
+      ? `${group}<p>For questions about the group, its research, or a visit, write to one of its professors:</p><ul class="contact-people">${people.map(c => `<li><span class="contact-name">${esc(c.name)}</span><a href="${mail(c.email)}">${esc(c.email)}</a></li>`).join('')}</ul>`
+      : group || `<p class="draft-field">${G.preview ? '[Add contacts or the group’s email in content.js]' : 'Contact details will be added here.'}</p>`);
+    const mailing = G.seminarMailing ? `<p>${esc(G.seminarMailing)}</p>` : G.preview ? '<p class="draft-field">[How to receive the seminar announcements: fill in seminarMailing in content.js]</p>' : '';
+    const organisers = mail(G.seminarEmail) ? `<p><a href="${mail(G.seminarEmail)}">Email the seminar organizers</a></p>` : '';
+    set('seminar-contact', `${G.seminarContact ? `<p>${esc(G.seminarContact)}</p>` : ''}${mailing}${organisers}`);
+    const maps = external(G.mapUrl, 'Directions in Google Maps') + external(G.campusMapUrl, 'Campus plan (PDF)');
+    set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${maps ? `<div class="map-links">${maps}</div>` : ''}`);
+    set('visit-directions', G.directions?.length ? paras(G.directions) : `<p${G.preview ? ' class="draft-field">[Add directions in content.js]' : '>Please contact your host for directions and information about building access.'}</p>`);
   }
   typesetMath(document.body);
 })();
