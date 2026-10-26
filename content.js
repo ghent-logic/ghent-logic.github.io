@@ -22,14 +22,16 @@ window.GROUP = {
   seminarEmail: "", // optional; falls back to the general email
   seminarLocation: "", // e.g. a verified building and room
   seminarVenue: "Campus Sterre, building S8", // put before a room name such as "Vergaderzaal 3.2"
-  seminarSchedule: "", // e.g. Fridays at 14:00; leave blank if irregular
+  seminarSchedule: "Usually Thursdays at 11:00 (Ghent time), though not every week. Each talk gives its own time and room.", // shown under "When" on the Seminars page
   // The group's YouTube channel, linked from the homepage and the Seminars page.
   // Leave it "" and both links disappear.
   youtubeUrl: "https://www.youtube.com/channel/UCPpTSX10Qd1o4GpAFETtrVw",
   home: {
     title: "Mathematical logic at Ghent University",
     // The first thing a visitor reads: who the group is, what it works on, when it meets.
-    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We meet every Thursday at 11:00 for a seminar in building S8, open to anyone interested."
+    // A link is written [words](page.html), e.g. [contact page](contact.html), or with
+    // a full https:// address in the round brackets.
+    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann, who is also head of the department. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We usually meet on Thursdays at 11:00 for a seminar in building S8, open to anyone interested. We also try to organise social events every so often. See the [contact page](contact.html) if you are interested in coming for a visit!"
   },
   research: [
     {
@@ -71,7 +73,7 @@ window.GROUP = {
     { name: "Fedor Pakhomov", initials: "FP", group: "Professors", role: "",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "fedor.pakhomov@ugent.be", sample: false },
-     { name: "Andreas Weiermann", initials: "AW", group: "Professors", role: "",
+     { name: "Andreas Weiermann", initials: "AW", group: "Professors", role: "Head of department",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "andreas.weiermann@ugent.be", sample: false },
      
