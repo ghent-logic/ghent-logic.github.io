@@ -710,10 +710,10 @@ window.GROUP = {
   //   id:          optional, for linking straight to this entry
   activities: [
     { kind: "Workshops & conferences",
-      title: "[Name of a meeting the group organises]",
-      when: "[Dates]", where: "[Venue]",
+      title: "Proof Society 2025",
+      when: "September 1-5, 2025", where: "Sint-Baafshuis Gent",
       description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
-      url: "", linkLabel: "Workshop website", contact: "", sample: true },
+      url: "https://proof2025.ugent.be/", linkLabel: "Workshop website", contact: "", sample: false },
     { kind: "Workshops & conferences",
       title: "[A second meeting, if there is one]",
       when: "[Dates]", where: "[Venue]",
@@ -738,14 +738,19 @@ window.GROUP = {
   //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
     { kind: "Lecture series",
-      title: "[Title of the series]",
-      lecturer: "[Lecturer, with their university if visiting]", when: "[Dates · number of lectures]", where: "[Room]",
+      title: "Provability Logic",
+      lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
       description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
-      url: "", linkLabel: "Lecture notes", videoUrl: "", sample: true },
+      url: "https://www.youtube.com/playlist?list=PLEorlafzMjcWbKA5QnwzSjjy25VOn-nYc", linkLabel: "Lecture notes", videoUrl: "", sample: false },
+    { kind: "Lecture series",
+      title: "Provability and Reflection",
+      lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
+      description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
+      url: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", linkLabel: "Lecture notes", videoUrl: "", sample: false },
     { kind: "University courses",
-      title: "[Name of a course a group member teaches]",
-      lecturer: "[Lecturer]", programme: "[e.g. Master of Science in Mathematics]", when: "[First semester]",
+      title: "Proof Theory",
+      lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "First semester",
       description: "Two or three sentences on what the course covers and what it assumes. The study guide holds the official details, so link to it rather than repeating them.",
-      url: "", linkLabel: "Study guide", sample: true }
+      url: "", linkLabel: "Study guide", sample: false }
   ]
 };
