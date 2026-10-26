@@ -151,8 +151,12 @@ repository's.
   order the kinds first appear in `content.js`. The courses the doctoral students
   give one another went from a section of their own on Activities, to a section
   of the new **Courses page**, and back to Activities sharing a section with the
-  reading groups, which is where Milan wants them. The Courses page holds only
-  "University courses" (what group members teach in the degree programmes). Both
+  reading groups, which is where Milan wants them. The Courses page runs **"Lecture
+  series"** (a series of talks on one topic, given once rather than every year,
+  outside the official programme and mostly there to be watched back; Milan's
+  first real entries are of this kind, and he rejected "Short courses" because
+  they are still a series) and then "University courses" (what group
+  members teach in the degree programmes, which Milan will add later). Both
   pages render through one `sectionedList()` in `site.js`; an entry may carry
   `lecturer` and `programme`, shown with `when` and `where` above the title, and
   `videoUrl`, shown as "Recordings" beside its other links. A list with a single

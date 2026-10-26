@@ -731,20 +731,21 @@ window.GROUP = {
       videoUrl: "", contact: "", url: "", sample: true }
   ],
   // COURSES — the Courses page. Sections come from `kind`, in the order each
-  // kind first appears here, exactly as on the Activities page.
+  // kind first appears here, exactly as on the Activities page: move the first
+  // university course above the lecture series to put that section first.
   //   lecturer, programme, when, where   shown above the title; leave any out
-  //   url, linkLabel                     e.g. the course's page in the UGent study guide
+  //   url, linkLabel                     notes or slides, or a course's page in the UGent study guide
   //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
+    { kind: "Lecture series",
+      title: "[Title of the series]",
+      lecturer: "[Lecturer, with their university if visiting]", when: "[Dates · number of lectures]", where: "[Room]",
+      description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
+      url: "", linkLabel: "Lecture notes", videoUrl: "", sample: true },
     { kind: "University courses",
       title: "[Name of a course a group member teaches]",
       lecturer: "[Lecturer]", programme: "[e.g. Master of Science in Mathematics]", when: "[First semester]",
       description: "Two or three sentences on what the course covers and what it assumes. The study guide holds the official details, so link to it rather than repeating them.",
-      url: "", linkLabel: "Study guide", sample: true },
-    { kind: "University courses",
-      title: "[A second course]",
-      lecturer: "[Lecturer]", programme: "[Programme]", when: "[Second semester]",
-      description: "Copy an entry to add another.",
-      url: "", linkLabel: "Study guide", videoUrl: "", sample: true }
+      url: "", linkLabel: "Study guide", sample: true }
   ]
 };
