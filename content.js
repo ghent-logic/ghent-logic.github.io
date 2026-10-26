@@ -732,15 +732,15 @@ window.GROUP = {
   ],
   // COURSES — the Courses page. Sections come from `kind`, in the order each
   // kind first appears here, exactly as on the Activities page: move the first
-  // university course above the short courses to put that section first.
+  // university course above the lecture series to put that section first.
   //   lecturer, programme, when, where   shown above the title; leave any out
   //   url, linkLabel                     notes or slides, or a course's page in the UGent study guide
   //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
-    { kind: "Short courses",
-      title: "[Title of the course]",
+    { kind: "Lecture series",
+      title: "[Title of the series]",
       lecturer: "[Lecturer, with their university if visiting]", when: "[Dates · number of lectures]", where: "[Room]",
-      description: "A course given once, in a few lectures. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
+      description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
       url: "", linkLabel: "Lecture notes", videoUrl: "", sample: true },
     { kind: "University courses",
       title: "[Name of a course a group member teaches]",
