@@ -147,13 +147,16 @@ repository's.
   talk with no recorded room shows no location line rather than "Location to be
   announced".
 - **Publications is gone; Activities replaced it** at Milan's request. The page
-  runs Workshops & conferences, then Reading groups, in the order the kinds first
-  appear in `content.js`. The courses the doctoral students give one another
-  were a third section there until Milan asked for a **Courses page** of its own;
-  they now sit on it as **"Mini-courses"**, below "University courses" (the
-  courses group members teach in the degree programmes). Both pages render
-  through one `sectionedList()` in `site.js`; a course entry may also carry
-  `lecturer` and `programme`, shown with `when` and `where` above the title. The publications
+  runs Workshops & conferences, then **Reading groups & mini-courses**, in the
+  order the kinds first appear in `content.js`. The courses the doctoral students
+  give one another went from a section of their own on Activities, to a section
+  of the new **Courses page**, and back to Activities sharing a section with the
+  reading groups, which is where Milan wants them. The Courses page holds only
+  "University courses" (what group members teach in the degree programmes). Both
+  pages render through one `sectionedList()` in `site.js`; an entry may carry
+  `lecturer` and `programme`, shown with `when` and `where` above the title, and
+  `videoUrl`, shown as "Recordings" beside its other links. A list with a single
+  section shows no jump links (`.page-index:empty` is hidden). The publications
   page, its array and its renderer are removed; the old sample records are in
   the git history if they are ever wanted back.
 - **No diagonal arrows in links.** The `↗` that `external()` and several links
@@ -258,9 +261,22 @@ repository's.
   breadcrumb on top-level pages. The footer's Explore column, an exact copy of the
   menu, became an Address column. What remains are the routes to the two pages the
   menu does not carry (`archive.html`, `former.html`), jump links within a page,
-  and the homepage's link to the next talk's abstract. Do not add new ones back.
+  the homepage's link to the next talk's abstract, and the YouTube links below.
+  Do not add new ones back.
 - **Seven menu entries** (Courses added) only fit beside the name down to 761px
   because the 1000px block tightens the bar: the gap shrinks with the window
   (`clamp(10px,3.5vw - 17px,17px)`), links drop to .86rem and the name to 1.55rem.
   At 762px the menu ends exactly on the content edge, so an eighth entry, or a
   longer label, needs the menu button to take over at a wider breakpoint.
+- **The YouTube channel** is `youtubeUrl` in `content.js`, linked twice: "Recorded
+  talks on YouTube" under the seminar text on the homepage, and a "Recordings"
+  item in the seminars page's Practical information panel. Milan named those two
+  places; it is deliberately not in the footer as well. Individual reading
+  groups, mini-courses and courses link their own videos through `videoUrl`.
+- **The grey band under the hero is gone** (`home.about`, `#group-introduction`
+  and `.intro-strip`), at Milan's request: it was the last slogan on the homepage.
+  The hero paragraph (`home.introduction`) was drafted by Claude at Milan's request
+  and says who the group is, who leads it, what it works on and when the seminar
+  meets. Its topics were read off the seminar titles, and the department's name,
+  "Department of Mathematics: Analysis, Logic and Discrete Mathematics", was
+  written from memory rather than checked; Milan was asked to confirm both.
