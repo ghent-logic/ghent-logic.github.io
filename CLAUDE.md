@@ -293,7 +293,6 @@ repository's.
 - **The seminar is usually, not always, weekly on Thursdays at 11:00.** Copy says
   so ("usually", "most weeks"), and `seminarSchedule` fills the "When" item on the
   Seminars page. Never state the slot as fixed.
-
 - **The Contact page is built from `contacts`, `seminarContact`, `seminarMailing`
   and `directions`** in `content.js`. "Who to write to" lists the three
   professors Milan named (`contacts`, name and email, in his order); the group
