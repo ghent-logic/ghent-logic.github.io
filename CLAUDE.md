@@ -297,9 +297,11 @@ repository's.
   and `directions`** in `content.js`. "Who to write to" lists the three
   professors Milan named (`contacts`, name and email, in his order); the group
   `email`, when set, appears above them. "The seminar" comes second and says only
-  how to propose a talk, since the page is not mainly about the seminar;
-  `seminarMailing` (how to get the announcements) is still to come from Milan and
-  shows a bracketed reminder while `preview` is on. Who sends the announcements
+  how to propose a talk, since the page is not mainly about the seminar, then
+  `seminarMailing`: write to Giovanni Solda to get the announcements. That line
+  also appears as "Announcements" in the Seminars page's Practical information.
+  An email address written in `seminarContact` or `seminarMailing` becomes a
+  mailto link by itself (`withEmails()`, run after escaping). Who sends the announcements
   and who records them was deliberately left off. "Getting here" is Milan's
   directions, reworded, one paragraph per entry.
 - **No embedded map.** A Google Maps or OpenStreetMap embed would make every

@@ -28,7 +28,9 @@ window.GROUP = {
     { name: "Fedor Pakhomov", email: "fedor.pakhomov@ugent.be" }
   ],
   seminarContact: "To give a talk at the seminar, send its title and abstract to one of the professors above.",
-  seminarMailing: "", // one sentence on how to receive the seminar announcements; appears on the Contact page once filled in
+  // How to receive the seminar announcements; shown on the Contact page and the Seminars page.
+  // An email address written in either of these two lines becomes a link by itself.
+  seminarMailing: "To receive the seminar announcements by email, write to Giovanni Solda at giovanni.solda@ugent.be.",
   // "Getting here" on the Contact page: one entry per paragraph.
   directions: [
     "From Gent-Sint-Pieters station, buses 48, 49, 70, 71 and 76 go to the campus.",
