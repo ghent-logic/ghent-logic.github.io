@@ -279,4 +279,14 @@ repository's.
   and says who the group is, who leads it, what it works on and when the seminar
   meets. Its topics were read off the seminar titles, and the department's name,
   "Department of Mathematics: Analysis, Logic and Discrete Mathematics", was
-  written from memory rather than checked; Milan was asked to confirm both.
+  written from memory rather than checked; Milan was asked to confirm both, and
+  then asked for the paragraph as it now stands. Andreas Weiermann is head of
+  department, said in the paragraph and as his card's `role`.
+- **`home.introduction` may carry links**, written `[words](contact.html)`;
+  `withLinks()` in `site.js` turns them into anchors after escaping, and only for
+  one of the site's own `*.html` pages or an `http(s)` address. Milan asked for the
+  paragraph's link to the Contact page explicitly; it is the one exception to the
+  rule against links that repeat the menu.
+- **The seminar is usually, not always, weekly on Thursdays at 11:00.** Copy says
+  so ("usually", "most weeks"), and `seminarSchedule` fills the "When" item on the
+  Seminars page. Never state the slot as fixed.

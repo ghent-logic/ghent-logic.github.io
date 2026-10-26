@@ -23,6 +23,11 @@
   const paras = v => (Array.isArray(v) ? v : String(v ?? '').split(/\n\s*\n/))
     .map(t => String(t).trim()).filter(Boolean)
     .map(t => `<p${/^\[\d+\]/.test(t) ? ' class="reference"' : ''}>${linkify(esc(t))}</p>`).join('');
+  // [words](target) in the homepage introduction becomes a link. It runs on text
+  // that is already escaped, and the target must be one of the site's own pages
+  // or an http(s) address; anything else is left as the words alone.
+  const withLinks = t => t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, words, to) =>
+    /^[a-z0-9-]+\.html(#[a-z0-9-]+)?$/i.test(to) || /^https?:\/\//i.test(to) ? `<a href="${to}">${words}</a>` : words);
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)}</a>` : '';
@@ -116,7 +121,7 @@
   const areas = G.research || [];
   if (current === 'index') {
     set('hero-title', esc(G.home.title));
-    set('hero-introduction', esc(G.home.introduction));
+    set('hero-introduction', withLinks(esc(G.home.introduction)));
     set('home-youtube', external(G.youtubeUrl, 'Recorded talks on YouTube', 'text-link'));
     set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p></article>`).join(''));
   }
