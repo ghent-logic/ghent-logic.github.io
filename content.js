@@ -14,11 +14,29 @@ window.GROUP = {
   email: "", // e.g. your real institutional contact email
   // One line per line of the address, most specific first, as on an envelope.
   address: ["Building S8, third floor", "Krijgslaan 281", "9000 Ghent, Belgium"],
-  mapUrl: "", // optional link to your building on a map
+  // Two links under the address on the Contact page; leave either "" to hide it.
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Ghent+University+Campus+Sterre+S8%2C+Krijgslaan+281%2C+9000+Gent", // shown as "Directions in Google Maps"
+  campusMapUrl: "https://www.ugent.be/nl/univgent/campussen/campussen-gent/grondplan_campussterre.pdf", // shown as "Campus plan (PDF)"
   // If the background photograph needs crediting, name it here and the line
   // appears in the footer, e.g. "Photograph: Jan Jansen, CC BY-SA 4.0".
   photoCredit: "",
-  directions: "", // public transport, entrance, and accessibility information
+  // CONTACT PAGE
+  // Who to write to, in the order shown. The email is what visitors click.
+  contacts: [
+    { name: "Andreas Weiermann", email: "andreas.weiermann@ugent.be" },
+    { name: "Lev Beklemishev", email: "lev.beklemishev@ugent.be" },
+    { name: "Fedor Pakhomov", email: "fedor.pakhomov@ugent.be" }
+  ],
+  seminarContact: "To give a talk at the seminar, send its title and abstract to one of the professors above.",
+  // How to receive the seminar announcements; shown on the Contact page and the Seminars page.
+  // An email address written in either of these two lines becomes a link by itself.
+  seminarMailing: "To receive the seminar announcements by email, write to Giovanni Solda at giovanni.solda@ugent.be.",
+  // "Getting here" on the Contact page: one entry per paragraph.
+  directions: [
+    "From Gent-Sint-Pieters station, buses 48, 49, 70, 71 and 76 go to the campus.",
+    "Building S8 is open on weekdays from 8:00 to 19:00.",
+    "We are on the third floor, which you can reach by lift or by the stairs. Coming up the stairs, turn right, then left, and follow the corridor to the end, where our offices are."
+  ],
   seminarEmail: "", // optional; falls back to the general email
   seminarLocation: "", // e.g. a verified building and room
   seminarVenue: "Campus Sterre, building S8", // put before a room name such as "Vergaderzaal 3.2"

@@ -206,8 +206,7 @@ repository's.
 - **`seminarVenue` in `content.js`** holds "Campus Sterre, building S8" and is
   put in front of any room name, so the 29 entries that name a room by number
   alone do not repeat the campus. The Practical information panel falls back to
-  it as well. **Unconfirmed: whether S8 is the right building.** Milan was asked
-  to check; one field fixes all 58 entries if not.
+  it as well. S8 is confirmed: Milan's own directions to the group's offices name it.
 - **The turnstile stays.** Milan asked whether a logo is needed at all and
   offered to drop it. It does real work — it is the favicon and tab identity,
   and it reads as "logic" to a logician at a glance — so the recommendation was
@@ -294,3 +293,20 @@ repository's.
 - **The seminar is usually, not always, weekly on Thursdays at 11:00.** Copy says
   so ("usually", "most weeks"), and `seminarSchedule` fills the "When" item on the
   Seminars page. Never state the slot as fixed.
+- **The Contact page is built from `contacts`, `seminarContact`, `seminarMailing`
+  and `directions`** in `content.js`. "Who to write to" lists the three
+  professors Milan named (`contacts`, name and email, in his order); the group
+  `email`, when set, appears above them. "The seminar" comes second and says only
+  how to propose a talk, since the page is not mainly about the seminar, then
+  `seminarMailing`: write to Giovanni Solda to get the announcements. That line
+  also appears as "Announcements" in the Seminars page's Practical information.
+  An email address written in `seminarContact` or `seminarMailing` becomes a
+  mailto link by itself (`withEmails()`, run after escaping). Who sends the announcements
+  and who records them was deliberately left off. "Getting here" is Milan's
+  directions, reworded, one paragraph per entry.
+- **No embedded map.** A Google Maps or OpenStreetMap embed would make every
+  visit to the Contact page load a third party, which this site does not do, and
+  Google's sets cookies. The address panel links out instead: `mapUrl` ("Directions
+  in Google Maps", a search URL) and `campusMapUrl` ("Campus plan (PDF)", UGent's
+  plan of Campus Sterre). Neither host is reachable from the web sessions, so
+  Milan was asked to click both once.

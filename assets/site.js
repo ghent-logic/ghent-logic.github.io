@@ -28,6 +28,9 @@
   // or an http(s) address; anything else is left as the words alone.
   const withLinks = t => t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, words, to) =>
     /^[a-z0-9-]+\.html(#[a-z0-9-]+)?$/i.test(to) || /^https?:\/\//i.test(to) ? `<a href="${to}">${words}</a>` : words);
+  // A bare email address in a line of contact text becomes a mailto link. The
+  // text is escaped first, and the pattern admits no quote, angle bracket or &.
+  const withEmails = t => t.replace(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, a => `<a href="mailto:${a}">${a}</a>`);
   const records = list => (list || []).filter(x => G.preview || !x.sample);
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   const external = (url, label, cls = '') => link(url) ? `<a class="${cls}" href="${link(url)}">${esc(label)}</a>` : '';
@@ -198,7 +201,7 @@
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
       + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
-    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${link(G.youtubeUrl) ? `<div class="info-item"><span class="info-label">Recordings</span>${external(G.youtubeUrl, 'YouTube channel')}</div>` : ''}${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
+    set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${G.seminarMailing ? `<div class="info-item"><span class="info-label">Announcements</span><p>${withEmails(esc(G.seminarMailing))}</p></div>` : ''}${link(G.youtubeUrl) ? `<div class="info-item"><span class="info-label">Recordings</span>${external(G.youtubeUrl, 'YouTube channel')}</div>` : ''}${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
   }
   if (current === 'archive') {
     const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
@@ -240,10 +243,17 @@
   if (current === 'activities') sectionedList(G.activities, 'activities-index', 'activities-list', 'Activities', 'The group’s activities will be listed here.');
   if (current === 'courses') sectionedList(G.courses, 'courses-index', 'courses-list', 'Courses', 'The courses the group teaches will be listed here.');
   if (current === 'contact') {
-    set('general-contact', mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : `<p class="draft-field">${G.preview ? '[Add the group’s contact email in content.js]' : 'A group contact address will be added here.'}</p>`);
-    set('seminar-contact', mail(G.seminarEmail || G.email) ? `<a href="${mail(G.seminarEmail || G.email)}">Email the seminar organizers</a>` : '<p class="muted">Organizer details will be included in the seminar announcements.</p>');
-    set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${external(G.mapUrl, 'Open map')}`);
-    set('visit-directions', G.directions ? esc(G.directions) : G.preview ? '[Add directions and information about step-free access in content.js.]' : 'Please contact your host for directions and information about building access.');
+    const people = (G.contacts || []).filter(c => mail(c.email));
+    const group = mail(G.email) ? `<a class="email-link" href="${mail(G.email)}">${esc(G.email)}</a>` : '';
+    set('general-contact', people.length
+      ? `${group}<p>For questions about the group, its research, or a visit, write to one of its professors:</p><ul class="contact-people">${people.map(c => `<li><span class="contact-name">${esc(c.name)}</span><a href="${mail(c.email)}">${esc(c.email)}</a></li>`).join('')}</ul>`
+      : group || `<p class="draft-field">${G.preview ? '[Add contacts or the group’s email in content.js]' : 'Contact details will be added here.'}</p>`);
+    const mailing = G.seminarMailing ? `<p>${withEmails(esc(G.seminarMailing))}</p>` : G.preview ? '<p class="draft-field">[How to receive the seminar announcements: fill in seminarMailing in content.js]</p>' : '';
+    const organisers = mail(G.seminarEmail) ? `<p><a href="${mail(G.seminarEmail)}">Email the seminar organizers</a></p>` : '';
+    set('seminar-contact', `${G.seminarContact ? `<p>${withEmails(esc(G.seminarContact))}</p>` : ''}${mailing}${organisers}`);
+    const maps = external(G.mapUrl, 'Directions in Google Maps') + external(G.campusMapUrl, 'Campus plan (PDF)');
+    set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${maps ? `<div class="map-links">${maps}</div>` : ''}`);
+    set('visit-directions', G.directions?.length ? paras(G.directions) : `<p${G.preview ? ' class="draft-field">[Add directions in content.js]' : '>Please contact your host for directions and information about building access.'}</p>`);
   }
   typesetMath(document.body);
 })();
