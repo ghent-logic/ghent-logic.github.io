@@ -49,7 +49,7 @@ window.GROUP = {
     // The first thing a visitor reads: who the group is, what it works on, when it meets.
     // A link is written [words](page.html), e.g. [contact page](contact.html), or with
     // a full https:// address in the round brackets.
-    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann, who is also head of the department. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We usually meet on Thursdays at 11:00 for a seminar in building S8, open to anyone interested. We also try to organise social events every so often. See the [contact page](contact.html) if you are interested in coming for a visit!"
+    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann, who is also head of the department. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We usually meet on Thursdays for a [seminar](seminars.html), open to anyone interested. We also try to organise social events every so often. See the [contact page](contact.html) if you are interested in coming for a visit!"
   },
   research: [
     {
@@ -147,9 +147,12 @@ window.GROUP = {
   //   time: "11:00"               local Ghent time; omit if it was the usual hour
   //   location: "Leslokaal 2.2"   otherwise falls back to seminarLocation above
   //   speakerUrl:                 turns the speaker's name into a link to their page
+  //   zoomUrl:     the Zoom link for following the talk live; shown as "Join on Zoom"
+  //                until the talk is over, then hidden. Everything in this file is
+  //                public, so use a link you are happy for anyone to see.
   //   videoUrl:    a YouTube link, or any other link to a recording; shown as
-  //                "Recording" beneath the talk. onlineUrl (a live meeting
-  //                link), slidesUrl and paperUrl work the same way.
+  //                "Recording" beneath the talk. slidesUrl and paperUrl work the same way.
+  // Once a talk is over, its time, room and Zoom link are no longer shown.
   //   abstract: ["first paragraph", "second paragraph"]   one entry per paragraph
   //   id:                         the talk's own link (archive.html#id) — keep it unique
   // Any field except date, speaker and title may simply be left out.
@@ -752,19 +755,24 @@ window.GROUP = {
   // kind first appears here, exactly as on the Activities page: move the first
   // university course above the lecture series to put that section first.
   //   lecturer, programme, when, where   shown above the title; leave any out
+  //   ongoing: true    marks a lecture series running now: labelled "Ongoing" and listed first
+  //   ongoing: false   a series that is over: when and where are hidden, and period
+  //                    ("March 2025") is shown instead
   //   url, linkLabel                     notes or slides, or a course's page in the UGent study guide
   //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
     { kind: "Lecture series",
       title: "Provability Logic",
       lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
+      ongoing: false, period: "[Month and year]",
       description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
-      url: "https://www.youtube.com/playlist?list=PLEorlafzMjcWbKA5QnwzSjjy25VOn-nYc", linkLabel: "Lecture notes", videoUrl: "", sample: false },
+      url: "", linkLabel: "Lecture notes", videoUrl: "https://www.youtube.com/playlist?list=PLEorlafzMjcWbKA5QnwzSjjy25VOn-nYc", sample: false },
     { kind: "Lecture series",
       title: "Provability and Reflection",
       lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
+      ongoing: false, period: "[Month and year]",
       description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
-      url: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", linkLabel: "Lecture notes", videoUrl: "", sample: false },
+      url: "", linkLabel: "Lecture notes", videoUrl: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", sample: false },
     { kind: "University courses",
       title: "Proof Theory",
       lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "First semester",
