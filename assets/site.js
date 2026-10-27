@@ -116,7 +116,7 @@
   const wide = window.matchMedia('(min-width: 761px)');
   wide.addEventListener('change', () => closeMenu(), {signal: listeners.signal});
 
-  set('site-footer', `<footer class="footer"><div class="wrap"><div class="footer-main"><div><h2>${esc(G.name)}</h2><p>${esc(G.department || G.university)}<br>${esc(G.city)}</p></div><div>${G.address?.length ? `<div class="footer-label">Address</div><address class="footer-address">${G.address.map(esc).join('<br>')}</address>` : ''}</div><div><div class="footer-label">Connect</div><div class="footer-links">${external(G.universityUrl, G.university)}${mail(G.email) ? `<a href="${mail(G.email)}">${esc(G.email)}</a>` : ''}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} ${esc(G.name)}</span>${G.photoCredit ? `<span class="footer-credit">${esc(G.photoCredit)}</span>` : ''}<span>${G.preview ? 'Preview copy · Replace sample content before launch' : esc(G.university)}</span></div></div></footer>`);
+  set('site-footer', `<footer class="footer"><div class="wrap"><div class="footer-main"><div><h2>${esc(G.name)}</h2><p>${esc(G.department || G.university)}<br>${esc(G.city)}</p></div><div><div class="footer-label">Explore</div><div class="footer-links">${nav.filter(([p]) => p !== 'index' && p !== 'contact').map(([p,t]) => `<a href="${p}.html">${t}</a>`).join('')}</div></div><div><div class="footer-label">Connect</div><div class="footer-links"><a href="contact.html">Contact the group</a>${external(G.universityUrl, G.university)}${mail(G.email) ? `<a href="${mail(G.email)}">${esc(G.email)}</a>` : ''}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} ${esc(G.name)}</span>${G.photoCredit ? `<span class="footer-credit">${esc(G.photoCredit)}</span>` : ''}<span>${G.preview ? 'Preview copy · Replace sample content before launch' : esc(G.university)}</span></div></div></footer>`);
   document.querySelectorAll('[data-group-name]').forEach(el => el.textContent = G.name);
   document.querySelectorAll('[data-university]').forEach(el => el.textContent = G.university);
   document.querySelectorAll('[data-city]').forEach(el => el.textContent = G.city);
@@ -176,13 +176,15 @@
   }
   function talkHtml(t) {
     const who = link(t.speakerUrl) ? `<a href="${link(t.speakerUrl)}">${esc(t.speaker)}</a>` : esc(t.speaker);
-    // A past talk keeps the room it was held in, but must not promise a location still to come.
-    // The announcements name rooms by number alone, so the campus and building come
-    // from G.seminarVenue rather than being repeated in every entry.
-    const room = t.location || (isPast(t) ? '' : G.seminarLocation || 'Location to be announced');
+    // Once a talk is over its time, room and meeting link are of no use, so only
+    // a talk still to come shows them. The announcements name rooms by number
+    // alone, so the campus and building come from G.seminarVenue.
+    const over = isPast(t);
+    const room = over ? '' : t.location || G.seminarLocation || 'Location to be announced';
     const place = room && G.seminarVenue && !room.includes(G.seminarVenue) ? `${G.seminarVenue}, ${room}` : room;
-    const meta = [t.time ? esc(t.time) + ' (Ghent local time)' : '', esc(place)].filter(Boolean).join(' · ');
-    const links = external(t.onlineUrl,'Join online') + external(t.videoUrl,'Recording') + external(t.slidesUrl,'Slides') + external(t.paperUrl,'Paper');
+    const meta = over ? '' : [t.time ? esc(t.time) + ' (Ghent local time)' : '', esc(place)].filter(Boolean).join(' · ');
+    const live = over ? '' : external(t.zoomUrl, 'Join on Zoom') || external(t.onlineUrl, 'Join online');
+    const links = live + external(t.videoUrl,'Recording') + external(t.slidesUrl,'Slides') + external(t.paperUrl,'Paper');
     return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${who}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p>${meta ? `<p class="location">${meta}</p>` : ''}${t.abstract ? `<details><summary>Read abstract</summary>${paras(t.abstract)}</details>` : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</div></article>`;
   }
   if (current === 'index') {
@@ -199,24 +201,30 @@
     set('upcoming-talks', upcoming.length ? upcoming.map(talkHtml).join('') : '<div class="empty">No upcoming talks have been announced. Please check back for the next programme.</div>');
     const recent = past.slice(0, RECENT_TALKS);
     set('past-talks', recent.length ? recent.map(talkHtml).join('')
-      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">All previous talks</a></p>` : '')
+      + (past.length > recent.length ? `<p class="archive-more"><a class="text-link" href="archive.html">Previous talks</a></p>` : '')
       : '<p class="muted">Previous talks will appear here.</p>');
     set('seminar-practical', `<h3>Practical information</h3><div class="info-item"><span class="info-label">When</span><p>${esc(G.seminarSchedule || 'See individual announcements. All times are local to Ghent.')}</p></div><div class="info-item"><span class="info-label">Where</span><p>${esc(G.seminarLocation || G.seminarVenue || 'Locations will be included with each announcement.')}</p></div>${G.seminarMailing ? `<div class="info-item"><span class="info-label">Announcements</span><p>${withEmails(esc(G.seminarMailing))}</p></div>` : ''}${link(G.youtubeUrl) ? `<div class="info-item"><span class="info-label">Recordings</span>${external(G.youtubeUrl, 'YouTube channel')}</div>` : ''}${mail(G.seminarEmail || G.email) ? `<div class="info-item"><span class="info-label">Questions & online access</span><a href="${mail(G.seminarEmail || G.email)}">Email the organizers</a></div>` : ''}`);
   }
   if (current === 'archive') {
-    const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
-    // A link to one talk opens the page that holds it, wherever it has drifted to.
-    const wanted = decodeURIComponent(location.hash.slice(1));
-    const found = wanted ? past.findIndex(t => slug(t.id) === wanted) : -1;
-    const asked = found >= 0 ? Math.floor(found / PER_PAGE) + 1 : parseInt(new URLSearchParams(location.search).get('page'), 10) || 1;
-    const page = Math.min(Math.max(asked, 1), pages);
-    const slice = past.slice((page - 1) * PER_PAGE, page * PER_PAGE);
-    set('archive-count', past.length
-      ? `${past.length} talk${past.length === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
-      : '');
-    set('archive-talks', slice.length ? slice.map(talkHtml).join('') : '<div class="empty"><h3>Archive</h3><p>Previous talks will appear here.</p></div>');
+    const list = document.getElementById('archive-talks');
+    const box = document.getElementById('archive-q');
+    // Search ignores case and accents, so "godel" finds "Gödel", and reads the
+    // LaTeX both as written and with its markup stripped, so "ACA0" finds
+    // \(\mathsf{ACA}_0\). Every word typed must occur somewhere in the talk.
+    const fold = v => String(v ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    const bare = v => v.replace(/\\(mathsf|mathrm|mathbf|mathit|mathcal|text|operatorname)\b/g, '').replace(/\\[()[\]]/g, ' ').replace(/[\\{}_^$]/g, '');
+    const searchable = past.map(t => {
+      const text = [t.title, t.speaker, t.affiliation, t.date, validDate(t.date) ? dateLabel(t) : '', ...[].concat(t.abstract || [])].join(' ');
+      return fold(text + ' ' + bare(text));
+    });
     const href = n => n === 1 ? 'archive.html' : `archive.html?page=${n}`;
-    set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
+    function showPage(page, pages) {
+      const slice = past.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+      set('archive-count', past.length
+        ? `${past.length} talk${past.length === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
+        : '');
+      set('archive-talks', slice.length ? slice.map(talkHtml).join('') : '<div class="empty"><h3>Archive</h3><p>Previous talks will appear here.</p></div>');
+      set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
       ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
       <span class="pager-pages">${pagerNumbers(page, pages).map(n => n === GAP
         ? '<span class="pager-gap" aria-hidden="true">…</span>'
@@ -225,7 +233,40 @@
           : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
       ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
     </nav>` : '');
-    if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
+    }
+    // While searching, every match is listed on one page and the pager steps aside.
+    function showMatches(query) {
+      const words = fold(query).split(/\s+/).filter(Boolean);
+      const hits = past.filter((t, i) => words.every(w => searchable[i].includes(w)));
+      set('archive-count', `${hits.length} of ${past.length} talks match`);
+      set('archive-talks', hits.length ? hits.map(talkHtml).join('') : `<div class="empty"><p>No talk matches “${esc(query.trim())}”. Try fewer or shorter words.</p></div>`);
+      set('archive-pager', '');
+    }
+    const pages = Math.max(1, Math.ceil(past.length / PER_PAGE));
+    const params = new URLSearchParams(location.search);
+    const query = params.get('q') || '';
+    // A link to one talk opens the page that holds it, wherever it has drifted to.
+    const wanted = decodeURIComponent(location.hash.slice(1));
+    const found = wanted ? past.findIndex(t => slug(t.id) === wanted) : -1;
+    if (query.trim() && found < 0) {
+      if (box) box.value = query;
+      showMatches(query);
+    } else {
+      const asked = found >= 0 ? Math.floor(found / PER_PAGE) + 1 : parseInt(params.get('page'), 10) || 1;
+      showPage(Math.min(Math.max(asked, 1), pages), pages);
+      if (found >= 0) document.getElementById(wanted)?.scrollIntoView();
+    }
+    let pending;
+    box?.addEventListener('input', () => {
+      clearTimeout(pending);
+      pending = setTimeout(() => {
+        const q = box.value;
+        // The address keeps the search, so a filtered list can be shared or reloaded.
+        history.replaceState(null, '', q.trim() ? `archive.html?q=${encodeURIComponent(q.trim())}` : 'archive.html');
+        if (q.trim()) showMatches(q); else showPage(1, pages);
+        typesetMath(list);
+      }, 150);
+    }, {signal: listeners.signal});
   }
   // Activities and courses are both lists of entries grouped into sections by
   // `kind`, the sections in the order each kind first appears in content.js.
@@ -234,10 +275,16 @@
     const kinds = [...new Set(entries.map(a => a.kind))];
     // A single section needs no jump links to itself.
     set(indexId, kinds.length > 1 ? kinds.map(k => `<a href="#${slug(k)}">${esc(k)}</a>`).join('') : '');
-    set(listId, kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${entries.filter(a => a.kind === k).map(a => {
+    // An entry marked ongoing: true is labelled and comes first in its section.
+    // One marked ongoing: false is over, so its dates and room give way to `period`
+    // ("March 2025"). Entries without the field show everything they have.
+    const ongoingFirst = (a, b) => (b.ongoing === true) - (a.ongoing === true);
+    set(listId, kinds.length ? kinds.map(k => `<section class="activity-group" id="${slug(k)}"><h2 class="group-title">${esc(k)}</h2>${entries.filter(a => a.kind === k).sort(ongoingFirst).map(a => {
       const links = external(a.url, a.linkLabel || 'More information') + external(a.videoUrl, 'Recordings') + (mail(a.contact) ? `<a href="${mail(a.contact)}">Email the organisers</a>` : '');
-      const meta = [a.lecturer, a.programme, a.when, a.where].filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('');
-      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${meta}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
+      const shown = a.ongoing === false ? [a.lecturer, a.programme, a.period] : [a.lecturer, a.programme, a.when, a.where];
+      const meta = shown.filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('');
+      const status = a.ongoing === true ? '<span class="status-ongoing">Ongoing</span>' : '';
+      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${meta}${sample(a)}</div><h3>${esc(a.title)}${status}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
     }).join('')}</section>`).join('') : `<div class="empty"><h3>${emptyTitle}</h3><p>${emptyText}</p></div>`);
   }
   if (current === 'activities') sectionedList(G.activities, 'activities-index', 'activities-list', 'Activities', 'The group’s activities will be listed here.');
@@ -251,8 +298,9 @@
     const mailing = G.seminarMailing ? `<p>${withEmails(esc(G.seminarMailing))}</p>` : G.preview ? '<p class="draft-field">[How to receive the seminar announcements: fill in seminarMailing in content.js]</p>' : '';
     const organisers = mail(G.seminarEmail) ? `<p><a href="${mail(G.seminarEmail)}">Email the seminar organizers</a></p>` : '';
     set('seminar-contact', `${G.seminarContact ? `<p>${withEmails(esc(G.seminarContact))}</p>` : ''}${mailing}${organisers}`);
-    const maps = external(G.mapUrl, 'Directions in Google Maps') + external(G.campusMapUrl, 'Campus plan (PDF)');
-    set('visit-address', `<p>${esc(G.name)}<br>${G.department ? esc(G.department)+'<br>' : ''}${esc(G.university)}</p><address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>${maps ? `<div class="map-links">${maps}</div>` : ''}`);
+    const maps = external(G.mapUrl, 'Directions in Google Maps', 'text-link') + external(G.campusMapUrl, 'Campus plan (PDF)', 'text-link');
+    set('visit-address', `<address>${G.address?.length ? G.address.map(esc).join('\n') : (G.preview ? '[Building, street, and postal code]\n' : '')+esc(G.city)}</address>`);
+    set('visit-maps', maps);
     set('visit-directions', G.directions?.length ? paras(G.directions) : `<p${G.preview ? ' class="draft-field">[Add directions in content.js]' : '>Please contact your host for directions and information about building access.'}</p>`);
   }
   typesetMath(document.body);

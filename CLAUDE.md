@@ -184,9 +184,10 @@ repository's.
   sequences", had no speaker in its email — only "I". Milan confirmed it was
   Alakh Dhruv Chopra, and it is now in. The archive holds 58 talks.
 - **The design pass, approved item by item in chat.** All decorative kickers are
-  gone: eleven `.eyebrow` elements deleted across the pages. Two informative ones
-  survive on purpose — "404 · Page not found" and "Find us" over the address —
-  and so does the one carrying a talk's date in the homepage seminar box. The
+  gone: eleven `.eyebrow` elements deleted across the pages. One informative one
+  survives on purpose — "404 · Page not found" — and so does the one carrying a
+  talk's date in the homepage seminar box. ("Find us" went with the Contact
+  page's navy address panel.) The
   homepage hero is now a plain factual headline with no second line in teal
   italic, set at `clamp(2.3rem,4.3vw,3.5rem)` because a sentence cannot be set
   at the size of a three-word slogan. The seminar section sits above the research
@@ -262,7 +263,10 @@ repository's.
   link to Seminars, "Find a group member" on Contact, the seminar aside's
   "Contact information" when there is no seminar email, and the "Home / Page"
   breadcrumb on top-level pages. The footer's Explore column, an exact copy of the
-  menu, became an Address column. What remains are the routes to the two pages the
+  menu, briefly became an Address column, but Milan asked for the original footer
+  back: Explore (every page but Home and Contact) and Connect ("Contact the
+  group", the university, the group email). The footer is the agreed exception.
+  What remains in page bodies are the routes to the two pages the
   menu does not carry (`archive.html`, `former.html`), jump links within a page,
   the homepage's link to the next talk's abstract, and the YouTube links below.
   Do not add new ones back.
@@ -304,9 +308,33 @@ repository's.
   mailto link by itself (`withEmails()`, run after escaping). Who sends the announcements
   and who records them was deliberately left off. "Getting here" is Milan's
   directions, reworded, one paragraph per entry.
+- **The Contact page's navy address panel is gone**, at Milan's request. The
+  address, the two map links and the directions now make up "Getting here", in
+  the right-hand column; "Who to write to" and "The seminar" fill the left. The
+  "arrange visits with your host" line went with the panel.
 - **No embedded map.** A Google Maps or OpenStreetMap embed would make every
   visit to the Contact page load a third party, which this site does not do, and
-  Google's sets cookies. The address panel links out instead: `mapUrl` ("Directions
+  Google's sets cookies. The page links out instead: `mapUrl` ("Directions
   in Google Maps", a search URL) and `campusMapUrl` ("Campus plan (PDF)", UGent's
   plan of Campus Sterre). Neither host is reachable from the web sessions, so
   Milan was asked to click both once.
+- **Seminars page and archive.** A talk that is over shows no time, no room and
+  no meeting link, only what is still of use (abstract, recording, slides,
+  paper); `zoomUrl` ("Join on Zoom") is the meeting link, with the older
+  `onlineUrl` ("Join online") still read. The Practical information panel rises
+  190px into the page head and straddles its lower edge, with a hairline border;
+  `.beside-aside` on that page head keeps its lead and jump links out of the
+  panel's column, and both are reset at 760px, where the panel drops into the
+  flow. The link to the archive reads "Previous talks".
+- **The archive has a search box** (`#archive-q`). Every word typed must occur in
+  the talk's title, speaker, affiliation, date or abstract, case and accents
+  ignored; the LaTeX is searched as written and with its markup stripped, so
+  "ACA0" finds `\(\mathsf{ACA}_0\)`. While searching, all matches show on one page
+  with no pager, and the query is kept in the address as `?q=`, so a search can be
+  shared. A `#talk-id` in the address wins over `?q=`.
+- **`ongoing` on activities and courses.** `ongoing: true` adds a teal "Ongoing"
+  label right after the title (Milan found it lost at the start of the meta row)
+  and lists the entry first in its section; `ongoing: false` hides `when`
+  and `where` and shows `period` ("March 2025") instead. Entries without the
+  field show everything, as before. Milan's two lecture series had their YouTube
+  playlists in `url`, labelled "Lecture notes"; they were moved to `videoUrl`.

@@ -624,6 +624,27 @@ img {
 .archive-more {
   margin-top:34px
 }
+.archive-search {
+  margin-top:26px;
+  max-width:480px
+}
+.archive-search input {
+  width:100%;
+  padding:11px 14px;
+  border:1px solid #c9d6dc;
+  border-radius:2px;
+  background:white;
+  color:var(--ink);
+  font-size:1rem
+}
+.archive-search input:focus {
+  outline:2px solid var(--teal);
+  outline-offset:1px;
+  border-color:var(--teal)
+}
+.archive-search input::placeholder {
+  color:#7b8d97
+}
 .pager {
   display:flex;
   align-items:center;
@@ -733,6 +754,17 @@ img {
   display:grid;
   grid-template-columns:minmax(0,1fr) 280px;
   gap:60px
+}
+/* Practical information rises into the page head and straddles its lower edge;
+   a hairline keeps it one panel across the two backgrounds, and the head's text
+   stops short of the column it rises into. */
+.seminar-aside {
+  position:relative;
+  margin-top:-190px;
+  border:1px solid var(--line)
+}
+.beside-aside .lead,.beside-aside .page-index {
+  max-width:min(680px,calc(100% - 340px))
 }
 .aside {
   align-self:start;
@@ -875,6 +907,22 @@ details[open] summary {
 .activity .talk-links {
   margin-top:16px
 }
+/* Sits after the title, on its line while there is room and below it when not. */
+.status-ongoing {
+  display:inline-block;
+  margin-left:14px;
+  vertical-align:.3em;
+  font-family:var(--sans);
+  line-height:1.6;
+  color:white;
+  background:var(--teal);
+  padding:2px 8px;
+  border-radius:2px;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
 .empty {
   padding:30px;
   background:var(--soft);
@@ -938,48 +986,25 @@ details[open] summary {
 }
 .map-links {
   display:flex;
-  flex-direction:column;
-  align-items:start;
-  gap:8px
+  flex-wrap:wrap;
+  gap:8px 24px;
+  margin:14px 0 22px
+}
+.map-links:empty {
+  display:none
 }
 .email-link {
   font-size:clamp(1.1rem,2vw,1.45rem);
   overflow-wrap:anywhere
 }
-.address-panel {
-  background:var(--navy);
-  color:white;
-  padding:37px
-}
-.address-panel .eyebrow {
-  color:var(--gold)
-}
-.address-panel h2 {
-  font-size:2.15rem;
-  margin:18px 0 20px
-}
-.address-panel p {
-  color:#d5e0e8
-}
-.address-panel a {
-  color:var(--gold)
-}
 address {
   font-style:normal;
-  margin:23px 0;
-  color:#d5e0e8;
+  color:var(--ink);
   white-space:pre-line
-}
-.contact-follow {
-  margin-top:24px;
-  font-size:.875rem
 }
 .draft-field {
   color:var(--muted);
   font-style:italic
-}
-.address-panel .draft-field {
-  color:#d5e0e8
 }
 .footer {
   background:var(--navy-deep);
@@ -1007,11 +1032,6 @@ address {
   text-transform:uppercase;
   color:var(--gold);
   margin-bottom:13px
-}
-.footer-address {
-  font-style:normal;
-  font-size:.84rem;
-  line-height:1.75
 }
 .footer-links {
   display:flex;
@@ -1103,6 +1123,9 @@ address {
 .listing-layout {
   gap:30px;
   grid-template-columns:minmax(0,1fr) 245px
+}
+.beside-aside .lead,.beside-aside .page-index {
+  max-width:calc(100% - 275px)
 }
 .members {
   grid-template-columns:repeat(2,1fr)
@@ -1253,6 +1276,12 @@ address {
   order:-1
 }
 .seminar-aside {
+  margin-top:0
+}
+.beside-aside .lead,.beside-aside .page-index {
+  max-width:680px
+}
+.seminar-aside {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px
@@ -1325,9 +1354,6 @@ address {
 }
 .seminar-feature {
   padding:24px
-}
-.contact-grid .address-panel {
-  padding:28px
 }
 .seminar-aside {
   display:block
