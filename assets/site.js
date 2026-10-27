@@ -19,10 +19,13 @@
     const url = u.replace(/[.,;:]+$/, '');
     return `<a href="${url}">${url}</a>${u.slice(url.length)}`;
   });
-  // A paragraph opening with [1] is a reference, and is set to hang.
+  // A paragraph opening with [1] is a reference, and is set to hang. A list
+  // inside the list of paragraphs, ["a", "b"], is set as a numbered list.
   const paras = v => (Array.isArray(v) ? v : String(v ?? '').split(/\n\s*\n/))
-    .map(t => String(t).trim()).filter(Boolean)
-    .map(t => `<p${/^\[\d+\]/.test(t) ? ' class="reference"' : ''}>${linkify(esc(t))}</p>`).join('');
+    .map(t => Array.isArray(t) ? t : String(t).trim()).filter(t => t.length)
+    .map(t => Array.isArray(t)
+      ? `<ol class="text-list">${t.map(i => `<li>${linkify(esc(i))}</li>`).join('')}</ol>`
+      : `<p${/^\[\d+\]/.test(t) ? ' class="reference"' : ''}>${linkify(esc(t))}</p>`).join('');
   // [words](target) in the homepage introduction becomes a link. It runs on text
   // that is already escaped, and the target must be one of the site's own pages
   // or an http(s) address; anything else is left as the words alone.
@@ -185,7 +188,7 @@
     const meta = over ? '' : [t.time ? esc(t.time) + ' (Ghent local time)' : '', esc(place)].filter(Boolean).join(' · ');
     const live = over ? '' : external(t.zoomUrl, 'Join on Zoom') || external(t.onlineUrl, 'Join online');
     const links = live + external(t.videoUrl,'Recording') + external(t.slidesUrl,'Slides') + external(t.paperUrl,'Paper');
-    return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${who}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p>${meta ? `<p class="location">${meta}</p>` : ''}${t.abstract ? `<details><summary>Read abstract</summary>${paras(t.abstract)}</details>` : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</div></article>`;
+    return `<article class="talk" id="${slug(t.id)}">${dateBox(t)}<div>${sample(t)}<h3>${esc(t.title)}</h3><p class="speaker">${who}${t.affiliation ? ' · '+esc(t.affiliation) : ''}</p>${meta ? `<p class="location">${meta}</p>` : ''}${t.abstract || links ? `<div class="talk-actions">${t.abstract ? `<details><summary>Read abstract</summary>${paras(t.abstract)}</details>` : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</div>` : ''}</div></article>`;
   }
   if (current === 'index') {
     const t = upcoming[0];
