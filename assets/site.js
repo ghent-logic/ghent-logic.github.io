@@ -284,7 +284,7 @@
       const shown = a.ongoing === false ? [a.lecturer, a.programme, a.period] : [a.lecturer, a.programme, a.when, a.where];
       const meta = shown.filter(Boolean).map(m => `<span>${esc(m)}</span>`).join('');
       const status = a.ongoing === true ? '<span class="status-ongoing">Ongoing</span>' : '';
-      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${status}${meta}${sample(a)}</div><h3>${esc(a.title)}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
+      return `<article class="activity"${a.id ? ` id="${slug(a.id)}"` : ''}><div class="activity-meta">${meta}${sample(a)}</div><h3>${esc(a.title)}${status}</h3>${a.description ? paras(a.description) : ''}${links ? `<div class="talk-links">${links}</div>` : ''}</article>`;
     }).join('')}</section>`).join('') : `<div class="empty"><h3>${emptyTitle}</h3><p>${emptyText}</p></div>`);
   }
   if (current === 'activities') sectionedList(G.activities, 'activities-index', 'activities-list', 'Activities', 'The group’s activities will be listed here.');

@@ -333,7 +333,8 @@ repository's.
   with no pager, and the query is kept in the address as `?q=`, so a search can be
   shared. A `#talk-id` in the address wins over `?q=`.
 - **`ongoing` on activities and courses.** `ongoing: true` adds a teal "Ongoing"
-  label and lists the entry first in its section; `ongoing: false` hides `when`
+  label right after the title (Milan found it lost at the start of the meta row)
+  and lists the entry first in its section; `ongoing: false` hides `when`
   and `where` and shows `period` ("March 2025") instead. Entries without the
   field show everything, as before. Milan's two lecture series had their YouTube
   playlists in `url`, labelled "Lecture notes"; they were moved to `videoUrl`.

@@ -907,7 +907,13 @@ details[open] summary {
 .activity .talk-links {
   margin-top:16px
 }
+/* Sits after the title, on its line while there is room and below it when not. */
 .status-ongoing {
+  display:inline-block;
+  margin-left:14px;
+  vertical-align:.3em;
+  font-family:var(--sans);
+  line-height:1.6;
   color:white;
   background:var(--teal);
   padding:2px 8px;
