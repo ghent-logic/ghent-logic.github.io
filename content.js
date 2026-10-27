@@ -773,7 +773,17 @@ window.GROUP = {
       title: "Provability and Reflection",
       lecturer: "Lev Beklemishev, University of Ghent", when: "Every tuesday, 13:30-15:00", where: "Leslokaal 3.2",
       ongoing: true, period: "[Month and year]",
-      description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
+      // A list inside the description, written as ["…", "…"], is shown numbered.
+      description: [
+        "In this course we will aim to provide background results for what is going on in modern provability logic and its applications in proof theory. In particular, we will present some basic topics in:",
+        [
+          "Modal and algebraic logic",
+          "First order arithmetic and its fragments",
+          "Provability logic",
+          "Reflection principles",
+          "Turing progressions (iterated reflection principles)"
+        ]
+      ],
       url: "", linkLabel: "Recordings", videoUrl: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", sample: false },
     { kind: "University courses",
       title: "Proof Theory",

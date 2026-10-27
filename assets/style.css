@@ -833,8 +833,32 @@ img {
   color:var(--muted);
   font-size:.84rem
 }
-.talk details {
-  margin-top:16px
+/* "Read abstract" and the talk's links share one line; an opened abstract takes
+   the full width and the links follow it. */
+.talk-actions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:12px 26px;
+  margin-top:10px
+}
+.talk-actions details[open] {
+  flex-basis:100%
+}
+.talk-actions .talk-links {
+  margin-top:0
+}
+/* A numbered list inside an abstract or a description, kept close to its text. */
+.text-list {
+  margin:6px 0 0;
+  padding-left:1.5em;
+  color:var(--muted)
+}
+.text-list li {
+  padding-left:.2em
+}
+details .text-list {
+  font-size:.94rem
 }
 summary {
   cursor:pointer;
@@ -892,6 +916,9 @@ details[open] summary {
 }
 .activity p+p {
   margin-top:14px
+}
+.activity .text-list {
+  max-width:750px
 }
 .activity-group+.activity-group {
   margin-top:54px

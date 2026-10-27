@@ -338,3 +338,11 @@ repository's.
   and `where` and shows `period` ("March 2025") instead. Entries without the
   field show everything, as before. Milan's two lecture series had their YouTube
   playlists in `url`, labelled "Lecture notes"; they were moved to `videoUrl`.
+- **Numbered lists in text.** In an `abstract` or `description` written as a list
+  of paragraphs, an inner list (`["Intro:", ["item", "item"]]`) is set as an
+  `<ol class="text-list">`, kept close to the paragraph above it. Milan's
+  "Provability and Reflection" description is the worked example.
+- **A talk's "Read abstract" and its links share one line** (`.talk-actions`, a
+  wrapping flex row). Opening the abstract gives it the full width and the links
+  follow it. Before, the links sat on a row of their own and made every entry
+  with a recording noticeably taller.
