@@ -171,6 +171,7 @@ window.GROUP = {
       affiliation: "Ghent University",
       title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering, part I",
       time: "11:00", location: "Vergaderzaal 3.2",
+      videoUrl: "https://www.youtube.com/watch?v=afUqdygag-Y",
       abstract: [
         "We are going to give a detailed presentation of our recent work on the logic \\(\\mathsf{RC_{BI}}\\). Informally, it is an extension of the standard reflection calculus (\\(\\mathsf{RC}\\)) designed to capture theories above \\(\\mathsf{ACA_0}\\) obtained by iterations of syntactic and semantic reflection principles. The upper limit of the construction is the theory of Bar Induction. A preprint containing all results discussed in the talk will be available on arXiv shortly."
       ] },
@@ -208,6 +209,7 @@ window.GROUP = {
       affiliation: "Moscow State University",
       title: "Monotonicity vs Positivity in Modal Logics",
       time: "11:00", location: "Vergaderzaal 3.2",
+      videoUrl: "https://www.youtube.com/watch?v=_89IW7NFWqc",
       abstract: [
         "We investigate when every semantically monotone formula (i.e., one preserved under increasing valuations) is equivalent to a positive formula, built from variables using only positive connectives, with no negation or implication. We call this the Lyndon Positivity Property (LPP), after R. Lyndon, who first established it for classical predicate calculus.",
          "It turns out that LPP is closely tied to the well-known Lyndon Interpolation Property (LIP). Indeed, Lyndon's proof adapts to normal modal logics to show that LIP implies LPP in this case. The converse, however, fails: there are very simple examples of normal modal logics that enjoy LPP but not LIP. To establish these results, we use a semantic approach to both properties based on a generalized notion of bisimulations."
@@ -766,13 +768,13 @@ window.GROUP = {
       lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
       ongoing: false, period: "[Month and year]",
       description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
-      url: "", linkLabel: "Lecture notes", videoUrl: "https://www.youtube.com/playlist?list=PLEorlafzMjcWbKA5QnwzSjjy25VOn-nYc", sample: false },
+      url: "", linkLabel: "Recordings", videoUrl: "https://www.youtube.com/playlist?list=PLEorlafzMjcWbKA5QnwzSjjy25VOn-nYc", sample: false },
     { kind: "Lecture series",
       title: "Provability and Reflection",
-      lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
-      ongoing: false, period: "[Month and year]",
+      lecturer: "Lev Beklemishev, University of Ghent", when: "Every tuesday, 13:30-15:00", where: "Leslokaal 3.2",
+      ongoing: true, period: "[Month and year]",
       description: "A series of lectures on one topic, given once rather than every year and outside the official programme. Say in two or three sentences what it covered and what it assumed, so that someone watching the recordings later knows whether it is for them.",
-      url: "", linkLabel: "Lecture notes", videoUrl: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", sample: false },
+      url: "", linkLabel: "Recordings", videoUrl: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", sample: false },
     { kind: "University courses",
       title: "Proof Theory",
       lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "First semester",
