@@ -140,12 +140,14 @@
   const former = everyone.filter(p => p.former);
   if (current === 'people') {
     const people = everyone.filter(p => !p.former);
+    const emptyGroups = G.emptyPeopleGroups || {};
     const groups = peopleGroups.filter(g => people.some(p => p.group === g));
+    Object.keys(emptyGroups).forEach(g => { if (!groups.includes(g)) groups.push(g); });
     set('people-index', groups.map(g => `<a href="#${slug(g)}">${esc(g)}</a>`).join(''));
-    set('people-list', groups.length ? groups.map(g => `<section class="member-group" id="${slug(g)}"><h2 class="group-title">${esc(g)}</h2><div class="members">${people.filter(p => p.group===g).map(p => {
+    set('people-list', groups.length ? groups.map(g => `<section class="member-group" id="${slug(g)}"><h2 class="group-title">${esc(g)}</h2>${people.some(p => p.group === g) ? `<div class="members">${people.filter(p => p.group===g).map(p => {
       const photo = /^(assets\/|https:\/\/)/.test(p.photo || '') && !p.photo.includes('..') ? p.photo : '';
       return `<article class="member"><div class="portrait">${photo ? `<img src="${esc(photo)}" alt="${esc(p.name)}" loading="lazy" width="400" height="300"><span hidden aria-hidden="true">${esc(p.initials)}</span>` : `<span aria-hidden="true">${esc(p.initials)}</span>`}</div><div class="member-body">${sample(p)}<h3>${esc(p.name)}</h3>${p.role ? `<p class="member-role">${esc(p.role)}</p>` : ''}${p.area ? `<p class="member-area">${esc(p.area)}</p>` : ''}${p.bio ? `<p class="member-bio">${esc(p.bio)}</p>` : ''}${p.profile || mail(p.email) ? `<div class="member-links">${external(p.profile,'Academic profile')}${mail(p.email) ? `<a href="${mail(p.email)}">Email</a>` : ''}</div>` : ''}${p.sample ? '<p class="edit-hint">Profile and email links appear when added.</p>' : ''}</div></article>`;
-    }).join('')}</div></section>`).join('') : '<div class="empty"><h3>Members</h3><p>Member profiles will be added here.</p></div>');
+    }).join('')}</div>` : `<p class="muted">${esc(emptyGroups[g])}</p>`}</section>`).join('') : '<div class="empty"><h3>Members</h3><p>Member profiles will be added here.</p></div>');
     set('people-former', former.length ? '<p class="former-link"><a class="text-link" href="former.html">Former members</a></p>' : '');
     document.querySelectorAll('.portrait img').forEach(img => img.addEventListener('error', () => {img.hidden=true; img.nextElementSibling.hidden=false;}));
   }
