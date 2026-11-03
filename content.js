@@ -44,6 +44,8 @@ window.GROUP = {
   // The group's YouTube channel, linked from the homepage and the Seminars page.
   // Leave it "" and both links disappear.
   youtubeUrl: "https://www.youtube.com/channel/UCPpTSX10Qd1o4GpAFETtrVw",
+  // The older channel, for recordings before March 2026; shown under "Recordings" on the Seminars page.
+  youtubeArchiveUrl: "https://www.youtube.com/@GhentMathematicalLogicSeminar",
   home: {
     title: "Mathematical logic at Ghent University",
     // The first thing a visitor reads: who the group is, what it works on, when it meets.
