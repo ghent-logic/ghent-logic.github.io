@@ -87,7 +87,7 @@ window.GROUP = {
   people: [
     { name: "Lev Beklemishev", initials: "LB", group: "Professors", role: "",
       area: "Proof theory & foundations", bio: "Add a short biography describing this member’s research interests and current work.",
-      photo: "", profile: "", email: "lev.beklemishev@ugent.be", sample: false },
+      photo: "assets/images/levbekl6141.jpg", profile: "", email: "lev.beklemishev@ugent.be", sample: false },
     { name: "Fedor Pakhomov", initials: "FP", group: "Professors", role: "",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "fedor.pakhomov@ugent.be", sample: false },
@@ -100,7 +100,7 @@ window.GROUP = {
       photo: "", profile: "", email: "brett.mclean@ugent.be", sample: false },
     { name: "Seyedmojtaba Mojtahedi", initials: "SM", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
-      photo: "", profile: "", email: "mojtaba.mojtahedi@ugent.be", sample: false },
+      photo: "assets/images/Mojtaba-PP.jpg", profile: "", email: "mojtaba.mojtahedi@ugent.be", sample: false },
     { name: "Giovanni Solda", initials: "GS", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
       photo: "", profile: "", email: "giovanni.solda@ugent.be", sample: false },
@@ -129,6 +129,9 @@ window.GROUP = {
     { name: "Philipp Provenzano", initials: "PP", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
       photo: "", profile: "", email: "philipp.provenzano@ugent.be", sample: false },
+    { name: "Miles Shi", initials: "MS", group: "PhD students", role: "",
+      area: "", bio: "",
+      photo: "", profile: "", email: "miles.shi@ugent.be", sample: false },
 
 
      
