@@ -162,7 +162,7 @@ window.GROUP = {
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
     { id: "2026-11-05-papaflippou", date: "2026-11-05",
-      speaker: "Konstantinos Papaflippou",
+      speaker: "Konstantinos Papafilippou",
       title: "Between least fixed-points and computable sets.",
       time: "11:00", location: "Vergaderzaal 3.2",
       abstract: [
