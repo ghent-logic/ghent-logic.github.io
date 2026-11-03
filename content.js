@@ -142,6 +142,10 @@ window.GROUP = {
     { name: "[Former PhD student]", group: "PhD students", former: true,
       years: "[2019-2023]", now: "[where they went next]", profile: "", sample: true }
   ],
+  // People-page sections that show even while nobody is in them, each with the
+  // line shown under its heading. Once a person is given that group above, the
+  // section lists them as usual and this line is no longer used.
+  emptyPeopleGroups: { "Visitors": "There are no visitors at the moment." },
   // SEMINARS — newest first; the order here does not matter, the page sorts by date.
   // A talk moves from "Upcoming talks" into the archive by itself once its date passes.
   // Maths is written as LaTeX between \\( and \\), or between single $, and is typeset
