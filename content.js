@@ -161,6 +161,23 @@ window.GROUP = {
   // Any field except date, speaker and title may simply be left out.
   // To add a talk, copy one entry, change the fields, and mind the commas.
   seminars: [
+    { id: "2026-11-05-papaflippou", date: "2026-11-05",
+      speaker: "Konstantinos Papaflippou",
+      title: "Between least fixed-points and computable sets.",
+      time: "11:00", location: "Vergaderzaal 3.2",
+      abstract: [
+        "It is essentially folklore among proof theorists that the theory of inductive definitions (\\(\\mathsf{ID}_1\\)) and the set theory of \\(\\mathsf{KP}\\omega\\) are essentially the same—they have the same proof theoretic strength and they are mutually interpretable [Tapp99, Fuj18].",
+        "In the context of the theories of truth, the Kripke Feferman Burgess theory of truth (\\(\\mathsf{KF}_\\mu\\)) shows up as a theory of the least fixed-point of a “positive” truth predicate. It is similarly thought to be essentially the same as \\(\\mathsf{ID}_1\\), with all its axiomatizations being proof theoretically equivalent to \\(\\mathsf{ID}_1\\) and even some of them, very explicitly contain or interpret \\(\\mathsf{ID}_1\\).",
+        "In the interest of making this folklore concrete, we want to use the measure of biinterpretability (and even synonymy in this case) as a measure of “sameness” of theories. Recall two theories are biinterpretable when they are mutually interpretable with interpretations \\(\\sigma\\) and \\(\\tau\\), and the compositions of their interpretations \\(\\tau\\sigma\\) and \\(\\sigma\\tau\\) are provably the identity. Two theories are synonymous when they have a common definitional expansion. We can derive the latter from the former using work from [FV25], letting us to only work with the former, more convenient notion.",
+        "In the end, we have that \\(\\mathsf{KF}_\\mu\\), \\(\\mathsf{ID}_1\\) and an extension of \\(\\mathsf{KP}\\) we dub \\(\\mathsf{KP}_s\\) (s for “small”) are biinterpretable. More than that, the biinterpretability result further works on fragments of these theories (restricting “minimality” or \\(\\varepsilon\\)-induction) and allows us to use concepts of one in the other (eg the Barwise completeness theorem).",
+        "This will be the first part of the talk in which I will introduce the aforementioned theories and get a sense of what they are about. Depending on the time, I might give a quick presentation of the ideas behind the biinterpretability between \\(\\mathsf{ID}_1\\) and \\(\\mathsf{KF}_\\mu\\).",
+        "In the following week, I will present a rough outline of the biinterpretability result of \\(\\mathsf{KP}_s\\) and \\(\\mathsf{ID}_1\\), and if time permits, present formalised Barwise completeness as well as some immediate results derived from some basic model constructions.",
+        "This has been joint work with Mateusz Łełyk and Luca Castaldo.",
+        "References:",
+        "[Fuj18] Kentaro Fujimoto. Truths, inductive definitions, and Kripke-Platek systems over set theory. The Journal of Symbolic Logic, 83(3):868–898, 2018.",
+        "[Tapp99] Christian Tapp. Eine directe Einbettung von \\(\\mathsf{KP}\\omega\\) in \\(\\mathsf{ID}_1\\). Master thesis, Münster, 1999.",
+        "[FV25] Harvey Friedman and Albert Visser. When bi-interpretability implies synonymy. The Review of Symbolic Logic, 18(4):971–990, 2025."
+      ] },
     { id: "2026-10-22-lazar", date: "2026-10-22",
       speaker: "Vlad Lazar",
       affiliation: "Ghent University",
