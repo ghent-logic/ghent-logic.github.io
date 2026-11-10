@@ -525,26 +525,27 @@ img {
   margin:0;
   padding:0
 }
+/* Tight rows with no rules between them, so the section headings and the
+   space around them are what divide professors from postdocs from students. */
 .former-list li {
   display:flex;
   align-items:baseline;
-  gap:8px 18px;
+  gap:2px 14px;
   flex-wrap:wrap;
-  padding:15px 0;
-  border-top:1px solid var(--line)
-}
-.former-list li:first-child {
-  border-top:0
+  padding:4px 0
 }
 .former-name {
-  font:1.2rem var(--serif)
+  font:1.05rem var(--serif)
 }
 .former-meta {
-  font-size:.88rem;
+  font-size:.84rem;
   color:var(--muted)
 }
+.former-group .group-title {
+  margin-bottom:16px
+}
 .former-group+.former-group {
-  margin-top:50px
+  margin-top:58px
 }
 .group-title:after {
   content:'';
