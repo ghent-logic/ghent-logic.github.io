@@ -848,8 +848,8 @@ window.GROUP = {
       videoUrl: "", contact: "", url: "", sample: true }
   ],
   // COURSES — the Courses page. Sections come from `kind`, in the order each
-  // kind first appears here, exactly as on the Activities page: move the first
-  // university course above the lecture series to put that section first.
+  // kind first appears here, exactly as on the Activities page: the university
+  // courses are listed first, so their section comes first.
   //   lecturer, programme, when, where   shown above the title; leave any out
   //   ongoing: true    marks a lecture series running now: labelled "Ongoing" and listed first
   //   ongoing: false   a series that is over: when and where are hidden, and period
@@ -857,6 +857,23 @@ window.GROUP = {
   //   url, linkLabel                     notes or slides, or a course's page in the UGent study guide
   //   videoUrl                           a link to recorded lectures; shown as "Recordings"
   courses: [
+    // University courses come first because the first entry here is one; the
+    // descriptions are summarised from the UGent study guide (2026–2027).
+    { kind: "University courses",
+      title: "Logic",
+      lecturer: "Andreas Weiermann", programme: "Bachelor of Science in Mathematics", when: "First semester · in Dutch",
+      description: "A first course in mathematical logic, covering naive set theory, elementary model theory and the central results of first-order predicate logic: cardinalities, Zorn's lemma and the axiom of choice, quantifier elimination, the Löwenheim–Skolem theorems, and the completeness and compactness theorems. It is the basis for the course on proof theory.",
+      url: "https://studiekiezer.ugent.be/2026/studiefiche/en/C003562", linkLabel: "Study guide", sample: false },
+    { kind: "University courses",
+      title: "Logic II: Set Theory",
+      lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "Second semester · in English",
+      description: "An introduction to set theory, following on from Logic. The first part develops ordinals, cardinals, transfinite induction and recursion from the ZFC axioms, together with cardinal arithmetic and closed unbounded sets. The second part turns to models of set theory, constructing models in which the axiom of choice and the continuum hypothesis hold, and models in which the continuum hypothesis fails.",
+      url: "https://studiekiezer.ugent.be/2026/studiefiche/en/C004547", linkLabel: "Study guide", sample: false },
+    { kind: "University courses",
+      title: "Proof Theory",
+      lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "First semester · in Dutch",
+      description: "An introduction to the proof theory of formal systems containing the Peano axioms. Starting from Gödel's first incompleteness theorem, it covers ordinals, cut elimination, the proof-theoretic analysis of Peano arithmetic and its fragments, the provably recursive functions, and independence results, with applications to term rewriting if time allows. Some knowledge of mathematical logic and computability theory is recommended.",
+      url: "https://studiekiezer.ugent.be/2026/studiefiche/en/C002677", linkLabel: "Study guide", sample: false },
     { kind: "Lecture series",
       title: "Provability Logic",
       lecturer: "Lev Beklemishev, University of Ghent", when: "[Dates · number of lectures]", where: "[Room]",
@@ -879,10 +896,5 @@ window.GROUP = {
         ]
       ],
       url: "", linkLabel: "Recordings", videoUrl: "https://www.youtube.com/playlist?list=PLLKewLfoySQ4", sample: false },
-    { kind: "University courses",
-      title: "Proof Theory",
-      lecturer: "Andreas Weiermann", programme: "Master of Science in Mathematics", when: "First semester",
-      description: "Two or three sentences on what the course covers and what it assumes. The study guide holds the official details, so link to it rather than repeating them.",
-      url: "", linkLabel: "Study guide", sample: false }
   ]
 };

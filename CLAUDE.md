@@ -370,3 +370,15 @@ repository's.
   former PhD students (PhD 2025); both entries use "Konstantinos", the spelling
   of his seminar entries, rather than the department page's "Kostas". The
   "Visitors" section now lists him instead of its empty-section line.
+- **Former members is a compact list**: names at 1.05rem with no rules between
+  rows, and 58px between sections, so the section headings carry the division
+  between professors, postdocs and students (Milan found the ruled list made
+  that hard to see).
+- **University courses now come first on the Courses page**, filled in from the
+  UGent study guide (studiekiezer.ugent.be/2026/studiefiche/en/<code>, which
+  serves a PDF; `pdftotext` reads it): Logic (C003562, bachelor), Logic II: Set
+  Theory (C004547, master, English) and Proof Theory (C002677), all Andreas
+  Weiermann. The study guide also lists "Mathematical Logic II" (C003011), an
+  older version of the same set theory course in Dutch and English; it is not
+  listed separately. Computability theory is no longer taught and is left off.
+  "Logic I" in Milan's words is the bachelor course the guide calls "Logic".
