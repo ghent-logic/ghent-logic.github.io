@@ -147,6 +147,10 @@ window.GROUP = {
       area: "", bio: "",
       photo: "", profile: "", email: "miles.shi@ugent.be", sample: false },
 
+    { name: "Konstantinos Papafilippou", initials: "KP", group: "Visitors", role: "",
+      area: "", bio: "",
+      photo: "", profile: "", email: "", sample: false },
+
 
      
     // FORMER MEMBERS, from the department's page of the logic group, with
@@ -183,7 +187,7 @@ window.GROUP = {
       years: "2021–2025", now: "now postdoc at TU Wien", profile: "https://sites.google.com/view/ogjetaj/home", sample: false },
     { name: "Joep Horbach", group: "PhD students", former: true,
       years: "", now: "", profile: "", sample: false },
-    { name: "Kostas Papafilippou", group: "PhD students", former: true,
+    { name: "Konstantinos Papafilippou", group: "PhD students", former: true,
       years: "PhD 2025", now: "", profile: "", sample: false },
     { name: "Florian Pelupessy", group: "PhD students", former: true,
       years: "PhD 2012", now: "", profile: "https://www.florianpelupessy.com/", sample: false },

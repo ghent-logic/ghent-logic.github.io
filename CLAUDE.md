@@ -366,3 +366,7 @@ repository's.
   Almeida came in November 2026 on a project coordinated by Lev Beklemishev).
   Their addresses are the department's; Almeida's is not yet known, so his card
   has no Email link. Their area and biography are left for Milan.
+- **Konstantinos Papafilippou is a current Visitor** and also stays among the
+  former PhD students (PhD 2025); both entries use "Konstantinos", the spelling
+  of his seminar entries, rather than the department page's "Kostas". The
+  "Visitors" section now lists him instead of its empty-section line.
