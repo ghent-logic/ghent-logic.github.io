@@ -382,3 +382,15 @@ repository's.
   older version of the same set theory course in Dutch and English; it is not
   listed separately. Computability theory is no longer taught and is left off.
   "Logic I" in Milan's words is the bachelor course the guide calls "Logic".
+- **`preview` is now `false`** (November 2026), at Milan's request to drop the
+  yellow "Finishing checklist" bar. With it went the footer's "Preview copy"
+  line, the bracketed draft placeholders, and every `sample: true` entry: the
+  only ones left were the reading-group and mini-course templates, so the
+  Activities page shows no "Reading groups & mini-courses" section until Milan
+  adds a real entry. Set `preview: true` again to see the templates.
+- **Activities lists four real meetings**, newest first, each from its own
+  site: Proof Society 2025 (Milan's entry, filled in), Wormshop 2024, the 2018
+  Workshop on Proof Theory and its Applications (Proof Society), and the 2016
+  Workshop on Computability Theory (satellite of CiE 2016). Searches turned up
+  older events (a 2009 proof theory workshop, "PhDs in Logic" 2009) that were
+  left off as too old and too thinly documented.

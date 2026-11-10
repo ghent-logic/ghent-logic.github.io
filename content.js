@@ -4,7 +4,7 @@
    Open START-HERE.html for illustrated editing and publishing instructions.
 */
 window.GROUP = {
-  preview: true, // Set to false AFTER replacing the sample records and reviewing the copy.
+  preview: false, // true shows the template entries (sample: true) and a yellow reminder bar; false hides both.
   name: "Ghent Logic Group",
   tagline: "International research group at Ghent University", // the line above the blue bar
   university: "Ghent University",
@@ -826,16 +826,27 @@ window.GROUP = {
   //   contact:     an email address; shown as "Email the organisers"
   //   id:          optional, for linking straight to this entry
   activities: [
+    // Meetings the group organised, newest first; details from each meeting's own site.
     { kind: "Workshops & conferences",
       title: "Proof Society 2025",
-      when: "September 1-5, 2025", where: "Sint-Baafshuis Gent",
-      description: "A sentence on the subject and who it is for. Link to the meeting's own page for the programme and registration.",
+      when: "1–5 September 2025", where: "Sint-Baafshuis, Ghent",
+      description: "The 7th International School and Workshop on Proof Theory, organised under the auspices of the Proof Society. A three-day summer school with tutorials by Ali Enayat, Raheleh Jalali, Henry Towsner and Albert Visser was followed by a two-day workshop of invited lectures and contributed talks, open to proof theory in its broadest sense, from logic and mathematics to computer science.",
       url: "https://proof2025.ugent.be/", linkLabel: "Workshop website", contact: "", sample: false },
     { kind: "Workshops & conferences",
-      title: "[A second meeting, if there is one]",
-      when: "[Dates]", where: "[Venue]",
-      description: "Copy an entry to add another. Delete this one if there is only the single meeting.",
-      url: "", contact: "", sample: true },
+      title: "Wormshop 2024",
+      when: "2–5 September 2024", where: "Het Rustpunt, Ghent",
+      description: "The 7th Workshop on Proof Theory, Modal Logic and Reflection Principles, on provability logics and algebras, proof theory and ordinal analysis, weak and strong systems of arithmetic, and modalities in topology and set theory, with tutorials by Ali Enayat and Mateusz Łełyk.",
+      url: "https://wormshop2024.ugent.be/", linkLabel: "Workshop website", contact: "", sample: false },
+    { kind: "Workshops & conferences",
+      title: "Workshop on Proof Theory and its Applications",
+      when: "6–7 September 2018", where: "Jozef Plateauzaal, Ghent",
+      description: "The first workshop on proof theory and its applications held under the auspices of the Proof Society, with invited talks by Andrew Arana, Rosalie Iemhoff, Dale Miller, Paulo Oliva, Pavel Pudlák, Michael Rathjen and Albert Visser.",
+      url: "https://www.proofsociety.org/past/workshop-2018/", linkLabel: "Workshop page", contact: "", sample: false },
+    { kind: "Workshops & conferences",
+      title: "Workshop on Computability Theory 2016",
+      when: "4–5 July 2016", where: "Blandijnberg 2, Ghent",
+      description: "A satellite of Computability in Europe 2016, organised with Joseph S. Miller and Antonio Montalbán.",
+      url: "https://www.computability.org/wct/wctghent/index.html", linkLabel: "Workshop page", contact: "", sample: false },
     { kind: "Reading groups & mini-courses",
       title: "[Book or paper the group is reading]",
       when: "[Weekly, day and time]", where: "[Room]",
