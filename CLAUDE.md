@@ -346,3 +346,18 @@ repository's.
   wrapping flex row). Opening the abstract gives it the full width and the links
   follow it. Before, the links sat on a row of their own and made every entry
   with a recording noticeably taller.
+- **The former members are real now** (November 2026): the 17 names listed as
+  former members on the department's page (cage.ugent.be/we16/logic.en.html,
+  which redirects through login.ugent.be and needs a cookie jar to fetch with
+  curl), at Milan's request. Details came from the people's own pages and CVs,
+  ORCID, the Mathematics Genealogy Project and UGent Biblio; an empty `years`
+  or `now` means it could not be confirmed, never a guess. Biblio's UGent flag
+  is on the author, not the paper, so its year spans are not employment dates,
+  and unrelated people share several surnames there (Van der Meeren, De Bondt,
+  Horbach). Lev Gordeev, based in Tübingen and affiliated with Ghent, is under
+  "Visitors". Unconfirmed and flagged to Milan: Ben De Bondt's and Joep
+  Horbach's roles, Benjamin De Leeuw (taught exercise sessions 2003–2007) as a
+  PhD student, and the missing years and destinations. The two emeritus
+  professors on that page (Hoogewijs, Impens) and the current staff it lists
+  but the People page does not (Hans and Geert Vernaeve, Harvey Friedman) were
+  left for Milan to decide.

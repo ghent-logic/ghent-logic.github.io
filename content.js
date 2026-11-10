@@ -137,12 +137,45 @@ window.GROUP = {
 
 
      
-    { name: "[Former professor]", group: "Professors", former: true,
-      years: "[2005-2023]", now: "[now emeritus, or where they went]", profile: "", sample: true },
-    { name: "[Former postdoc]", group: "Postdocs", former: true,
-      years: "[2021-2024]", now: "[now at another university]", profile: "", sample: true },
-    { name: "[Former PhD student]", group: "PhD students", former: true,
-      years: "[2019-2023]", now: "[where they went next]", profile: "", sample: true }
+    // FORMER MEMBERS, from the department's page of the logic group, with
+    // details looked up in November 2026. An empty field is one that could not
+    // be confirmed; fill it in when you know it.
+    { name: "Juan P. Aguilera", group: "Postdocs", former: true,
+      years: "2019–2024", now: "now at TU Wien", profile: "https://juan.ag/", sample: false },
+    { name: "David Bélanger", group: "Postdocs", former: true,
+      years: "", now: "", profile: "", sample: false },
+    { name: "David Fernández-Duque", group: "Postdocs", former: true,
+      years: "", now: "now professor at the University of Barcelona", profile: "https://users.ugent.be/~dfernnde/", sample: false },
+    { name: "Jan-Christoph Schlage-Puchta", group: "Postdocs", former: true,
+      years: "2008–2012", now: "now professor at the University of Rostock", profile: "https://www.mathematik.uni-rostock.de/en/unser-institut/professuren-apl-prof/algebra/zahlentheorie/", sample: false },
+    { name: "Paul Shafer", group: "Postdocs", former: true,
+      years: "2013–2016", now: "now associate professor at the University of Leeds", profile: "https://peshafer.github.io/", sample: false },
+    { name: "Tin Lok Wong", group: "Postdocs", former: true,
+      years: "", now: "now lecturer at the National University of Singapore", profile: "https://blog.nus.edu.sg/matwong/", sample: false },
+
+    { name: "Ben De Bondt", group: "PhD students", former: true,
+      years: "2019", now: "now postdoc at the University of Münster", profile: "https://www.uni-muenster.de/FB10srvi/persdb/MM-member.php?id=1831", sample: false },
+    { name: "Korneel Debaene", group: "PhD students", former: true,
+      years: "PhD 2015", now: "now outside academia", profile: "https://cage.ugent.be/~kdbaene/", sample: false },
+    { name: "Benjamin De Leeuw", group: "PhD students", former: true, role: "Teaching assistant",
+      years: "2003–2007", now: "", profile: "https://cage.ugent.be/~bdeleeuw/", sample: false },
+    { name: "Michiel De Smet", group: "PhD students", former: true,
+      years: "PhD 2011", now: "", profile: "", sample: false },
+    { name: "Oriola Gjetaj", group: "PhD students", former: true,
+      years: "2021–2025", now: "now postdoc at TU Wien", profile: "https://sites.google.com/view/ogjetaj/home", sample: false },
+    { name: "Joep Horbach", group: "PhD students", former: true,
+      years: "", now: "", profile: "", sample: false },
+    { name: "Kostas Papafilippou", group: "PhD students", former: true,
+      years: "PhD 2025", now: "", profile: "", sample: false },
+    { name: "Florian Pelupessy", group: "PhD students", former: true,
+      years: "PhD 2012", now: "", profile: "https://www.florianpelupessy.com/", sample: false },
+    { name: "Sam Sanders", group: "PhD students", former: true,
+      years: "PhD 2010", now: "now postdoctoral researcher at Ruhr University Bochum", profile: "https://sasander.wixsite.com/academic", sample: false },
+    { name: "Jeroen Van der Meeren", group: "PhD students", former: true,
+      years: "2011–2015", now: "", profile: "", sample: false },
+
+    { name: "Lev Gordeev", group: "Visitors", former: true,
+      years: "", now: "Universität Tübingen", profile: "https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/logik-und-sprachtheorie/personen/ehemalige-und-sonstige-mitglieder/pd-dr-lev-gordeev/", sample: false }
   ],
   // People-page sections that show even while nobody is in them, each with the
   // line shown under its heading. Once a person is given that group above, the
