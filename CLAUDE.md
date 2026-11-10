@@ -354,10 +354,15 @@ repository's.
   or `now` means it could not be confirmed, never a guess. Biblio's UGent flag
   is on the author, not the paper, so its year spans are not employment dates,
   and unrelated people share several surnames there (Van der Meeren, De Bondt,
-  Horbach). Lev Gordeev, based in Tübingen and affiliated with Ghent, is under
-  "Visitors". Unconfirmed and flagged to Milan: Ben De Bondt's and Joep
-  Horbach's roles, Benjamin De Leeuw (taught exercise sessions 2003–2007) as a
-  PhD student, and the missing years and destinations. The two emeritus
-  professors on that page (Hoogewijs, Impens) and the current staff it lists
-  but the People page does not (Hans and Geert Vernaeve, Harvey Friedman) were
-  left for Milan to decide.
+  Horbach). Lev Gordeev (Tübingen, affiliated with Ghent) is a former member
+  under Postdocs with the role "Researcher": Milan did not want him under a
+  "Visitors" heading. The emeritus professors Bert Hoogewijs and Chris Impens
+  are former Professors, "now emeritus". Unconfirmed and flagged to Milan: Ben
+  De Bondt's and Joep Horbach's roles, Benjamin De Leeuw (taught exercise
+  sessions 2003–2007) as a PhD student, and the missing years and destinations.
+- **Joined the People page with the former members:** Hans Vernaeve
+  (Professors), Harvey Friedman (Professors, "Guest professor", as the
+  department lists him), Geert Vernaeve and Rodrigo Nicolau Almeida (Postdocs;
+  Almeida came in November 2026 on a project coordinated by Lev Beklemishev).
+  Their addresses are the department's; Almeida's is not yet known, so his card
+  has no Email link. Their area and biography are left for Milan.

@@ -93,10 +93,19 @@ window.GROUP = {
     { name: "Fedor Pakhomov", initials: "FP", group: "Professors", role: "",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "fedor.pakhomov@ugent.be", sample: false },
+    { name: "Hans Vernaeve", initials: "HV", group: "Professors", role: "",
+      area: "", bio: "",
+      photo: "", profile: "https://cage.ugent.be/~hvernaev/", email: "hans.vernaeve@ugent.be", sample: false },
      { name: "Andreas Weiermann", initials: "AW", group: "Professors", role: "Head of department",
       area: "Non-classical logic", bio: "Add a short biography and a link to the member’s institutional or personal academic page.",
       photo: "", profile: "", email: "andreas.weiermann@ugent.be", sample: false },
+    { name: "Harvey Friedman", initials: "HF", group: "Professors", role: "Guest professor",
+      area: "", bio: "",
+      photo: "", profile: "https://u.osu.edu/friedman.8/", email: "harveymartin.friedman@ugent.be", sample: false },
      
+    { name: "Rodrigo Nicolau Almeida", initials: "RA", group: "Postdocs", role: "",
+      area: "", bio: "",
+      photo: "", profile: "https://rodrigonalmeida.github.io/", email: "", sample: false },
     { name: "Brett McLean", initials: "BM", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
       photo: "", profile: "", email: "brett.mclean@ugent.be", sample: false },
@@ -106,6 +115,9 @@ window.GROUP = {
     { name: "Giovanni Solda", initials: "GS", group: "Postdocs", role: "",
       area: "Logic & computation", bio: "Add research topics, current projects, and optional links to publications or a personal website.",
       photo: "", profile: "", email: "giovanni.solda@ugent.be", sample: false },
+    { name: "Geert Vernaeve", initials: "GV", group: "Postdocs", role: "",
+      area: "", bio: "",
+      photo: "", profile: "https://cage.ugent.be/~gvernaev/", email: "geert.vernaeve@ugent.be", sample: false },
 
     { name: "Alakh Dhruv Chopra", initials: "ADC", group: "PhD students", role: "",
       area: "Foundations of mathematics", bio: "Add a brief description of the doctoral project and, if appropriate, the supervisor’s name.",
@@ -140,12 +152,18 @@ window.GROUP = {
     // FORMER MEMBERS, from the department's page of the logic group, with
     // details looked up in November 2026. An empty field is one that could not
     // be confirmed; fill it in when you know it.
+    { name: "Bert Hoogewijs", group: "Professors", former: true,
+      years: "", now: "now emeritus", profile: "https://cage.ugent.be/~bh/", sample: false },
+    { name: "Chris Impens", group: "Professors", former: true,
+      years: "", now: "now emeritus", profile: "", sample: false },
     { name: "Juan P. Aguilera", group: "Postdocs", former: true,
       years: "2019–2024", now: "now at TU Wien", profile: "https://juan.ag/", sample: false },
     { name: "David Bélanger", group: "Postdocs", former: true,
       years: "", now: "", profile: "", sample: false },
     { name: "David Fernández-Duque", group: "Postdocs", former: true,
       years: "", now: "now professor at the University of Barcelona", profile: "https://users.ugent.be/~dfernnde/", sample: false },
+    { name: "Lev Gordeev", group: "Postdocs", former: true, role: "Researcher",
+      years: "", now: "Universität Tübingen", profile: "https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/logik-und-sprachtheorie/personen/ehemalige-und-sonstige-mitglieder/pd-dr-lev-gordeev/", sample: false },
     { name: "Jan-Christoph Schlage-Puchta", group: "Postdocs", former: true,
       years: "2008–2012", now: "now professor at the University of Rostock", profile: "https://www.mathematik.uni-rostock.de/en/unser-institut/professuren-apl-prof/algebra/zahlentheorie/", sample: false },
     { name: "Paul Shafer", group: "Postdocs", former: true,
@@ -173,9 +191,6 @@ window.GROUP = {
       years: "PhD 2010", now: "now postdoctoral researcher at Ruhr University Bochum", profile: "https://sasander.wixsite.com/academic", sample: false },
     { name: "Jeroen Van der Meeren", group: "PhD students", former: true,
       years: "2011–2015", now: "", profile: "", sample: false },
-
-    { name: "Lev Gordeev", group: "Visitors", former: true,
-      years: "", now: "Universität Tübingen", profile: "https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/logik-und-sprachtheorie/personen/ehemalige-und-sonstige-mitglieder/pd-dr-lev-gordeev/", sample: false }
   ],
   // People-page sections that show even while nobody is in them, each with the
   // line shown under its heading. Once a person is given that group above, the
