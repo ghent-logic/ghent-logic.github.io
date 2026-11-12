@@ -51,7 +51,7 @@ window.GROUP = {
     // The first thing a visitor reads: who the group is, what it works on, when it meets.
     // A link is written [words](page.html), e.g. [contact page](contact.html), or with
     // a full https:// address in the round brackets.
-    introduction: "The Ghent Logic Group is part of the Department of Mathematics: Analysis, Logic and Discrete Mathematics, and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann, who is also head of the department. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We usually meet on Thursdays for a [seminar](seminars.html), open to anyone interested. We also try to organise social events every so often. See the [contact page](contact.html) if you are interested in coming for a visit!"
+    introduction: "The Ghent Logic Group is part of the [Department of Mathematics: Analysis, Logic and Discrete Mathematics](http://cage.ugent.be/we16/index.en.html), and is led by Lev Beklemishev, Fedor Pakhomov and Andreas Weiermann, who is also head of the department. Our work is mainly in proof theory: provability logic and reflection calculi, ordinal analysis, reverse mathematics, and well-quasi-orders. We usually meet on Thursdays for a [seminar](seminars.html), open to anyone interested. We also try to organise social events every so often. See the [contact page](contact.html) if you are interested in coming for a visit!"
   },
   research: [
     {
