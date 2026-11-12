@@ -407,3 +407,6 @@ repository's.
   Matching is by OpenAlex author id, not by name, because names collide (the
   obvious "Harvey Friedman" is a biologist). OpenAlex gives some titles in
   capitals; they are shown as received.
+  A paper that is wrongly filed under a member's OpenAlex profile (a namesake's) is
+  kept off with an `exclude` entry in `data/outputs-authors.json`; editing
+  `outputs.js` instead would be undone by the next run.

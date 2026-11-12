@@ -43,7 +43,8 @@ window.OUTPUTS = {
     "Vlad Lazar"
    ],
    "members": [
-    "Fedor Pakhomov"
+    "Fedor Pakhomov",
+    "Vlad Lazar"
    ]
   },
   {
@@ -87,6 +88,7 @@ window.OUTPUTS = {
     "Fedor Pakhomov"
    ],
    "members": [
+    "Alakh Dhruv Chopra",
     "Fedor Pakhomov"
    ]
   },
@@ -456,6 +458,19 @@ window.OUTPUTS = {
    ]
   },
   {
+   "title": "On the Reverse Mathematics of Cut-Elimination and Determinacy",
+   "date": "2025-01-01",
+   "type": "conference-paper",
+   "venue": "Lecture notes in computer science",
+   "url": "https://doi.org/10.1007/978-3-031-95908-0_29",
+   "authors": [
+    "Philipp Provenzano"
+   ],
+   "members": [
+    "Philipp Provenzano"
+   ]
+  },
+  {
    "title": "Larisa L'vovna Maksimova (obituary)",
    "date": "2025-01-01",
    "type": "other",
@@ -608,20 +623,6 @@ window.OUTPUTS = {
    ],
    "members": [
     "Lev Beklemishev"
-   ]
-  },
-  {
-   "title": "Fundamental sequences and fast-growing hierarchies for the Bachmann-Howard ordinal",
-   "date": "2024-05-13",
-   "type": "article",
-   "venue": "Annals of Pure and Applied Logic",
-   "url": "https://doi.org/10.1016/j.apal.2024.103455",
-   "authors": [
-    "David Fernández–Duque",
-    "Andreas Weiermann"
-   ],
-   "members": [
-    "Andreas Weiermann"
    ]
   }
  ]
