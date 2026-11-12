@@ -61,7 +61,8 @@ graphic and favicon are made directly from text and simple geometry.
 
 ## Recent publications (Research page)
 
-The "Recent publications" list on the Research page is not typed by hand. Once a
+The "Recent publications" list on the Research page (the latest 10; the rest are
+on `publications.html`, ten to a page) is not typed by hand. Once a
 month a GitHub Action (`.github/workflows/update-outputs.yml`) looks up the
 members listed in `data/outputs-authors.json` on [OpenAlex](https://openalex.org)
 and, if anything changed, opens a pull request that updates `assets/outputs.js`.
