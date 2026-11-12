@@ -132,7 +132,17 @@
     set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p></article>`).join(''));
   }
   if (current === 'research') {
-    set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
+    // Recent publications, read from assets/outputs.js (written monthly by scripts/update_outputs.py).
+    const outputs = (window.OUTPUTS && window.OUTPUTS.items) || [];
+    const lastName = n => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().split(/\s+/).pop();
+    const monthYear = d => { const [y, m] = (d || '').split('-'); return y ? (m ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m - 1] + ' ' : '') + y : ''; };
+    set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join('') + (outputs.length ? '<a href="#recent-publications">Recent publications</a>' : ''));
+    if (outputs.length) set('research-outputs', `<section class="outputs" id="recent-publications"><h2 class="group-title">Recent publications</h2><ul class="output-list">${outputs.map(o => {
+      const ours = (o.members || []).map(lastName);
+      const authors = (o.authors || []).map(n => ours.includes(lastName(n)) ? `<strong>${esc(n)}</strong>` : esc(n)).join(', ');
+      const meta = [o.type === 'preprint' ? 'Preprint' : o.venue, monthYear(o.date)].filter(Boolean).map(esc).join(' · ');
+      return `<li class="output"><h3>${link(o.url) ? `<a href="${link(o.url)}">${esc(o.title)}</a>` : esc(o.title)}</h3><p class="output-authors">${authors}</p><p class="output-meta">${meta}</p></li>`;
+    }).join('')}</ul><p class="outputs-note">Collected automatically from <a href="https://openalex.org">OpenAlex</a> each month and checked by the group before it is published. Last updated ${esc(monthYear(window.OUTPUTS.updated))}.</p></section>`);
     set('research-areas', areas.map(a => `<section class="research-row" id="${slug(a.id)}"><div><h2>${esc(a.title)}</h2><p class="research-question">${esc(a.question)}</p></div><div class="research-detail"><p>${esc(a.description)}</p><div class="tags">${(a.topics||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></section>`).join(''));
   }
   const everyone = records(G.people);

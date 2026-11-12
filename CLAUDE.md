@@ -394,3 +394,13 @@ repository's.
   Workshop on Computability Theory (satellite of CiE 2016). Searches turned up
   older events (a 2009 proof theory workshop, "PhDs in Logic" 2009) that were
   left off as too old and too thinly documented.
+- **Recent publications on the Research page are generated.** `assets/outputs.js`
+  (`window.OUTPUTS`) is written by `scripts/update_outputs.py` from OpenAlex, for
+  the members in `data/outputs-authors.json` that have `"confirmed": true`;
+  `.github/workflows/update-outputs.yml` runs it on the 1st of each month and
+  opens a pull request, never a commit to `main`. Do not edit `outputs.js` by
+  hand. The site still contacts no third party: only the Action does, and the
+  page reads the static file. Section renders only when `items` is non-empty.
+  Matching is by OpenAlex author id, not by name, because names collide (the
+  obvious "Harvey Friedman" is a biologist). OpenAlex gives some titles in
+  capitals; they are shown as received.
