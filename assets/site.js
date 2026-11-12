@@ -145,9 +145,15 @@
   const RECENT_OUTPUTS = 10;  // shown on the Research page; the rest live on publications.html
   const lastName = n => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().split(/\s+/).pop();
   const monthYear = d => { const [y, m] = (d || '').split('-'); return y ? (m ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m - 1] + ' ' : '') + y : ''; };
+  // An author is shown in bold if they are a current member listed on the People page. OpenAlex
+  // spells names its own way ("Lev D. Beklemishev", "Giovanni Soldà"), so match on the surname plus
+  // the first name: the same initial, or one first name containing the other ("Mojtaba").
+  const firstName = n => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().split(/\s+/)[0] || '';
+  const memberNames = records(G.people).filter(p => !p.former).map(p => p.name);
+  const isMember = n => memberNames.some(m => lastName(m) === lastName(n)
+    && (firstName(m)[0] === firstName(n)[0] || firstName(m).includes(firstName(n)) || firstName(n).includes(firstName(m))));
   const outputHtml = o => {
-      const ours = (o.members || []).map(lastName);
-      const authors = (o.authors || []).map(n => ours.includes(lastName(n)) ? `<strong>${esc(n)}</strong>` : esc(n)).join(', ');
+      const authors = (o.authors || []).map(n => isMember(n) ? `<strong>${esc(n)}</strong>` : esc(n)).join(', ');
       const meta = [o.type === 'preprint' ? 'Preprint' : o.venue, monthYear(o.date)].filter(Boolean).map(esc).join(' · ');
       return `<li class="output"><h3>${link(o.url) ? `<a href="${link(o.url)}">${esc(o.title)}</a>` : esc(o.title)}</h3><p class="output-authors">${authors}</p><p class="output-meta">${meta}</p></li>`;
   };

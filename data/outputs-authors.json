@@ -28,7 +28,8 @@
     {
       "name": "Rodrigo Nicolau Almeida",
       "openalex": "A5023607816",
-      "confirmed": false
+      "confirmed": true,
+      "checked": "confirmed by the group (no profile on research.ugent.be to compare with)"
     },
     {
       "name": "Brett McLean",
@@ -45,17 +46,20 @@
     {
       "name": "Alakh Dhruv Chopra",
       "openalex": "A5125638318",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Vlad Lazar",
       "openalex": "A5053218986",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Philipp Provenzano",
       "openalex": "A5118450772",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Geert Vernaeve",

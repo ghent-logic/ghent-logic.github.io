@@ -109,6 +109,20 @@ window.OUTPUTS = {
    ]
   },
   {
+   "title": "Medvedev logic is undecidable",
+   "date": "2026-09-11",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2609.13359",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Søren Brinck Knudstorp"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
    "title": "Finite-tower bounds for Skolem functions",
    "date": "2026-09-11",
    "type": "preprint",
@@ -146,6 +160,63 @@ window.OUTPUTS = {
    ],
    "members": [
     "Fedor Pakhomov"
+   ]
+  },
+  {
+   "title": "Uniform Local Tabularity in Intuitionistic Logic",
+   "date": "2026-06-28",
+   "type": "article",
+   "venue": "Electronic Proceedings in Theoretical Computer Science",
+   "url": "https://doi.org/10.4204/eptcs.447.3",
+   "authors": [
+    "Rodrigo Nicolau Almeida"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
+   "title": "Coequivalence Relations and Descent in Modal Logic",
+   "date": "2026-06-28",
+   "type": "article",
+   "venue": "Electronic Proceedings in Theoretical Computer Science",
+   "url": "https://doi.org/10.4204/eptcs.447.4",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Matteo De Berardinis"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
+   "title": "A topos for étale-finite Heyting algebras",
+   "date": "2026-06-02",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2606.03861",
+   "authors": [
+    "Marco Abbadini",
+    "Rodrigo Nicolau Almeida",
+    "Igor Arrieta"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
+   "title": "Fischer-Servi logic does not have interpolation",
+   "date": "2026-04-02",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2604.02082",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Nick Bezhanishvili",
+    "Simon Lemal"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
    ]
   },
   {
@@ -189,6 +260,21 @@ window.OUTPUTS = {
    ],
    "members": [
     "Fedor Pakhomov"
+   ]
+  },
+  {
+   "title": "Superamalgamation for modal lattices via non-distributive dualities",
+   "date": "2026-02-23",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2602.20380",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Nick Bezhanishvili",
+    "Simon Lemal"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
    ]
   },
   {
@@ -305,6 +391,21 @@ window.OUTPUTS = {
    ]
   },
   {
+   "title": "Esakia order-compactifications and locally Esakia spaces",
+   "date": "2025-12-26",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2512.22042",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Guram Bezhanishvili",
+    "Nick Bezhanishvili"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
    "title": "Generalized functions with infinitesimals",
    "date": "2025-10-18",
    "type": "preprint",
@@ -315,6 +416,20 @@ window.OUTPUTS = {
    ],
    "members": [
     "Hans Vernaeve"
+   ]
+  },
+  {
+   "title": "Maximality principles in modal logic and the Axiom of Choice",
+   "date": "2025-10-17",
+   "type": "article",
+   "venue": "Fundamenta Mathematicae",
+   "url": "https://doi.org/10.4064/fm241218-6-5",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Guram Bezhanishvili"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
    ]
   },
   {
@@ -343,6 +458,20 @@ window.OUTPUTS = {
    ],
    "members": [
     "Andreas Weiermann"
+   ]
+  },
+  {
+   "title": "Structural Completeness in bi-IPC",
+   "date": "2025-08-05",
+   "type": "preprint",
+   "venue": "arXiv (Cornell University)",
+   "url": "https://doi.org/10.48550/arxiv.2508.05682",
+   "authors": [
+    "Rodrigo Nicolau Almeida",
+    "Nick Bezhanishvili"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
    ]
   },
   {
@@ -409,6 +538,19 @@ window.OUTPUTS = {
    ]
   },
   {
+   "title": "Π2-rule systems and inductive classes of Gödel algebras",
+   "date": "2025-01-14",
+   "type": "article",
+   "venue": "Annals of Pure and Applied Logic",
+   "url": "https://doi.org/10.1016/j.apal.2025.103552",
+   "authors": [
+    "Rodrigo Nicolau Almeida"
+   ],
+   "members": [
+    "Rodrigo Nicolau Almeida"
+   ]
+  },
+  {
    "title": "FEFERMAN’S COMPLETENESS THEOREM",
    "date": "2025-01-10",
    "type": "article",
@@ -468,161 +610,6 @@ window.OUTPUTS = {
    ],
    "members": [
     "Philipp Provenzano"
-   ]
-  },
-  {
-   "title": "Larisa L'vovna Maksimova (obituary)",
-   "date": "2025-01-01",
-   "type": "other",
-   "venue": "Russian Mathematical Surveys",
-   "url": "https://doi.org/10.4213/rm10246e",
-   "authors": [
-    "Sergei Nikolaevich Artemov",
-    "Lev D. Beklemishev",
-    "Sergey Savostyanovich Goncharov",
-    "Yurii Leonidovich Ershov",
-    "Sergei Pavlovich Odintsov",
-    "Vladimir Vladimirovich Rybakov",
-    "Stanislav Olegovich Speranski",
-    "Valentin Borisovich Shehtman",
-    "Veta Fedorovna Yun"
-   ],
-   "members": [
-    "Lev Beklemishev"
-   ]
-  },
-  {
-   "title": "Fragments of arithmetic and cyclic proofs",
-   "date": "2025-01-01",
-   "type": "article",
-   "venue": "Sbornik Mathematics",
-   "url": "https://doi.org/10.4213/sm10276e",
-   "authors": [
-    "Lev D. Beklemishev",
-    "Daniyar Salkarbekovich Shamkanov",
-    "Ivan Nikolaevich Smirnov"
-   ],
-   "members": [
-    "Lev Beklemishev"
-   ]
-  },
-  {
-   "title": "Automatic Structures and the Problem of Natural Well-orderings",
-   "date": "2025-01-01",
-   "type": "book-chapter",
-   "venue": "Trends in mathematics",
-   "url": "https://doi.org/10.1007/978-3-031-86319-6_9",
-   "authors": [
-    "Lev D. Beklemishev",
-    "Fedor Pakhomov"
-   ],
-   "members": [
-    "Fedor Pakhomov",
-    "Lev Beklemishev"
-   ]
-  },
-  {
-   "title": "Fast Goodstein walks",
-   "date": "2024-12-27",
-   "type": "article",
-   "venue": "Bulletin of the London Mathematical Society",
-   "url": "https://doi.org/10.1112/blms.13210",
-   "authors": [
-    "David Fernández–Duque",
-    "Andreas Weiermann"
-   ],
-   "members": [
-    "Andreas Weiermann"
-   ]
-  },
-  {
-   "title": "A Sound and Complete Axiomatisation for Intuitionistic Linear Temporal Logic",
-   "date": "2024-10-26",
-   "type": "conference-paper",
-   "venue": "Principles of Knowledge Representation and Reasoning",
-   "url": "https://doi.org/10.24963/kr.2024/33",
-   "authors": [
-    "David Fernández–Duque",
-    "Brett McLean",
-    "Lukas Zenger"
-   ],
-   "members": [
-    "Brett McLean"
-   ]
-  },
-  {
-   "title": "Gödel–Dummett linear temporal logic",
-   "date": "2024-10-18",
-   "type": "article",
-   "venue": "Artificial Intelligence",
-   "url": "https://doi.org/10.1016/j.artint.2024.104236",
-   "authors": [
-    "Juan P. Aguilera",
-    "Martín Diéguez",
-    "David Fernández–Duque",
-    "Brett McLean"
-   ],
-   "members": [
-    "Brett McLean"
-   ]
-  },
-  {
-   "title": "The logical strength of minimal bad arrays",
-   "date": "2024-09-26",
-   "type": "article",
-   "venue": "Proceedings of the American Mathematical Society",
-   "url": "https://doi.org/10.1090/proc/17038",
-   "authors": [
-    "Anton Freund",
-    "Fedor Pakhomov",
-    "Giovanni Soldà"
-   ],
-   "members": [
-    "Fedor Pakhomov",
-    "Giovanni Solda"
-   ]
-  },
-  {
-   "title": "Preservation theorems for Tarski's relation algebra",
-   "date": "2024-09-04",
-   "type": "article",
-   "venue": "Logical Methods in Computer Science",
-   "url": "https://doi.org/10.46298/lmcs-20(3:20)2024",
-   "authors": [
-    "Bart Bogaerts",
-    "Balder ten Cate",
-    "Brett McLean",
-    "Jan Van den Bussche"
-   ],
-   "members": [
-    "Brett McLean"
-   ]
-  },
-  {
-   "title": "Complete representation by partial functions for signatures containing antidomain restriction",
-   "date": "2024-08-23",
-   "type": "article",
-   "venue": "International Journal of Algebra and Computation",
-   "url": "https://doi.org/10.1142/s0218196724500450",
-   "authors": [
-    "Brett McLean"
-   ],
-   "members": [
-    "Brett McLean"
-   ]
-  },
-  {
-   "title": "Periodic frames",
-   "date": "2024-07-14",
-   "type": "preprint",
-   "venue": "arXiv (Cornell University)",
-   "url": "https://doi.org/10.48550/arxiv.2407.10190",
-   "authors": [
-    "Lev D. Beklemishev",
-    "Yunsong Wang"
-   ],
-   "members": [
-    "Lev Beklemishev"
    ]
   }
  ]
