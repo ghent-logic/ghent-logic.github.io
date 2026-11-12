@@ -72,5 +72,8 @@ first: a wrong OpenAlex profile puts a namesake's papers on the site.
 - To include a member, add them to `data/outputs-authors.json` with their
   OpenAlex author id (the `A…` number in `https://openalex.org/A…`) and
   `"confirmed": true` once they have checked the profile is theirs.
+- To keep a paper off the site (say, a namesake's paper filed under a member's
+  profile), add its OpenAlex work id (the `W…` number in `https://openalex.org/W…`)
+  to `exclude` in the same file, with a note saying why. It stays off for good.
 - To refresh straight away, open the repository's Actions tab, choose "Update
   recent publications" and press "Run workflow".

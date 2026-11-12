@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Refresh assets/outputs.js, the list of members' recent publications.
 
-Reads data/outputs-authors.json, asks OpenAlex (https://openalex.org, free, no
+Reads data/outputs-authors.json (who to look up, and single works to leave out),
+asks OpenAlex (https://openalex.org, free, no
 key) for each confirmed member's most recent works, merges and de-duplicates
 them, and writes assets/outputs.js for the Research page. The website itself
 never contacts OpenAlex: it only reads that file.
@@ -48,12 +49,14 @@ def main():
     cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
     use_all = "--all" in sys.argv
     members = [a for a in cfg["authors"] if a.get("confirmed") or use_all]
+    # Works that are not the group's, e.g. a namesake's paper filed under a member's profile.
+    excluded = {e["work"].rsplit("/", 1)[-1] for e in cfg.get("exclude", [])}
     by_id = {a["openalex"]: a["name"] for a in members}
     works = {}
     for a in members:
         print(f"{a['name']} ({a['openalex']})")
         for w in fetch(a["openalex"]):
-            if (w.get("type") or "") in SKIP_TYPES:
+            if (w.get("type") or "") in SKIP_TYPES or w["id"].rsplit("/", 1)[-1] in excluded:
                 continue
             title = (w.get("title") or w.get("display_name") or "").strip()
             if not title:

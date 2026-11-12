@@ -1,5 +1,5 @@
 {
-  "_readme": "Who the monthly job looks up on OpenAlex. Only entries with \"confirmed\": true are fetched. An entry is confirmed once it has been checked against the member's profile on research.ugent.be (same ORCID, or the same papers in UGent Biblio; see \"checked\"). Members left at false have no ORCID or Biblio list there to check against, so ask them to look at https://openalex.org/<id> and confirm before switching them on: a wrong profile puts a namesake's papers on the website. Harvey Friedman is left out on purpose: the obvious OpenAlex match is a different person (a biologist).",
+  "_readme": "Who the monthly job looks up on OpenAlex. Only entries with \"confirmed\": true are fetched. An entry is confirmed once it has been checked against the member's profile on research.ugent.be (same ORCID, or the same papers in UGent Biblio; see \"checked\"). Members left at false have no ORCID or Biblio list there to check against, so ask them to look at https://openalex.org/<id> and confirm before switching them on: a wrong profile puts a namesake's papers on the website. Harvey Friedman is left out on purpose: the obvious OpenAlex match is a different person (a biologist). A paper that is not the group's, typically a namesake's filed under a member's profile, goes in \"exclude\": give its OpenAlex work id (the W... number in https://openalex.org/W...) and a note saying why. It then never appears, however often the list is refreshed.",
   "authors": [
     {
       "name": "Lev Beklemishev",
@@ -28,7 +28,8 @@
     {
       "name": "Rodrigo Nicolau Almeida",
       "openalex": "A5023607816",
-      "confirmed": false
+      "confirmed": true,
+      "checked": "confirmed by the group (no profile on research.ugent.be to compare with)"
     },
     {
       "name": "Brett McLean",
@@ -45,23 +46,40 @@
     {
       "name": "Alakh Dhruv Chopra",
       "openalex": "A5125638318",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Vlad Lazar",
       "openalex": "A5053218986",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Philipp Provenzano",
       "openalex": "A5118450772",
-      "confirmed": true
+      "confirmed": true,
+      "checked": "confirmed by the member"
     },
     {
       "name": "Geert Vernaeve",
       "openalex": "A5006877820",
       "confirmed": true,
       "checked": "both distinct UGent Biblio titles are in this OpenAlex profile"
+    }
+  ],
+  "exclude": [
+    {
+      "work": "W7135237498",
+      "note": "Vlad Lazar: \"L-Shape Bounding Box Detector for LiDAR Point-Clouds\" is by a namesake at the Technical University of Cluj-Napoca"
+    },
+    {
+      "work": "W4247369935",
+      "note": "Vlad Lazar: wireless sensor network paper by the same Cluj-Napoca namesake"
+    },
+    {
+      "work": "W4200590149",
+      "note": "Vlad Lazar: software-defined networking paper by the same Cluj-Napoca namesake"
     }
   ]
 }
