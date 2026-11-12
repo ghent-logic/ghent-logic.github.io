@@ -81,10 +81,19 @@
       .then(() => window.renderMathInElement(root, {delimiters: MATH_DELIMITERS, throwOnError: false, errorColor: '#8a1c1c'}))
       .catch(() => {});
   }
+  const pagerNav = (page, pages, href, label) => `<nav class="pager" aria-label="${label}">
+      ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
+      <span class="pager-pages">${pagerNumbers(page, pages).map(n => n === GAP
+        ? '<span class="pager-gap" aria-hidden="true">…</span>'
+        : n === page
+          ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
+          : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
+      ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
+    </nav>`;
   const nav = [['index','Home'],['people','People'],['research','Research'],['seminars','Seminars'],['activities','Activities'],['courses','Courses'],['contact','Contact']];
   const current = document.body.dataset.page;
   // Pages reachable from within the site rather than from the main navigation.
-  const subPages = {archive: ['Seminar archive', 'seminars'], former: ['Former members', 'people']};
+  const subPages = {archive: ['Seminar archive', 'seminars'], former: ['Former members', 'people'], publications: ['Publications', 'research']};
   const navCurrent = subPages[current]?.[1] || current;
   const RECENT_TALKS = 4;   // kept on the seminars page; the rest live in the archive
   const PER_PAGE = 10;      // archive entries per page
@@ -131,9 +140,32 @@
     set('home-youtube', external(G.youtubeUrl, 'Recorded talks on YouTube', 'text-link'));
     set('home-topics', areas.map(a => `<article class="topic"><h3>${esc(a.title)}</h3><p>${esc(a.short)}</p></article>`).join(''));
   }
+  // Recent publications, read from assets/outputs.js (written monthly by scripts/update_outputs.py).
+  const outputs = (window.OUTPUTS && window.OUTPUTS.items) || [];
+  const RECENT_OUTPUTS = 10;  // shown on the Research page; the rest live on publications.html
+  const lastName = n => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().split(/\s+/).pop();
+  const monthYear = d => { const [y, m] = (d || '').split('-'); return y ? (m ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m - 1] + ' ' : '') + y : ''; };
+  const outputHtml = o => {
+      const ours = (o.members || []).map(lastName);
+      const authors = (o.authors || []).map(n => ours.includes(lastName(n)) ? `<strong>${esc(n)}</strong>` : esc(n)).join(', ');
+      const meta = [o.type === 'preprint' ? 'Preprint' : o.venue, monthYear(o.date)].filter(Boolean).map(esc).join(' · ');
+      return `<li class="output"><h3>${link(o.url) ? `<a href="${link(o.url)}">${esc(o.title)}</a>` : esc(o.title)}</h3><p class="output-authors">${authors}</p><p class="output-meta">${meta}</p></li>`;
+  };
+  const outputsNote = () => `<p class="outputs-note">Collected automatically from <a href="https://openalex.org">OpenAlex</a> each month and checked by the group before it is published. Last updated ${esc(monthYear(window.OUTPUTS.updated))}.</p>`;
   if (current === 'research') {
-    set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join(''));
+    set('research-index', areas.map(a => `<a href="#${slug(a.id)}">${esc(a.title)}</a>`).join('') + (outputs.length ? '<a href="#recent-publications">Recent publications</a>' : ''));
+    if (outputs.length) set('research-outputs', `<section class="outputs" id="recent-publications"><h2 class="group-title">Recent publications</h2><ul class="output-list">${outputs.slice(0, RECENT_OUTPUTS).map(outputHtml).join('')}</ul>${outputs.length > RECENT_OUTPUTS ? '<p class="archive-more"><a class="text-link" href="publications.html">All publications</a></p>' : ''}${outputsNote()}</section>`);
     set('research-areas', areas.map(a => `<section class="research-row" id="${slug(a.id)}"><div><h2>${esc(a.title)}</h2><p class="research-question">${esc(a.question)}</p></div><div class="research-detail"><p>${esc(a.description)}</p><div class="tags">${(a.topics||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div></section>`).join(''));
+  }
+  if (current === 'publications') {
+    const pages = Math.max(1, Math.ceil(outputs.length / PER_PAGE));
+    const page = Math.min(Math.max(parseInt(new URLSearchParams(location.search).get('page'), 10) || 1, 1), pages);
+    const href = n => n === 1 ? 'publications.html' : `publications.html?page=${n}`;
+    set('publications-count', outputs.length ? `${outputs.length} publication${outputs.length === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}` : '');
+    set('publications-list', outputs.length
+      ? `<ul class="output-list">${outputs.slice((page - 1) * PER_PAGE, page * PER_PAGE).map(outputHtml).join('')}</ul>${outputsNote()}`
+      : '<div class="empty"><h3>Publications</h3><p>Recent publications will appear here.</p></div>');
+    set('publications-pager', pages > 1 ? pagerNav(page, pages, href, 'Publication pages') : '');
   }
   const everyone = records(G.people);
   const peopleGroups = [...new Set(everyone.map(p => p.group))];
@@ -229,15 +261,7 @@
         ? `${past.length} talk${past.length === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
         : '');
       set('archive-talks', slice.length ? slice.map(talkHtml).join('') : '<div class="empty"><h3>Archive</h3><p>Previous talks will appear here.</p></div>');
-      set('archive-pager', pages > 1 ? `<nav class="pager" aria-label="Archive pages">
-      ${page > 1 ? `<a class="pager-step" href="${href(page - 1)}" rel="prev"><span aria-hidden="true">←</span> Newer</a>` : '<span class="pager-step is-off"><span aria-hidden="true">←</span> Newer</span>'}
-      <span class="pager-pages">${pagerNumbers(page, pages).map(n => n === GAP
-        ? '<span class="pager-gap" aria-hidden="true">…</span>'
-        : n === page
-          ? `<span class="pager-page is-current" aria-current="page">${n}</span>`
-          : `<a class="pager-page" href="${href(n)}">${n}</a>`).join('')}</span>
-      ${page < pages ? `<a class="pager-step" href="${href(page + 1)}" rel="next">Older <span aria-hidden="true">→</span></a>` : '<span class="pager-step is-off">Older <span aria-hidden="true">→</span></span>'}
-    </nav>` : '');
+      set('archive-pager', pages > 1 ? pagerNav(page, pages, href, 'Archive pages') : '');
     }
     // While searching, every match is listed on one page and the pager steps aside.
     function showMatches(query) {

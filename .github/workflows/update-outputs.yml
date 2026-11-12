@@ -1,0 +1,49 @@
+# Once a month, look up the confirmed members' recent publications on OpenAlex
+# and, if the list changed, open a pull request. Nothing is published until the
+# pull request is merged by a person.
+name: Update recent publications
+
+on:
+  schedule:
+    - cron: "17 5 1 * *"   # 05:17 UTC on the 1st of every month
+  workflow_dispatch:        # the "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch publications
+        run: python3 scripts/update_outputs.py
+
+      - name: Open a pull request if the list changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- assets/outputs.js; then
+            echo "No new publications this month."
+            exit 0
+          fi
+          branch="auto/publications-$(date -u +%Y-%m)"
+          month="$(date -u "+%B %Y")"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$branch"
+          git add assets/outputs.js
+          git commit -m "Update recent publications"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number -q '.[].number')" ]; then
+            gh pr create --base main --head "$branch" \
+              --title "Update recent publications ($month)" \
+              --body "Automatic monthly update of the Research page's *Recent publications*, from OpenAlex (see scripts/update_outputs.py).
+
+          Before merging, look at the changed entries on the Files tab:
+          - is each paper really by a member of the group (a wrong match means a namesake's paper)?
+          - are titles and venues sensible?
+          To stop looking someone up, or to add someone, edit data/outputs-authors.json."
+          fi

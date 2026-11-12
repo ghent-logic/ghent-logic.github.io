@@ -1,0 +1,67 @@
+{
+  "_readme": "Who the monthly job looks up on OpenAlex. Only entries with \"confirmed\": true are fetched. An entry is confirmed once it has been checked against the member's profile on research.ugent.be (same ORCID, or the same papers in UGent Biblio; see \"checked\"). Members left at false have no ORCID or Biblio list there to check against, so ask them to look at https://openalex.org/<id> and confirm before switching them on: a wrong profile puts a namesake's papers on the website. Harvey Friedman is left out on purpose: the obvious OpenAlex match is a different person (a biologist).",
+  "authors": [
+    {
+      "name": "Lev Beklemishev",
+      "openalex": "A5000566596",
+      "confirmed": true,
+      "checked": "same ORCID as his Research Explorer profile"
+    },
+    {
+      "name": "Fedor Pakhomov",
+      "openalex": "A5064019679",
+      "confirmed": true,
+      "checked": "same ORCID as his Research Explorer profile; 17 of 24 titles in UGent Biblio also in OpenAlex"
+    },
+    {
+      "name": "Hans Vernaeve",
+      "openalex": "A5054966635",
+      "confirmed": true,
+      "checked": "same ORCID as his Research Explorer profile; 25 of 28 Biblio titles also in OpenAlex"
+    },
+    {
+      "name": "Andreas Weiermann",
+      "openalex": "A5056618682",
+      "confirmed": true,
+      "checked": "same ORCID as his Research Explorer profile; 81 of 99 Biblio titles also in OpenAlex"
+    },
+    {
+      "name": "Rodrigo Nicolau Almeida",
+      "openalex": "A5023607816",
+      "confirmed": false
+    },
+    {
+      "name": "Brett McLean",
+      "openalex": "A5058982682",
+      "confirmed": true,
+      "checked": "same ORCID as his Research Explorer profile; 18 of 18 Biblio titles also in OpenAlex"
+    },
+    {
+      "name": "Giovanni Solda",
+      "openalex": "A5089861556",
+      "confirmed": true,
+      "checked": "all 6 UGent Biblio titles are in this OpenAlex profile"
+    },
+    {
+      "name": "Alakh Dhruv Chopra",
+      "openalex": "A5125638318",
+      "confirmed": false
+    },
+    {
+      "name": "Vlad Lazar",
+      "openalex": "A5053218986",
+      "confirmed": false
+    },
+    {
+      "name": "Philipp Provenzano",
+      "openalex": "A5118450772",
+      "confirmed": false
+    },
+    {
+      "name": "Geert Vernaeve",
+      "openalex": "A5006877820",
+      "confirmed": true,
+      "checked": "both distinct UGent Biblio titles are in this OpenAlex profile"
+    }
+  ]
+}
